@@ -57,34 +57,34 @@ export default function WhyFineLabs() {
   ];
 
   return (
-    <section ref={sectionRef} className="w-full bg-white pt-16 pb-10 md:pt-20 border-none border-gray-100">
+    <section className="w-full bg-white pt-16 pb-10 md:pt-20 border-none border-gray-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-10">
         <p className="text-xs font-semibold tracking-[0.2em] text-blue-600 mb-6 uppercase">
           — WHY FINE LABS
         </p>
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-35">
+        <h2 className="text-3xl md:text-6xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-35">
           Where{" "}
           <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             innovation
           </span>
-z          <br />
+         <br />
           meets impact.
         </h2>
       </div>
 
       <div className="max-w-7xl mx-auto w-full px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-none border-gray-200 rounded-3xl overflow-hidden">
+        <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden">
           {features.map((feature, idx) => (
             <Card
               key={idx}
               className={cn(
-                "group border border-transparent rounded-none shadow-none relative transition-all duration-100 hover:border-gray-200 hover:bg-gray-100",
+                "group border-none rounded-none shadow-none relative transition-all duration-300 hover:bg-gray-50",
                 isVisible
-                  ? "animate-in fade-in slide-in-from-left-8 slide-in-from-bottom-8 duration-700 fill-mode-both"
+                  ? "animate-in fade-in slide-in-from-left-20 slide-in-from-bottom-20 duration-1000 fill-mode-both"
                   : "opacity-0"
               )}
               style={{
-                animationDelay: isVisible ? `${idx * 150}ms` : '0ms'
+                animationDelay: isVisible ? `${idx * 100}ms` : '0ms'
               }}
             >
               <CardContent className="p-10">
