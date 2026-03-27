@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-export default function WhyFineLabs() {
+export default function CardAnimation() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -57,22 +58,9 @@ export default function WhyFineLabs() {
   ];
 
   return (
-    <section className="w-full bg-white pt-16 pb-10 md:pt-20 border-none border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-10">
-        <p className="text-xs font-semibold tracking-[0.2em] text-blue-600 mb-6 uppercase">
-          — WHY FINE LABS
-        </p>
-        <h2 className="text-3xl md:text-6xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-35">
-          Where{" "}
-          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            innovation
-          </span>
-         <br />
-          meets impact.
-        </h2>
-      </div>
+    <section className="relative w-full bg-white pt-16 pb-10 md:pt-1 border-none border-gray-100 overflow-hidden">
 
-      <div className="max-w-7xl mx-auto w-full px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto w-full px-6 lg:px-8 relative z-10">
         <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden">
           {features.map((feature, idx) => (
             <Card

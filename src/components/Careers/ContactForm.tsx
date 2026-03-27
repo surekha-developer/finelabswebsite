@@ -97,6 +97,15 @@ export default function OpenOpportunities() {
               className="w-full px-4 py-2 border border-[#b2c2d1] rounded-[3px] text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors"
             />
           </div>
+
+          <div className="pt-2">
+            <button
+              type="submit"
+              className="px-8 py-3 w-full bg-gradient-to-r from-[#2b6eff] to-[#8c35ff] text-white font-bold rounded-[3px] cursor-pointer transition-all duration-300 hover:from-[#1f5ae0] hover:to-[#6d28d9] hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+            >
+              Submit Application
+            </button>
+          </div>
         </form>
       </div>
     </section>

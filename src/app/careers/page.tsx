@@ -1,6 +1,6 @@
 import JoinTheTeam from "@/components/Careers/JoinTheTeam";
-import WhyFineLabs from "@/components/Careers/WhyFineLabs";
-import OpenOpportunities from "@/components/Careers/OpenOpportunities";
+import CardAnimation from "@/components/Careers/CardAnimation";
+import ContactForm from "@/components/Careers/ContactForm";
 
 export const metadata = {
   title: "Careers | FineLabs",
@@ -12,8 +12,8 @@ export default function CareersPage() {
   return (
     <main>
       <JoinTheTeam />
-      <WhyFineLabs />
-      <OpenOpportunities />
+      <CardAnimation />
+      <ContactForm />
     </main>
   );
 }
