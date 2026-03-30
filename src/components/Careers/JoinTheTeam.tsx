@@ -10,17 +10,17 @@ export default function JoinTheTeam() {
       <div className="relative h-[300px] py-50 lg:h-[300px]">
 
         {/* RIGHT FULL-BLEED IMAGE */}
-        <div className="absolute inset-y-0 right-0 w-[65%]">
+        <div className="absolute inset-y-0 right-0 w-[48%] h-[345px]">
           <Image
-            src="/images/image.png"
+            src="/images/image11.png"
             alt="Team"
             fill
             priority
-            className="object-cover object-center"
+            className="object-contain object-center"
           />
 
           {/* SMOOTH FADE */}
-          <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-white via-white/90 to-transparent" />
+          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white via-white/50 to-transparent" />
         </div>
 
         {/* LEFT CONTENT */}
@@ -48,35 +48,48 @@ export default function JoinTheTeam() {
 
       </div>
 
-      {/* SECOND SECTION (UNCHANGED BUT SLIGHTLY POLISHED) */}
-      <div className="relative z-20 max-w-10xl mx-auto  py-32 -mt-24 lg:-mt-32 grid lg:grid-cols-2 items-center">
-
-        {/* LEFT IMAGE */}
-        <div className="relative h-[200px] lg:h-[350px] w-full">
-          <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-white via-white/90 to-transparent z-10" />
-          
+      {/* SECOND SECTION */}
+      <div className="relative z-20 w-full lg:overflow-visible overflow-hidden py-32 -mt-24 lg:-mt-32">
+        {/* RIGHT BACKGROUND IMAGE touching screen edge */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[25vw] h-[270px] hidden lg:block z-0 pointer-events-none">
           <Image
-            src="/images/image copy.png"
-            alt="Innovation"
+            src="/images/image99.png"
+            alt="Circuit"
             fill
-            className="object-cover"
+            className="object-cover object-left"
           />
         </div>
 
-        {/* RIGHT TEXT */}
-        <div className="lg:px-15 max-w-2xl">
-          <p className="text-xs font-semibold tracking-[0.2em] text-blue-600 mb-7 uppercase">
-            — WHY FINE LABS
-          </p>
+        <div className="max-w-[1536px] mx-auto w-full relative z-10">
+          <div className="grid lg:grid-cols-2 items-center w-full">
+            {/* LEFT IMAGE */}
+            <div className="relative h-[200px] lg:h-[350px] w-full">
+              <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
-          <h2 className="text-[30px] md:text-[42px] lg:text-[50px] font-bold leading-[1.1]">
-            Where innovation{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              meets impact.
-            </span>{" "}    
-          </h2>
+              <Image
+                src="/images/image copy 2.png"
+                alt="Innovation"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
+
+            {/* RIGHT TEXT */}
+            <div className="lg:px-30 max-w-2xl relative z-20 lg:-translate-y-8 lg:-translate-x-12">
+              <p className="text-xs font-semibold tracking-[0.2em] text-blue-600 mb-7 uppercase">
+                — WHY FINE LABS
+              </p>
+
+              <h2 className="text-[30px] md:text-[42px] lg:text-[50px] font-bold leading-[1.1]">
+                Where{" "}
+                <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  innovation
+                </span>{" "}
+                meets impact.
+              </h2>
+            </div>
+          </div>
         </div>
-
       </div>
 
     </section>
