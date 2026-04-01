@@ -39,7 +39,7 @@
 //   return (
 //     <section className="w-full bg-white py-20 px-4 sm:px-6">
 //       <div className="max-w-7xl mx-auto">
-        
+
 //         {/* TOP TITLE */}
 //         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16">
 //           <div>
@@ -141,7 +141,7 @@
 //   return (
 //     <section className="w-full bg-white py-20 px-4 sm:px-6">
 //       <div className="max-w-7xl mx-auto">
-        
+
 //         {/* TOP TITLE */}
 //         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16">
 //           <div>
@@ -240,35 +240,44 @@ const services = [
 
 export default function CoreCapabilities() {
   return (
-    <section className="w-full bg-white py-10 px-4 sm:px-6 pt-30">
-      <div className="max-w-7xl mx-auto">
-        
+    <section className="w-full relative py-20 px-4 sm:px-6 pt-32 pb-24 overflow-hidden bg-white">
+
+      {/* GRADIENT BACKGROUND */}
+      <div
+        className="absolute top-0 left-0 w-full h-[800px] z-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 160% 120% at 50% -10%, #121926 45%, #8c35ff 58%, #2b6eff 65%, #ffffff 80%)'
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+
         {/* TITLE */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-24 lg:mb-32">
           <div>
-            <p className="text-xs font-semibold tracking-[0.25em] text-blue-600 mb-4">
+            <p className="text-xs font-semibold tracking-[0.25em] text-blue-300 mb-4 uppercase drop-shadow-lg">
               CORE CAPABILITIES
             </p>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white drop-shadow-lg">
               What we{" "}
-              <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-300 to-indigo-300 bg-clip-text text-transparent">
                 deliver.
               </span>
             </h2>
           </div>
 
-          <button className="mt-6 lg:mt-0 border border-gray-300 rounded-full px-6 py-3 text-sm hover:bg-gray-100 transition">
+          <button className="mt-8 lg:mt-0 border border-white/50 bg-white/5 backdrop-blur-sm text-white rounded-full px-8 py-4 text-sm font-medium hover:bg-white/10 hover:border-white transition shadow-lg">
             All services →
           </button>
         </div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 border-none border-gray-200 rounded-3xl overflow-hidden">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 bg-white/40 backdrop-blur-xl border-none rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-gray-200/50">
           {services.map((item, index) => (
             <Card
               key={index}
-              className="group border border-transparent rounded-none shadow-none relative transition-all duration-300 hover:border-gray-200 hover:bg-[#f3f4f6]"
+              className="group border border-gray-100/30 bg-white/90 rounded-none shadow-none relative transition-all duration-300 hover:bg-white hover:shadow-xl hover:-translate-y-1"
             >
               {/* BLUE LOADER LINE */}
               <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-500 group-hover:w-full" />

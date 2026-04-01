@@ -1,23 +1,47 @@
 "use client";
 
+import { motion } from "framer-motion";
+import Image from "next/image";
+
 export default function AboutHero() {
   return (
-    <section className="w-full bg-white px-6 pt-20 pb-10">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative w-full bg-white px-6 pt-24 pb-12 overflow-hidden">
+      
+      {/* Dynamic Background Wavy Pattern (seen in Image 2) */}
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+         <Image 
+            src="/images/circuit_lines.png" 
+            alt="background lines" 
+            fill 
+            className="object-cover object-top opacity-50"
+         />
+      </div>
 
-        <p className="text-xs font-semibold tracking-[0.3em] text-blue-600 mb-2">
+      <div className="max-w-7xl mx-auto relative z-10">
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-xs font-semibold tracking-[0.3em] text-blue-600 mb-4"
+        >
           — OUR STORY
-        </p>
+        </motion.p>
 
-       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+          className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] tracking-tight"
+        >
           Built for enterprise.
           <br />
-          <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
+          <span className="text-blue-500">
             Designed for outcomes.
           </span>
-        </h1>
+        </motion.h1>
 
-        <div className="border-t border-[#e9e9e9] mt-24" />
+        <div className="border-t border-[#e9e9e9] mt-24 sm:mt-32" />
       </div>
     </section>
   );
