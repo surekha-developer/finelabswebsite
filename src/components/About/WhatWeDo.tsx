@@ -29,7 +29,7 @@ export default function WhatWeDo() {
   return (
     <section className="w-full bg-white px-6 py-12 pt-8">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* SECTION TITLE */}
         <p className="text-xs font-semibold tracking-[0.3em] text-blue-600 mb-2">
           — WHAT WE DO
@@ -55,7 +55,7 @@ export default function WhatWeDo() {
               className="group border-0 rounded-none shadow-none bg-white transition-all duration-300 hover:bg-gray-100"
             >
               <CardContent className="p-8">
-                
+
                 {/* NUMBER */}
                 <div className="text-5xl font-bold text-blue-300 mb-6">
                   {item.id}
