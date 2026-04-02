@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function JoinTheTeam() {
   return (
@@ -26,7 +27,13 @@ export default function JoinTheTeam() {
         {/* LEFT CONTENT */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 h-full flex items-center">
 
-          <div className="max-w-xl">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-xl"
+          >
             <p className="text-xs font-semibold tracking-[0.2em] text-blue-600 mb-6 uppercase">
               — JOIN THE TEAM
             </p>
@@ -42,7 +49,7 @@ export default function JoinTheTeam() {
             <p className="mt-6 text-gray-600">
               We're looking for curious, driven people who want to solve complex problems at enterprise scale.
             </p>
-          </div>
+          </motion.div>
 
         </div>
 
@@ -75,7 +82,13 @@ export default function JoinTheTeam() {
             </div>
 
             {/* RIGHT TEXT */}
-            <div className="lg:px-30 max-w-2xl relative z-20 lg:-translate-y-8 lg:-translate-x-12">
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:px-30 max-w-2xl relative z-20 lg:-translate-y-8 lg:-translate-x-12"
+            >
               <p className="text-xs font-semibold tracking-[0.2em] text-blue-600 mb-7 uppercase">
                 — WHY FINE LABS
               </p>
@@ -87,7 +100,7 @@ export default function JoinTheTeam() {
                 </span>{" "}
                 meets impact.
               </h2>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

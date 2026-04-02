@@ -1,8 +1,8 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import Cloud from "@/components/Services/Cloud";
-import CyberSecurity from "@/components/Services/CyberSecurity";
-import ExperiencePlatforms from "@/components/Services/ExperiencePlatforms";
+import Cloud from "@/components/Services/Cloud/page";
+import CyberSecurity from "@/components/Services/CyberSecurity/page";
+import ExperiencePlatforms from "@/components/Services/ExperiencePlatforms/page";
 import SupplyChain from "@/components/Services/SupplyChain";
 import SAP from "@/components/Services/SAP";
 import Salesforce from "@/components/Services/Salesforce";

@@ -1,175 +1,306 @@
 "use client";
 
-import React from "react";
-import { Link2 } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Link2, 
+  ChevronRight, 
+  Zap, 
+  ShieldCheck, 
+  Activity, 
+  BarChart3, 
+  Cpu, 
+  Layers, 
+  Network,
+  Globe,
+  ArrowRight,
+  MessageCircle,
+  Truck
+} from "lucide-react";
+
+// ----------------------------------------------------------------------------
+// SUPPLY CHAIN ENRICHMENT COMPONENTS
+// ----------------------------------------------------------------------------
+
+/**
+ * "Route Mesh" Background
+ * Global map with moving cargo particles.
+ */
+const RouteMesh = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+    <Globe className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] text-emerald-200/50" />
+    
+    <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+       <defs>
+          <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+             <stop offset="0%" stopColor="#059669" stopOpacity="0" />
+             <stop offset="50%" stopColor="#059669" stopOpacity="0.5" />
+             <stop offset="100%" stopColor="#059669" stopOpacity="0" />
+          </linearGradient>
+       </defs>
+       
+       {[...Array(8)].map((_, i) => (
+          <motion.path
+            key={i}
+            d={`M ${10 + i * 10} ${20 + (i%2)*40} Q ${30 + i * 5} ${50} ${90} ${80 - i * 5}`}
+            fill="none"
+            stroke="url(#routeGradient)"
+            strokeWidth="0.1"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: [0, 1, 0], opacity: [0, 0.4, 0] }}
+            transition={{ duration: 10 + i * 2, repeat: Infinity, delay: i * 1.5 }}
+          />
+       ))}
+
+       {/* Cargo Particles */}
+       {[...Array(12)].map((_, i) => (
+         <motion.circle
+           key={`cargo-${i}`}
+           r="0.3"
+           fill="#059669"
+           animate={{ 
+             cx: ["0%", "100%"],
+             cy: [`${20 + i * 5}%`, `${80 - i * 5}%`],
+             opacity: [0, 1, 0]
+           }}
+           transition={{ duration: 15 + i * 2, repeat: Infinity, delay: i * 1, ease: "linear" }}
+         />
+       ))}
+    </svg>
+  </div>
+);
+
+/**
+ * ChatSCM AI Agent Visual
+ * Floating UI representing the proprietary intelligent agent.
+ */
+const ChatSCMAgent = () => (
+  <motion.div 
+    initial={{ opacity: 0, scale: 0.8, x: 20 }}
+    animate={{ opacity: 1, scale: 1, x: 0 }}
+    transition={{ duration: 1, delay: 2 }}
+    className="bg-white/90 backdrop-blur-md border border-emerald-100 p-6 rounded-3xl shadow-2xl shadow-emerald-200/20 max-w-[280px]"
+  >
+     <div className="flex items-center gap-3 mb-4">
+        <div className="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+           <MessageCircle className="w-6 h-6" />
+        </div>
+        <div>
+           <div className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">ChatSCM Agent</div>
+           <div className="text-xs font-bold text-gray-400 italic font-mono">LPOPT Solver Active</div>
+        </div>
+     </div>
+     <div className="space-y-3">
+        <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+           <motion.div 
+             className="h-full bg-emerald-500" 
+             animate={{ width: ["0%", "85%", "40%", "92%"] }}
+             transition={{ duration: 10, repeat: Infinity }}
+           />
+        </div>
+        <div className="text-[11px] font-medium text-gray-500">Diagnosing planning failures across Node-74...</div>
+     </div>
+  </motion.div>
+);
+
+/**
+ * Flow Reveal Hero
+ * Lines converging into a central dashboard.
+ */
+const FlowReveal = ({ active }: { active: boolean }) => (
+  <AnimatePresence>
+    {!active && (
+      <motion.div 
+        className="absolute inset-0 z-50 bg-[#f8fafc] flex items-center justify-center pointer-events-none"
+        exit={{ opacity: 0, transition: { duration: 1 } }}
+      >
+        <div className="relative w-[300px] h-[300px] flex items-center justify-center">
+           {[...Array(4)].map((_, i) => (
+             <motion.div 
+               key={i}
+               className="absolute inset-0 border border-emerald-500/20 rounded-full"
+               initial={{ scale: 0, opacity: 1 }}
+               animate={{ scale: 3, opacity: 0 }}
+               transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
+             />
+           ))}
+           <Activity className="w-12 h-12 text-emerald-600 animate-pulse relative z-10" />
+        </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
+
+// ----------------------------------------------------------------------------
+// PRIMARY COMPONENT
+// ----------------------------------------------------------------------------
 
 export default function SupplyChain() {
+  const [isRevealed, setIsRevealed] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsRevealed(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="w-full bg-white text-[#121926]">
-      {/* 1. HERO SECTION */}
-      <section className="max-w-7xl mx-auto px-6 pt-32 pb-24">
-        <div className="max-w-3xl">
-          {/* Pill */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 mb-8">
-            <div className="bg-emerald-500 rounded-md p-1 border border-emerald-400">
-              <Link2 className="w-3 h-3 text-white" />
+    <div className="w-full bg-[#f8fafc] text-[#121926] overflow-hidden selection:bg-emerald-50">
+      
+      {/* 1. HERO SECTION: THE RESILIENT FLOW */}
+      <section className="relative w-full px-6 pt-32 pb-20 sm:pt-40 sm:pb-32 min-h-[90vh] flex items-center overflow-hidden">
+        
+        <RouteMesh />
+        <FlowReveal active={isRevealed} />
+
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="flex-1 text-center sm:text-left">
+              
+              {/* Pill */}
+              <motion.div 
+                 initial={{ opacity: 0, x: -20 }}
+                 animate={isRevealed ? { opacity: 1, x: 0 } : {}}
+                 transition={{ duration: 0.8, delay: 0.4 }}
+                 className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-emerald-100 mb-8 shadow-sm"
+              >
+                 <Zap className="w-3.5 h-3.5 text-emerald-600 fill-emerald-50" />
+                 <span className="text-[10px] font-bold text-gray-500 tracking-[0.3em] uppercase">
+                  Global Supply Chain // Status: Optimized
+                </span>
+              </motion.div>
+
+              {/* Headline */}
+              <motion.h1 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={isRevealed ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                className="text-5xl sm:text-7xl md:text-[95px] font-extrabold tracking-tight mb-10 leading-[0.95] text-[#121926]"
+              >
+                The <span className="text-emerald-600">Resilient</span>
+                <br /> 
+                Autonomous Flow
+              </motion.h1>
+
+              {/* Description */}
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={isRevealed ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 1, delay: 1 }}
+                className="text-lg md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-2xl font-medium tracking-tight mx-auto sm:mx-0"
+              >
+                Orchestrating complexity into competitive advantage. FineLabs delivers 
+                <span className="text-emerald-600 font-bold underline decoration-emerald-200 underline-offset-4 decoration-4"> end-to-end operational intelligence</span> 
+                spanning networks, planning, and execution.
+              </motion.p>
+
+              {/* CTA */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={isRevealed ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 1, delay: 1.2 }}
+                className="flex flex-wrap items-center justify-center sm:justify-start gap-4"
+              >
+                <button className="px-10 py-5 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-emerald-200/50">
+                   Analyze Your Network
+                </button>
+                <button className="px-10 py-5 bg-white text-[#121926] font-bold rounded-full border border-gray-200 hover:border-emerald-200 transition-all duration-300 shadow-sm">
+                  Strategy Guide
+                </button>
+              </motion.div>
             </div>
-            <span className="text-xs font-semibold text-blue-600 tracking-wider uppercase pl-1">
-              Supply Chain Practice
-            </span>
-          </div>
 
-          {/* Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1]">
-            Supply Chain{" "}
-            <span className="bg-gradient-to-r from-[#2b6eff] to-[#8c35ff] bg-clip-text text-transparent">
-              Management
-            </span>
-            <br />& Optimization
-          </h1>
-
-          {/* Description */}
-          <p className="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl">
-            Comprehensive end-to-end Supply Chain capabilities integrating strategic
-            consulting, advanced planning, and AI-driven operational intelligence.
-          </p>
-
-          {/* Buttons */}
-          <div className="flex flex-wrap items-center gap-4">
-            <button className="px-8 py-3 bg-gradient-to-r from-[#2b6eff] to-[#8c35ff] text-white font-medium rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-              Optimize Your Supply Chain
-            </button>
+            <div className="flex-1 hidden lg:block">
+               <ChatSCMAgent />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 2. SPLIT SECTION: PARTNERSHIPS & CAPABILITIES */}
-      <section className="bg-gray-50 py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
-            {/* LEFT COLUMN: TECHNOLOGY PARTNERS */}
-            <div>
-              <div className="inline-block px-3 py-1 rounded-full bg-blue-100/50 mb-6">
-                <span className="text-xs font-semibold text-blue-600 tracking-wider uppercase">
-                  Technology Partners
-                </span>
-              </div>
-              <h2 className="text-3xl font-bold mb-10">
-                Strategic Technology Partnerships
-              </h2>
+      {/* 2. CORE CAPABILITIES: OPTIMIZATION MODULES */}
+      <section className="bg-white py-24 sm:py-32 relative border-t border-gray-50">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          
+          <div className="mb-20 text-center sm:text-left">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#121926] mb-6">
+              Core Consulting & <br /> Optimization Modules
+            </h2>
+            <p className="text-gray-500 font-medium">Data-driven frameworks to design the next-generation supply network.</p>
+          </div>
 
-              <div className="flex flex-col gap-4">
-                {/* Partner Card 1 */}
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md transition-shadow">
-                  <div className="mt-1.5 w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">
-                      Blue Yonder
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      Cognitive Planning and TMS/WMS integration for end-to-end SCM solutions.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Partner Card 2 */}
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md transition-shadow">
-                  <div className="mt-1.5 w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">
-                      o9 Solutions
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      Demand and supply planning with scenario-based optimization capabilities.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Partner Card 3 */}
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md transition-shadow">
-                  <div className="mt-1.5 w-2.5 h-2.5 rounded-full bg-purple-500 shrink-0" />
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">
-                      Kinaxis, RELEX & Anaplan
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      Planning and optimization across multiple industry verticals.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT COLUMN: CAPABILITIES */}
-            <div>
-              <div className="inline-block px-3 py-1 rounded-full bg-blue-100/50 mb-6">
-                <span className="text-xs font-semibold text-blue-600 tracking-wider uppercase">
-                  Capabilities
-                </span>
-              </div>
-              <h2 className="text-3xl font-bold mb-10">
-                Core Consulting & Optimization
-              </h2>
-
-              <div className="flex flex-col gap-8">
-                {/* Capability 1 */}
-                <div className="flex items-start gap-4">
-                  <div className="mt-1.5 w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />
-                  <div>
-                    <h3 className="text-[17px] font-bold text-gray-900 mb-1">
-                      Network Optimization
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      Designing and optimizing supply chain networks to reduce cost and improve service levels.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Capability 2 */}
-                <div className="flex items-start gap-4">
-                  <div className="mt-1.5 w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />
-                  <div>
-                    <h3 className="text-[17px] font-bold text-gray-900 mb-1">
-                      AI-Driven Root Cause Analysis (ChatSCM)
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      Proprietary intelligent agent using the LPOPT solver engine to diagnose planning failures.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Capability 3 */}
-                <div className="flex items-start gap-4">
-                  <div className="mt-1.5 w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />
-                  <div>
-                    <h3 className="text-[17px] font-bold text-gray-900 mb-1">
-                      Predictive & Prescriptive Intelligence
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      AI/ML forecasting for demand variability and equipment downtime.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Capability 4 */}
-                <div className="flex items-start gap-4">
-                  <div className="mt-1.5 w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />
-                  <div>
-                    <h3 className="text-[17px] font-bold text-gray-900 mb-1">
-                      Connected Operations & Workflow Automation
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      Event-driven workflows integrated with ERP, MES, and WMS systems.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+             {[
+               { title: "Network Optimization", icon: <Network/>, desc: "Designing and simulating global supply networks to minimize logistics costs and carbon footprint while improving local service levels." },
+               { title: "Strategic Planning (S&OP/IBP)", icon: <BarChart3/>, desc: "Unifying commercial goals with operational reality through advanced scenario-based demand and supply planning." },
+               { title: "AI-Driven Root Cause", icon: <Cpu/>, desc: "Leveraging our LPOPT solver engine to diagnose systemic planning failures and automate exception management." },
+               { title: "Connected Operations", icon: <Layers className="w-6 h-6"/>, desc: "Synchronizing WMS, TMS, and ERP systems for real-time visibility and autonomous workflow execution." }
+             ].map((cap, idx) => (
+               <motion.div 
+                 key={idx}
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 className="p-10 bg-gray-50/50 border border-gray-100 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:border-emerald-100 transition-all duration-500 group flex gap-8"
+               >
+                 <div className="w-16 h-16 bg-white border border-gray-100 rounded-2xl flex items-center justify-center text-emerald-600 shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                    {cap.icon}
+                 </div>
+                 <div>
+                    <h3 className="text-xl font-bold text-[#121926] mb-4 group-hover:text-emerald-600 transition-colors uppercase tracking-tight">{cap.title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-6">{cap.desc}</p>
+                    <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm tracking-tight pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                        Configure Module <ArrowRight className="w-4 h-4" />
+                    </div>
+                 </div>
+               </motion.div>
+             ))}
           </div>
         </div>
       </section>
+
+      {/* 3. TECHNOLOGY ECOSYSTEM: PARTNER PILLARS */}
+      <section className="bg-emerald-900 py-24 sm:py-32 relative overflow-hidden">
+         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div className="absolute top-[10%] right-[20%] w-[500px] h-[500px] bg-emerald-400 rounded-full blur-[120px]" />
+         </div>
+
+         <div className="max-w-7xl mx-auto px-6 relative z-10 text-white">
+            <div className="text-center mb-20 max-w-2xl mx-auto">
+               <h3 className="text-sm font-bold tracking-[0.4em] text-emerald-400 mb-6 uppercase">Unified Ecosystem</h3>
+               <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">Strategic Technology <br /> Partnerships</h2>
+               <p className="text-emerald-100/70">Seamlessly integrating the world&apos;s leading SCM planning and execution platforms.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+               {[
+                 { name: "Blue Yonder", accent: "#059669", tags: ["Cognitive Planning", "TMS/WMS"], icon: <Truck/> },
+                 { name: "o9 Solutions", accent: "#10b981", tags: ["Scenario S&OP", "Supply Plan"], icon: <ChevronRight/> },
+                 { name: "Kinaxis / Anaplan", accent: "#34d399", tags: ["Concurrent Planning", "Verticals"], icon: <Link2/> }
+               ].map((partner, i) => (
+                 <motion.div 
+                   key={i}
+                   whileHover={{ y: -10 }}
+                   className="p-10 rounded-[3rem] bg-white/5 backdrop-blur-xl border border-white/10 group cursor-default"
+                 >
+                    <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-8 text-emerald-400">
+                       {partner.icon}
+                    </div>
+                    <h4 className="text-2xl font-black mb-4 tracking-tight uppercase italic">{partner.name}</h4>
+                    <div className="flex flex-wrap gap-2 mb-8">
+                       {partner.tags.map((tag, j) => (
+                         <span key={j} className="px-3 py-1 bg-white/10 border border-white/10 rounded-full text-[9px] font-bold tracking-widest text-emerald-300 uppercase">
+                            {tag}
+                         </span>
+                       ))}
+                    </div>
+                    <div className="flex items-center gap-2 text-white/40 font-bold text-xs tracking-widest group-hover:text-emerald-400 transition-colors">
+                       PARTNER STATUS: INTEGRATED <ShieldCheck className="w-4 h-4" />
+                    </div>
+                 </motion.div>
+               ))}
+            </div>
+         </div>
+      </section>
+
     </div>
   );
 }

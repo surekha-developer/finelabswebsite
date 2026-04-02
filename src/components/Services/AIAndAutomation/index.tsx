@@ -1,223 +1,383 @@
 "use client";
 
-import React from "react";
-import { Bot } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Bot, 
+  Cpu, 
+  Brain, 
+  Zap, 
+  MessageSquare, 
+  Search, 
+  FileText, 
+  Workflow, 
+  ArrowRight,
+  TrendingUp,
+  Settings,
+  Sparkles,
+  Database
+} from "lucide-react";
+
+// ----------------------------------------------------------------------------
+// AI & AUTOMATION ENRICHMENT COMPONENTS
+// ----------------------------------------------------------------------------
+
+/**
+ * "Neural Network" Pulsing Background
+ * Organic nodes that grow and connect in the background.
+ */
+const NeuralPulse = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+      <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow">
+             <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+             <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+             </feMerge>
+          </filter>
+        </defs>
+        
+        {/* Connection paths */}
+        {[...Array(8)].map((_, i) => (
+          <motion.path
+            key={`path-${i}`}
+            d={`M ${20 + i * 10} 0 Q ${50 + i * 5} 50 ${Math.random() * 100} 100`}
+            fill="none"
+            stroke="#6366f1"
+            strokeWidth="0.5"
+            strokeOpacity="0.3"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 0.3 }}
+            transition={{ duration: 10 + Math.random() * 5, repeat: Infinity, ease: "linear" }}
+          />
+        ))}
+
+        {/* Pulsing Neural Nodes */}
+        {[...Array(15)].map((_, i) => (
+          <motion.circle
+            key={`node-${i}`}
+            cx={`${Math.random() * 100}%`}
+            cy={`${Math.random() * 100}%`}
+            r={1.5 + Math.random() * 2}
+            fill="#4f46e5"
+            initial={{ opacity: 0.1, scale: 0.8 }}
+            animate={{ 
+              opacity: [0.1, 0.6, 0.1],
+              scale: [0.8, 1.4, 0.8],
+              filter: ["none", "url(#glow)", "none"]
+            }}
+            transition={{ 
+              duration: 4 + Math.random() * 6, 
+              repeat: Infinity, 
+              delay: Math.random() * 5 
+            }}
+          />
+        ))}
+      </svg>
+    </div>
+  );
+};
+
+/**
+ * Simulated Data Stream / Binary Reveal for Hero
+ */
+const DataReveal = ({ active }: { active: boolean }) => (
+  <AnimatePresence>
+    {!active && (
+      <motion.div 
+        className="absolute inset-0 z-50 bg-white flex flex-wrap items-center justify-center gap-1 overflow-hidden pointer-events-none"
+        exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
+      >
+        {[...Array(200)].map((_, i) => (
+           <motion.div 
+             key={i}
+             initial={{ opacity: 0, y: -20 }}
+             animate={{ opacity: [0, 0.7, 0], y: [0, 150, 0] }}
+             transition={{ 
+                duration: 2.5 + Math.random() * 2, 
+                repeat: Infinity, 
+                delay: Math.random() * 2 
+             }}
+             className="text-[13px] font-mono text-indigo-700 font-bold"
+           >
+             {Math.round(Math.random())}
+           </motion.div>
+        ))}
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
 
 export default function AIAndAutomation() {
+  const [isSynthesized, setIsSynthesized] = useState(false);
+
+  useEffect(() => {
+    // Reveal timing aligned with Service Architecture standards
+    const timer = setTimeout(() => setIsSynthesized(true), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="w-full bg-white text-[#121926]">
-      {/* 1. HERO SECTION */}
-      <section className="max-w-7xl mx-auto px-6 pt-32 pb-24">
-        <div className="max-w-3xl">
-          {/* Pill */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 mb-8">
-            <div className="bg-pink-500 rounded-md p-1 border border-pink-400">
-              <Bot className="w-3 h-3 text-white" />
-            </div>
-            <span className="text-xs font-semibold text-blue-600 tracking-wider uppercase pl-1">
-              AI & Automation Practice
-            </span>
+    <div className="w-full bg-white text-[#121926] overflow-hidden selection:bg-indigo-100">
+      
+      {/* 1. HERO SECTION: THE COGNITIVE REVEAL */}
+      <section className="relative w-full px-6 pt-32 pb-16 sm:pt-40 sm:pb-32 min-h-[90vh] flex items-center overflow-hidden">
+        
+        {/* Soft Indigo Gradient Background */}
+        <div
+          className="absolute inset-0 z-0 pointer-events-none"
+          style={{ background: "linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%)" }}
+        />
+        
+        <NeuralPulse />
+        <DataReveal active={isSynthesized} />
+
+        <div className="max-w-7xl mx-auto relative z-10 w-full text-center sm:text-left">
+          <div className="max-w-4xl mx-auto sm:mx-0">
+            
+            {/* Pill */}
+            <motion.div 
+               initial={{ opacity: 0, x: -20 }}
+               animate={isSynthesized ? { opacity: 1, x: 0 } : {}}
+               transition={{ duration: 0.8, delay: 0.4 }}
+               className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-indigo-100 mb-8 shadow-sm"
+            >
+              <Sparkles className="w-4 h-4 text-indigo-600 animate-pulse" />
+              <span className="text-xs font-bold text-indigo-600 tracking-[0.2em] uppercase">
+                Unified Intelligence // v3.0
+              </span>
+            </motion.div>
+
+            {/* Headline with Staggered Synthesis */}
+            <motion.h1 
+              initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+              animate={isSynthesized ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+              transition={{ duration: 1.2, ease: [0.34, 1.56, 0.64, 1] }}
+              className="text-5xl sm:text-6xl md:text-[95px] font-extrabold tracking-tight mb-10 leading-[1.0] text-slate-900"
+            >
+              Cognitive{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500 drop-shadow-sm">
+                Scale
+              </span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isSynthesized ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="text-lg md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-2xl font-medium tracking-tight"
+            >
+              We craft specialized AI solutions that translate deep contextual 
+              knowledge into <span className="text-indigo-600 font-bold">measurable business impact</span>. 
+              Engineering intelligence that learns, adapts, and delivers.
+            </motion.p>
+
+            {/* CTA */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isSynthesized ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-4"
+            >
+              <button className="px-10 py-5 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-indigo-200/50">
+                 Explore Use Cases
+              </button>
+              <button className="px-10 py-5 bg-white text-slate-900 font-bold rounded-full border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 shadow-sm">
+                Run Simulation
+              </button>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Ambient "Neural Core" Glow */}
+        <motion.div 
+           initial={{ opacity: 0, scale: 0.8 }}
+           animate={isSynthesized ? { opacity: 0.4, scale: 1.2 } : {}}
+           transition={{ duration: 3 }}
+           className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none opacity-20"
+           style={{ background: 'radial-gradient(circle, #818cf8 0%, transparent 70%)', filter: 'blur(80px)' }}
+        />
+        
+        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-gray-100 z-10" />
+      </section>
+
+      {/* 2. COGNITIVE MODULES: CORE CAPABILITIES */}
+      <section className="bg-white py-24 sm:py-32 relative border-t border-gray-50">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          
+          <div className="mb-20 text-center sm:text-left">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-xs font-bold tracking-[0.4em] text-indigo-600 mb-4 uppercase"
+            >
+              — COGNITIVE_MODULES.v4
+            </motion.p>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-6">
+              Thinking Systems for <br /> Future Enterprises
+            </h2>
           </div>
 
-          {/* Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1]">
-            AI{" "}
-            <span className="bg-gradient-to-r from-[#2b6eff] to-[#8c35ff] bg-clip-text text-transparent">
-              Capabilities
-            </span>
-            <br />& Use Cases
-          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+             {[
+               { title: "Knowledge Discovery", icon: <Search className="w-8 h-8"/>, desc: "Contextual search across corporate data with 90%+ accuracy metrics.", details: ["RAG Frameworks", "Knowledge Graphs", "Semantic Search"] },
+               { title: "Conversational AI", icon: <MessageSquare className="w-8 h-8"/>, desc: "Multilingual agents that streamline claims and support workflows.", details: ["Omnichannel Voice", "Multilingual Support", "Call Deflection"] },
+               { title: "Sales Acceleration", icon: <TrendingUp className="w-8 h-8"/>, desc: "Hyper-personalized targeting and AI-powered proposal generation.", details: ["Predictive Analytics", "Personalized Outreach", "Proposal Generation"] },
+               { title: "Workflow Automation", icon: <Workflow className="w-8 h-8"/>, desc: "Intelligent document routing and end-to-end invoice processing.", details: ["O2C Automation", "L2O Workflows", "Document Classification"] },
+             ].map((module, idx) => (
+               <motion.div 
+                 key={idx}
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: idx * 0.1 }}
+                 className="group p-8 sm:p-12 bg-gray-50/50 border border-gray-100 rounded-3xl hover:bg-white hover:border-indigo-200 hover:shadow-2xl hover:shadow-indigo-500/5 transition-all duration-500"
+               >
+                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-10">
+                    <div className="w-16 h-16 bg-white border border-gray-100 rounded-2xl flex items-center justify-center text-indigo-600 group-hover:scale-110 group-hover:text-pink-500 transition-all duration-500">
+                       {module.icon}
+                    </div>
+                    <div className="flex gap-2">
+                       {module.details.map(d => (
+                         <span key={d} className="px-3 py-1 bg-white border border-gray-100 rounded-full text-[10px] font-bold text-gray-500 uppercase tracking-tighter">
+                           {d}
+                         </span>
+                       ))}
+                    </div>
+                 </div>
 
-          {/* Description */}
-          <p className="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl">
-            Grounded in deep contextual knowledge of Fortune 500 clients,
-            FineLabs has built a growing portfolio of AI capabilities —
-            purpose-built solutions designed to deliver measurable outcomes.
-          </p>
-
-          {/* Buttons */}
-          <div className="flex flex-wrap items-center gap-4">
-            <button className="px-8 py-3 bg-gradient-to-r from-[#2b6eff] to-[#8c35ff] text-white font-medium rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-              Explore AI Solutions
-            </button>
+                 <h3 className="text-2xl font-bold mb-4 text-slate-900 group-hover:text-indigo-600 transition-colors">
+                   {module.title}
+                 </h3>
+                 <p className="text-gray-600 text-[17px] leading-relaxed mb-8 max-w-sm">
+                   {module.desc}
+                 </p>
+                 
+                 <div className="flex items-center gap-2 text-xs font-bold text-indigo-600 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span>Explore Module Details</span>
+                    <ArrowRight className="w-3 h-3" />
+                 </div>
+               </motion.div>
+             ))}
           </div>
         </div>
       </section>
 
-      {/* 2. CORE CAPABILITIES ROW (4 CARDS) */}
-      <section className="bg-gray-50 py-24 pb-32">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Card 1 */}
-            <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="inline-block px-3 py-1 rounded-full bg-blue-100/50 mb-6">
-                <span className="text-[11px] font-bold text-blue-600 tracking-wider uppercase">
-                  Knowledge & Search
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">
-                Enterprise Knowledge Discovery
-              </h3>
+      {/* 3. AUTOMATION FLOW VISUALIZATION */}
+      <section className="bg-indigo-900 py-24 sm:py-32 relative overflow-hidden">
+         {/* Procedural Pattern Overlay */}
+         <div className="absolute inset-0 opacity-10 pointer-events-none">
+            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+               <pattern id="hexagons" width="50" height="50" patternUnits="userSpaceOnUse">
+                  <path d="M25 0 L50 12.5 L50 37.5 L25 50 L0 37.5 L0 12.5 Z" fill="none" stroke="#fff" strokeWidth="1" />
+               </pattern>
+               <rect width="100%" height="100%" fill="url(#hexagons)" />
+            </svg>
+         </div>
 
-              <div className="space-y-6">
-                <div className="pb-6 border-b border-gray-100">
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    Enterprise Knowledge Intelligence
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Natural language-based search across corporate data sources
-                    delivering 80-90% accurate contextual answers.
-                  </p>
-                </div>
-                <div className="pb-6 border-b border-gray-100">
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    RAG Frameworks
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Custom LLM-powered search for regulated industries such as
-                    pharma and real estate.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    Recommendation Engines
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Contextual intelligent systems for regulatory, legal, and
-                    commercial applications.
-                  </p>
-                </div>
-              </div>
+         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <motion.div
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               className="mb-16"
+            >
+               <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6">Autonomous Workflows</h3>
+               <p className="text-indigo-200 text-lg max-w-2xl mx-auto">
+                 We connect fragmented data into seamless automation flows that eliminate 
+                 bottlenecks and drive productivity at every touchpoint.
+               </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+               {[
+                 { step: "Data Sourcing", icon: <Database className="w-6 h-6"/>, label: "Input" },
+                 { step: "Cognitive Synthesis", icon: <Brain className="w-6 h-6"/>, label: "Processing" },
+                 { step: "Business Value", icon: <Zap className="w-6 h-6"/>, label: "Outcome" }
+               ].map((item, i) => (
+                 <motion.div 
+                   key={i}
+                   initial={{ opacity: 0, scale: 0.9 }}
+                   whileInView={{ opacity: 1, scale: 1 }}
+                   viewport={{ once: true }}
+                   transition={{ delay: i * 0.2 }}
+                   className="p-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl relative"
+                 >
+                    {i < 2 && (
+                       <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 z-20">
+                          <motion.div 
+                             animate={{ x: [0, 8, 0] }} 
+                             transition={{ repeat: Infinity, duration: 2 }}
+                             className="text-white opacity-40"
+                          >
+                             <ArrowRight className="w-8 h-8" />
+                          </motion.div>
+                       </div>
+                    )}
+                    <div className="w-14 h-14 bg-indigo-500/20 text-indigo-300 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                       {item.icon}
+                    </div>
+                    <span className="block text-[10px] font-bold text-indigo-400 uppercase tracking-[0.3em] mb-2">{item.label}</span>
+                    <h4 className="text-xl font-bold text-white uppercase tracking-tight italic">{item.step}</h4>
+                 </motion.div>
+               ))}
             </div>
-
-            {/* Card 2 */}
-            <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="inline-block px-3 py-1 rounded-full bg-blue-100/50 mb-6">
-                <span className="text-[11px] font-bold text-blue-600 tracking-wider uppercase">
-                  Conversational AI
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">
-                Generative AI Solutions
-              </h3>
-
-              <div className="space-y-6">
-                <div className="pb-6 border-b border-gray-100">
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    Smart Claims Automation
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    AI-driven conversational bots streamlining HR and financial
-                    claims processes.
-                  </p>
-                </div>
-                <div className="pb-6 border-b border-gray-100">
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    Contact Center Conversational AI
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Multilingual text and voice assistants for call deflection,
-                    transcription, and query automation.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    Employee Self-Service Automation
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    AI helpdesk and automated support improving response times
-                    and reducing support team load.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="inline-block px-3 py-1 rounded-full bg-blue-100/50 mb-6">
-                <span className="text-[11px] font-bold text-blue-600 tracking-wider uppercase">
-                  Sales Enablement
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">
-                AI for Sales Acceleration
-              </h3>
-
-              <div className="space-y-6">
-                <div className="pb-6 border-b border-gray-100">
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    RAG-Based Sales Intelligence
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    AI engine cataloging and retrieving solution artifacts, BOMs,
-                    and technical documentation for sales teams.
-                  </p>
-                </div>
-                <div className="pb-6 border-b border-gray-100">
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    Sales Inquiry Automation
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Generative AI to streamline proposal generation and product
-                    configuration.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    Hyper-Personalized Targeting
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Behavior-based outreach calibrated precisely to individual
-                    buyer signals.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="inline-block px-3 py-1 rounded-full bg-blue-100/50 mb-6">
-                <span className="text-[11px] font-bold text-blue-600 tracking-wider uppercase">
-                  Document & Workflow
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">
-                Intelligent Document Management
-              </h3>
-
-              <div className="space-y-6">
-                <div className="pb-6 border-b border-gray-100">
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    AI-Powered Classification & Routing
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Generative AI and NLP to analyze documents, classify intent,
-                    and route workflows across L2O, O2C, T2R, HR, and Finance.
-                  </p>
-                </div>
-                <div className="pb-6 border-b border-gray-100">
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    Intelligent Invoice Processing
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    End-to-end accounts payable workflow automation.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-1.5 text-sm md:text-base">
-                    Compliance & Regulatory Assistant
-                  </h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    AI-powered guidance and documentation support for complex
-                    regulatory requirements.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
+         </div>
       </section>
+
+      {/* 4. GEN-AI SPECIALIZATION: THE PROMPT ENGINE */}
+      <section className="bg-white py-24 sm:py-32">
+         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div>
+               <p className="text-xs font-bold tracking-[0.4em] text-pink-500 mb-4 uppercase">— GEN-AI_FRONTIER</p>
+               <h3 className="text-4xl font-bold text-slate-900 mb-8">Engineering with Generative AI & LLMs</h3>
+               <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                 Mastering the complexity of Large Language Models to deliver 
+                 grounded, context-aware Generative AI applications that bridge 
+                 the gap between experimental and operational.
+               </p>
+               <div className="space-y-4">
+                  {["Secure RAG Architectures", "Prompt Engineering at Scale", "Custom Model Tuning"].map(f => (
+                    <div key={f} className="flex items-center gap-3 text-slate-800 font-bold">
+                       <Sparkles className="w-5 h-5 text-indigo-500" />
+                       <span>{f}</span>
+                    </div>
+                  ))}
+               </div>
+            </div>
+            
+            {/* Visual Callout */}
+            <div className="relative p-1 bg-gradient-to-tr from-indigo-500 via-pink-500 to-amber-500 rounded-[2.5rem]">
+               <div className="bg-white rounded-[2.25rem] p-12 relative overflow-hidden">
+                  <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-50 rounded-full blur-3xl opacity-50" />
+                  <div className="relative z-10 font-mono text-sm space-y-6">
+                     <div className="text-slate-400 font-bold">PROMPT_ENGINEERING_REVEAL</div>
+                     <div className="p-6 bg-slate-50 border border-indigo-100 rounded-2xl text-indigo-600 italic">
+                        &quot;Synthesize unified intelligence from cross-enterprise data silos...&quot;
+                     </div>
+                     <div className="flex items-center gap-4">
+                        <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                           <motion.div 
+                              className="h-full bg-gradient-to-r from-indigo-500 to-pink-500" 
+                              initial={{ width: "0%" }}
+                              whileInView={{ width: "85%" }}
+                              transition={{ duration: 2, delay: 0.5 }}
+                           />
+                        </div>
+                        <span className="text-xs font-bold text-slate-400 whitespace-nowrap italic">AI_POSTURE_85%</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
     </div>
   );
 }

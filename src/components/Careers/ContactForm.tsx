@@ -9,12 +9,12 @@ export default function OpenOpportunities() {
       <div 
         className="absolute top-0 left-0 w-full h-[800px] z-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 160% 120% at 50% -10%, #121926 45%, #8c35ff 58%, #2b6eff 65%, #ffffff 80%)'
+          background: 'radial-gradient(ellipse 160% 120% at 50% -10%, rgba(252, 252, 252, 1) 45%, #8c35ff 58%, #2b6eff 65%, #ffffff 80%)'
         }}
       />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <h2 className="text-4xl font-bold text-center text-white mb-12 drop-shadow-lg">
+        <h2 className="text-4xl font-bold text-center text-black mb-12 drop-shadow-lg">
           Careers
         </h2>
 
