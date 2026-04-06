@@ -37,7 +37,7 @@ const services = [
 
 export default function CoreCapabilities() {
   return (
-    <section className="w-full relative py-20 px-4 sm:px-6 pt-32 pb-24 overflow-hidden bg-white">
+    <section className="w-full relative py-20 px-4 sm:px-0 pt-0 pb-0 overflow-hidden bg-white">
 
       {/* GRADIENT BACKGROUND */}
       <div
@@ -50,13 +50,13 @@ export default function CoreCapabilities() {
       <div className="max-w-7xl mx-auto relative z-10">
 
         {/* TITLE */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-24 lg:mb-32">
-          <div>
-            <p className="text-xs font-semibold tracking-[0.25em] text-blue-600 mb-4 uppercase drop-shadow-lg">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-4 lg:mb-4 gap-0 md:gap-2 pt-10">
+          <div className="flex flex-col items-start">
+            <p className="text-[10px] md:text-xs font-semibold tracking-[0.25em] text-blue-600 mb-2 mt-10 md:mb-4 uppercase">
               CORE CAPABILITIES
             </p>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-black drop-shadow-lg">
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-black leading-tight">
               What we{" "}
               <span className="bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                 deliver.
@@ -64,20 +64,20 @@ export default function CoreCapabilities() {
             </h2>
           </div>
 
-          <button className="mt-8 lg:mt-0 border border-black/50 bg-black/5 backdrop-blur-sm text-black rounded-full px-8 py-4 text-sm font-medium hover:bg-black/10 hover:border-black transition shadow-lg">
+          <button className="w-fit flex-shrink-0 border border-black/50 bg-black/5 backdrop-blur-sm text-black rounded-full px-6 md:px-8 py-3 md:py-4 text-xs md:text-sm font-medium hover:bg-black/10 hover:border-black transition whitespace-nowrap mb-1">
             All services →
           </button>
         </div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 bg-white/40 backdrop-blur-xl border-none rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-gray-200/50">
+        <div className="grid my-10 md:grid-cols-2 lg:grid-cols-3 bg-white/40 backdrop-blur-xl border-none rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-gray-200/50">
           {services.map((item, index) => (
             <Card
               key={index}
-              className="group border border-gray-100/30 bg-white/90 rounded-none shadow-none relative transition-all duration-300 hover:bg-white hover:shadow-xl hover:-translate-y-1"
+              className="group border-r border-b border-gray-100/30 bg-white/90 rounded-none shadow-none relative transition-all duration-500 hover:bg-white"
             >
               {/* BLUE LOADER LINE */}
-              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-500 group-hover:w-full" />
+              <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-500 ease-out group-hover:w-full" />
 
               <CardContent className="p-6">
                 {/* ICON */}
