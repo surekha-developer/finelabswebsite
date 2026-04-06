@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 
 export default function CTASection() {
   return (
-    <section className="w-full bg-white py-20 px-4 sm:px-6 text-center">
+    <section className="w-full bg-white pt-0 pb-8 px-4 sm:px-6 text-center">
       <div className="max-w-4xl mx-auto">
         {/* SMALL LABEL */}
-        <p className="text-xs font-semibold tracking-[0.25em] text-blue-600 mb-6">
+        <p className=" bg-red text-xs font-semibold tracking-[0.25em] text-blue-600 mb-6 pt-15">
           READY TO TRANSFORM
         </p>
 

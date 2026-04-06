@@ -25,70 +25,70 @@ const servicesData = [
     name: "Cloud",
     slug: "cloud",
     icon: Cloud,
-    image: "/images/services/cloud.jpg",
+    image: "/images/cloud.png",
     desc: "Infrastructure & Strategy",
   },
   {
     name: "Cyber Security",
     slug: "cyber-security",
     icon: ShieldCheck,
-    image: "/images/services/cyber-security.jpg",
+    image: "/images/cyber security.png",
     desc: "End-to-end Protection",
   },
   {
     name: "Experience Platforms",
     slug: "experience-platforms",
     icon: Layers,
-    image: "/images/services/experience-platforms.jpg",
+    image: "/images/experience.png",
     desc: "ERP, SCM, CRM, HCM",
   },
   {
     name: "Supply Chain",
     slug: "supply-chain",
     icon: Share2,
-    image: "/images/services/supply-chain.jpg",
+    image: "/images/innovation_infinity.png",
     desc: "AI-driven Optimization",
   },
   {
     name: "SAP",
     slug: "sap",
     icon: Database,
-    image: "/images/services/sap.jpg",
+    image: "/images/image copy 2.png",
     desc: "Implement & Transform",
   },
   {
     name: "Salesforce",
     slug: "salesforce",
     icon: Briefcase,
-    image: "/images/services/salesforce.jpg",
+    image: "/images/office_collaboration.png",
     desc: "CRM Excellence",
   },
   {
     name: "Product Engineering",
     slug: "product-engineering",
     icon: MonitorSmartphone,
-    image: "/images/services/product-engineering.jpg",
+    image: "/images/product.png",
     desc: "Full Lifecycle Delivery",
   },
   {
     name: "IoT & Edge",
     slug: "iot-and-edge",
     icon: Cpu,
-    image: "/images/services/iot.jpg",
+    image: "/images/iot.png",
     desc: "Supply Chain Intelligence",
   },
   {
     name: "AI & Automation",
     slug: "ai-and-automation",
     icon: Bot,
-    image: "/images/services/ai.jpg",
+    image: "/images/Ai.png",
     desc: "GenAI, RAG, Agentic AI",
   },
   {
     name: "Data & Analytics",
     slug: "data-and-analytics",
     icon: BarChart3,
-    image: "/images/services/data.jpg",
+    image: "/images/data Ai.png",
     desc: "Platforms & Intelligence",
   },
 ];
@@ -129,6 +129,8 @@ export default function Header() {
     width={60} // Reduced width to show only the icon part of the image
     height={50}
     className="object-contain"
+    priority
+    style={{ width: "auto", height: "auto" }}
   />
 
   <span className="text-2xl font-bold tracking-tighter flex items-center">
