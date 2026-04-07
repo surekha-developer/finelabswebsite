@@ -188,14 +188,16 @@ export default function CyberSecurity() {
   }, []);
 
   return (
-    <div className="w-full bg-white text-[#121926] overflow-hidden selection:bg-blue-100">
+    <div className="w-full bg-background text-foreground overflow-hidden selection:bg-blue-500/20 transition-colors duration-500">
 
       {/* 1. HERO SECTION: CINEMATIC SECURITY REVEAL */}
       <section className="relative w-full px-4 sm:px-6 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:pt-40 lg:pb-32 min-h-[70vh] sm:min-h-[90vh] flex items-center overflow-hidden">
 
         <div
-          className="absolute inset-0 z-0 pointer-events-none"
-          style={{ background: "linear-gradient(180deg, #eff6ff 0%, #ffffff 100%)" }}
+          className="absolute inset-0 z-0 pointer-events-none opacity-50 dark:opacity-100 transition-opacity"
+          style={{ 
+            background: "radial-gradient(circle at 50% -20%, var(--blue-500-10, rgba(59, 130, 246, 0.1)), var(--bg) 80%)"
+          }}
         />
 
         <NetworkPulse />
@@ -210,10 +212,10 @@ export default function CyberSecurity() {
               initial={{ opacity: 0, y: 10 }}
               animate={isScanned ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-blue-100 mb-8 shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-md border border-border/50 mb-8 shadow-sm"
             >
-              <ShieldCheck className="w-4 h-4 text-blue-600" />
-              <span className="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase">
+              <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 tracking-[0.2em] uppercase">
                 Cyber Security v2.0
               </span>
             </motion.div>
@@ -223,10 +225,10 @@ export default function CyberSecurity() {
               initial={{ opacity: 0, scale: 0.8, filter: "blur(15px)" }}
               animate={isScanned ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
               transition={{ duration: 1.5, ease: [0.34, 1.56, 0.64, 1] }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[85px] font-extrabold tracking-tight mb-8 sm:mb-10 leading-[1.0] text-slate-900"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[100px] xl:text-[105px] font-extrabold tracking-tight mb-8 sm:mb-10 leading-[1.0] text-foreground transition-colors"
             >
               Secure The{" "}
-              <span className="text-blue-600 drop-shadow-sm">
+              <span className="text-blue-600 dark:text-blue-500 drop-shadow-sm">
                 Enterprise Edge
               </span>
             </motion.h1>
@@ -236,10 +238,10 @@ export default function CyberSecurity() {
               initial={{ opacity: 0, y: 20 }}
               animate={isScanned ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.5 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-10 sm:mb-12 leading-relaxed max-w-2xl font-medium tracking-tight"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 sm:mb-12 leading-relaxed max-w-2xl font-medium tracking-tight h-auto transition-colors"
             >
               Protecting global operations against relentless threats.
-              We build <span className="text-blue-600 font-bold">multi-layered defense</span> systems
+              We build <span className="text-blue-600 dark:text-blue-400 font-bold italic">multi-layered defense</span> systems
               that evolve at the relative speed of risk.
             </motion.p>
 
@@ -247,23 +249,23 @@ export default function CyberSecurity() {
               initial={{ opacity: 0, y: 20 }}
               animate={isScanned ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.7 }}
-              className="flex flex-wrap items-center justify-center sm:justify-start gap-4"
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-6"
             >
-              <button className="px-10 py-5 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-blue-200/50">
+              <button className="px-10 py-5 bg-blue-600 dark:bg-blue-500 text-white font-bold rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300">
                 Identify Risks
               </button>
-              <button className="px-10 py-5 bg-white text-slate-900 font-bold rounded-full border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 shadow-sm">
+              <button className="px-10 py-5 bg-card text-foreground font-bold rounded-full border border-border hover:bg-muted transition-all duration-300 shadow-sm transition-colors">
                 View Protocol
               </button>
             </motion.div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-gray-100 z-10" />
+        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-border transition-colors z-10" />
       </section>
 
       {/* 2. CAPABILITIES GRID */}
-      <section className="bg-white py-24 sm:py-32 relative border-t border-gray-50">
+      <section className="bg-background py-24 sm:py-32 relative border-t border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
 
           <div className="mb-20">
@@ -271,11 +273,11 @@ export default function CyberSecurity() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-xs font-bold tracking-[0.4em] text-blue-600 mb-4 uppercase"
+              className="text-xs font-bold tracking-[0.4em] text-blue-600 dark:text-blue-400 mb-4 uppercase"
             >
               — PORTFOLIO / SECURITY
             </motion.p>
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground transition-colors mb-6 h-auto">
               Defensible Architecture <br /> & Managed Defense
             </h2>
           </div>
@@ -295,18 +297,18 @@ export default function CyberSecurity() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group p-10 bg-white border border-gray-100 rounded-3xl hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-500"
+                className="group p-10 bg-card/40 border border-border rounded-[2.5rem] hover:bg-card hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-500"
               >
-                <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-8 group-hover:scale-110 transition-transform duration-500">
+                <div className="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center text-blue-500 group-hover:scale-110 group-hover:text-blue-400 transition-all duration-500 mb-8 h-auto">
                   {capability.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-900 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-bold mb-4 text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {capability.title}
                 </h3>
-                <p className="text-gray-600 text-[15px] leading-relaxed">
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed h-auto transition-colors">
                   {capability.desc}
                 </p>
-                <div className="mt-8 pt-6 border-t border-gray-50 flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-8 pt-6 border-t border-border flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all">
                   <span>Protocol Details</span>
                   <ArrowRight className="w-3 h-3" />
                 </div>
@@ -317,7 +319,7 @@ export default function CyberSecurity() {
       </section>
 
       {/* 3. NEW ENRICHMENT: LAYERED ARMOR & THREAT FEED */}
-      <section className="bg-gray-50 py-24 sm:py-32 overflow-hidden border-y border-gray-100">
+      <section className="bg-muted/30 py-24 sm:py-32 overflow-hidden border-y border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Visual: Layered Defense Stack */}
@@ -334,17 +336,17 @@ export default function CyberSecurity() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
-                className="p-6 bg-white border border-gray-100 rounded-2xl shadow-sm flex items-center justify-between hover:border-blue-300 transition-all hover:translate-x-2"
+                className="p-6 bg-card border border-border rounded-2xl shadow-sm flex items-center justify-between hover:border-blue-500/50 hover:bg-card/80 transition-all hover:translate-x-2"
               >
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-blue-50 text-blue-600 rounded-xl">
+                  <div className="p-3 bg-secondary text-blue-500 rounded-xl">
                     {item.icon}
                   </div>
-                  <span className="font-bold text-slate-800">{item.layer}</span>
+                  <span className="font-bold text-foreground transition-colors">{item.layer}</span>
                 </div>
                 <div className="flex gap-1">
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-200" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500/20" />
                 </div>
               </motion.div>
             ))}
@@ -356,10 +358,10 @@ export default function CyberSecurity() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-10"
+              className="mb-10 text-center sm:text-left"
             >
-              <h3 className="text-3xl font-bold text-slate-900 mb-6">The Armor of FineLabs</h3>
-              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+              <h3 className="text-3xl sm:text-4xl font-bold text-foreground transition-colors mb-6 h-auto">The Armor of FineLabs</h3>
+              <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed mb-10 transition-colors">
                 We don&apos;t just monitor threats; we build defensive ecosystems.
                 Our methodology stacks specialized security layers to ensure no single
                 point of failure can compromise your data.
@@ -371,14 +373,14 @@ export default function CyberSecurity() {
       </section>
 
       {/* 4. PARTNERSHIP BAND */}
-      <section className="bg-white py-24">
+      <section className="bg-background py-24 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-[10px] font-bold text-gray-400 tracking-[0.5em] uppercase mb-4">Strategic Security Partners</p>
+            <p className="text-[10px] font-bold text-muted-foreground tracking-[0.5em] uppercase mb-4 transition-colors">Strategic Security Partners</p>
           </div>
           <div className="flex flex-wrap items-center justify-around gap-12 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
             {['paloalto', 'CrowdStrike', 'NIST', 'Okta', 'Zscaler'].map((partner) => (
-              <div key={partner} className="text-xl font-bold tracking-tighter text-slate-400 hover:text-blue-600 transition-colors cursor-default uppercase italic">
+              <div key={partner} className="text-xl sm:text-2xl font-bold tracking-tighter text-muted-foreground hover:text-blue-500 transition-colors cursor-default uppercase italic">
                 {partner}
               </div>
             ))}

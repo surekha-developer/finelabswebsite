@@ -194,15 +194,17 @@ export default function DataAndAnalytics() {
   }, []);
 
   return (
-    <div className="w-full bg-white text-[#121926] overflow-hidden selection:bg-teal-50">
+    <div className="w-full bg-background text-foreground overflow-hidden selection:bg-teal-500/20 transition-colors duration-500">
 
       {/* 1. HERO SECTION: THE FLOW OF INTELLIGENCE */}
       <section className="relative w-full px-6 pt-32 pb-16 sm:pt-40 sm:pb-32 min-h-[90vh] flex items-center overflow-hidden">
 
         {/* Soft Teal-Glow Background */}
         <div
-          className="absolute inset-0 z-0 pointer-events-none"
-          style={{ background: "linear-gradient(180deg, #f0fdfa 0%, #ffffff 100%)" }}
+          className="absolute inset-0 z-0 pointer-events-none opacity-50 dark:opacity-100 transition-opacity"
+          style={{ 
+            background: "radial-gradient(circle at 50% -20%, var(--teal-500-10, rgba(45, 212, 191, 0.1)), var(--bg) 80%)"
+          }}
         />
 
         <InsightGrid />
@@ -216,10 +218,10 @@ export default function DataAndAnalytics() {
               initial={{ opacity: 0, y: 10 }}
               animate={isAnalyzed ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-teal-100 mb-8 shadow-sm"
+              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-card/60 backdrop-blur-md border border-border/50 mb-8 shadow-sm"
             >
-              <Activity className="w-4 h-4 text-teal-600" />
-              <span className="text-xs font-bold text-teal-600 tracking-[0.2em] uppercase">
+              <Activity className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+              <span className="text-xs font-bold text-teal-600 dark:text-teal-400 tracking-[0.2em] uppercase">
                 Intelligence Flow // v3.0
               </span>
             </motion.div>
@@ -229,10 +231,10 @@ export default function DataAndAnalytics() {
               initial={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
               animate={isAnalyzed ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
               transition={{ duration: 1.5, ease: [0.34, 1.56, 0.64, 1] }}
-              className="text-5xl sm:text-6xl md:text-[95px] font-extrabold tracking-tight mb-10 leading-[1.0] text-slate-900"
+              className="text-5xl sm:text-6xl md:text-[105px] font-extrabold tracking-tight mb-10 leading-[1.0] text-foreground transition-colors"
             >
               Data{" "}
-              <span className="text-teal-600 drop-shadow-sm">
+              <span className="text-teal-600 dark:text-teal-500 drop-shadow-sm">
                 Platforms
               </span>
               <br />& Intelligence
@@ -243,10 +245,10 @@ export default function DataAndAnalytics() {
               initial={{ opacity: 0, y: 20 }}
               animate={isAnalyzed ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.6 }}
-              className="text-lg md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-2xl font-medium tracking-tight"
+              className="text-lg md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-2xl font-medium tracking-tight transition-colors"
             >
               Transforming raw complexity into coherent competitive advantage.
-              We engineer <span className="text-teal-600 font-bold">intelligent data ecosystems</span>
+              We engineer <span className="text-teal-600 dark:text-teal-400 font-bold italic">intelligent data ecosystems</span>
               designed to fuel real-time enterprise decisions.
             </motion.p>
 
@@ -255,12 +257,12 @@ export default function DataAndAnalytics() {
               initial={{ opacity: 0, y: 20 }}
               animate={isAnalyzed ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.8 }}
-              className="flex flex-wrap items-center justify-center sm:justify-start gap-4"
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-6"
             >
-              <button className="px-10 py-5 bg-teal-600 text-white font-bold rounded-full hover:bg-teal-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-teal-200/50">
+              <button className="px-10 py-5 bg-teal-600 dark:bg-teal-500 text-white font-bold rounded-full hover:bg-teal-700 dark:hover:bg-teal-600 hover:shadow-2xl hover:shadow-teal-500/20 hover:-translate-y-1 transition-all duration-300">
                 Explore Intelligence
               </button>
-              <button className="px-10 py-5 bg-white text-slate-900 font-bold rounded-full border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 shadow-sm">
+              <button className="px-10 py-5 bg-card text-foreground font-bold rounded-full border border-border hover:bg-muted transition-all duration-300 shadow-sm transition-colors">
                 View Platforms
               </button>
             </motion.div>
@@ -268,11 +270,11 @@ export default function DataAndAnalytics() {
         </div>
 
         {/* Soft bottom transition line */}
-        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-gray-100 z-10" />
+        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-border transition-colors z-10" />
       </section>
 
       {/* 2. INTELLIGENCE ECOSYSTEM Grid */}
-      <section className="bg-white py-24 sm:py-32 relative border-t border-gray-50">
+      <section className="bg-background py-24 sm:py-32 relative border-t border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
 
           <div className="mb-20 text-center sm:text-left">
@@ -280,16 +282,16 @@ export default function DataAndAnalytics() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-xs font-bold tracking-[0.4em] text-teal-600 mb-4 uppercase"
+              className="text-xs font-bold tracking-[0.4em] text-teal-600 dark:text-teal-400 mb-4 uppercase"
             >
               — ECOSYSTEM_CAPABILITIES.v4
             </motion.p>
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground transition-colors mb-6 h-auto">
               Full-Spectrum Data <br /> Engineering & Insight
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-px bg-slate-100 border border-slate-100 rounded-[2rem] overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border rounded-[2.5rem] overflow-hidden transition-colors">
             {[
               { title: "AI Ops & MLOps", icon: <Brain className="w-8 h-8" />, desc: "Operationalizing AI at scale with automated retraining and MLOps pipelines." },
               { title: "Workflow Automation", icon: <RefreshCcw className="w-8 h-8" />, desc: "Hyper-automation connecting fragmented data flows across enterprise systems." },
@@ -304,18 +306,18 @@ export default function DataAndAnalytics() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-10 sm:p-14 bg-white hover:bg-teal-50/50 transition-all group"
+                className="p-10 sm:p-14 bg-card hover:bg-teal-500/5 group h-full transition-all duration-500"
               >
-                <div className="text-teal-600 mb-8 group-hover:scale-110 group-hover:text-teal-700 transition-all duration-500">
+                <div className="text-teal-600 dark:text-teal-400 mb-8 group-hover:scale-110 group-hover:text-teal-500 transition-all duration-500">
                   {module.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-900 group-hover:text-teal-700 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-bold mb-4 text-foreground group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors h-auto">
                   {module.title}
                 </h3>
-                <p className="text-gray-600 text-[15px] leading-relaxed mb-8">
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-8 h-auto transition-colors">
                   {module.desc}
                 </p>
-                <div className="flex items-center gap-2 text-xs font-bold text-teal-600 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-2 text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all">
                   <span>View Detail</span>
                   <ArrowRight className="w-3 h-3" />
                 </div>
@@ -326,21 +328,21 @@ export default function DataAndAnalytics() {
       </section>
 
       {/* 3. CONTROL TOWER SECTION */}
-      <section className="bg-white py-24 sm:py-32">
+      <section className="bg-background py-24 sm:py-32 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6">
           <ControlTowerVisual />
         </div>
       </section>
 
       {/* 4. PARTNERSHIP BAND */}
-      <section className="bg-gray-50/50 py-24 border-y border-gray-100">
+      <section className="bg-muted/30 py-24 border-y border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-[10px] font-bold text-gray-400 tracking-[0.5em] uppercase mb-4">Mastering the Modern Data Stack</p>
+            <p className="text-[10px] font-bold text-muted-foreground tracking-[0.5em] uppercase mb-4 transition-colors">Mastering the Modern Data Stack</p>
           </div>
           <div className="flex flex-wrap items-center justify-around gap-12 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
             {['Snowflake', 'Databricks', 'Informatica', 'PowerBI', 'Tableau'].map((partner) => (
-              <div key={partner} className="text-xl font-bold tracking-tighter text-slate-400 hover:text-teal-600 transition-colors cursor-default uppercase italic">
+              <div key={partner} className="text-xl sm:text-2xl font-bold tracking-tighter text-muted-foreground hover:text-teal-600 transition-colors cursor-default uppercase italic">
                 {partner}
               </div>
             ))}

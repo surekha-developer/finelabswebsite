@@ -99,10 +99,18 @@ export default function SAP() {
   }, []);
 
   return (
-    <div className="w-full bg-[#f8fafc] text-[#121926] overflow-hidden selection:bg-blue-50">
+    <div className="w-full bg-background text-foreground overflow-hidden selection:bg-blue-500/20 transition-colors duration-500">
 
       {/* 1. HERO SECTION: THE INTELLIGENT CORE */}
       <section className="relative w-full px-4 sm:px-6 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:pt-40 lg:pb-32 min-h-[70vh] sm:min-h-[90vh] flex items-center overflow-hidden">
+
+        {/* Foundation Gradient */}
+        <div
+          className="absolute inset-0 z-0 pointer-events-none opacity-50 dark:opacity-100 transition-opacity"
+          style={{ 
+            background: "radial-gradient(circle at 50% -20%, var(--blue-500-10, rgba(0, 93, 189, 0.1)), var(--bg) 80%)"
+          }}
+        />
 
         <CrystalLattice />
         <CoreSynthesis active={isSynthesized} />
@@ -115,10 +123,10 @@ export default function SAP() {
               initial={{ opacity: 0, x: -20 }}
               animate={isSynthesized ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-blue-100 mb-8 shadow-sm"
+              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-card/60 backdrop-blur-md border border-border/50 mb-8 shadow-sm"
             >
-              <div className="w-2 h-2 bg-[#005dbd] rounded-full animate-pulse" />
-              <span className="text-[10px] font-bold text-gray-500 tracking-[0.3em] uppercase">
+              <div className="w-2 h-2 bg-[#005dbd] dark:bg-blue-400 rounded-full animate-pulse" />
+              <span className="text-[10px] font-bold text-muted-foreground tracking-[0.3em] uppercase transition-colors">
                 SAP Practice Excellence // S/4HANA Ready
               </span>
             </motion.div>
@@ -128,9 +136,9 @@ export default function SAP() {
               initial={{ opacity: 0, y: 20 }}
               animate={isSynthesized ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[95px] font-extrabold tracking-tight mb-8 sm:mb-10 leading-[0.95] text-[#121926]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[100px] xl:text-[110px] font-extrabold tracking-tight mb-8 sm:mb-10 leading-[0.95] text-foreground transition-colors"
             >
-              The <span className="text-[#005dbd]">Intelligent</span>
+              The <span className="text-[#005dbd] dark:text-blue-500">Intelligent</span>
               <br />
               Enterprise Core
             </motion.h1>
@@ -140,10 +148,10 @@ export default function SAP() {
               initial={{ opacity: 0 }}
               animate={isSynthesized ? { opacity: 1 } : {}}
               transition={{ duration: 1, delay: 1 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-10 sm:mb-12 leading-relaxed max-w-2xl font-medium tracking-tight mx-auto sm:mx-0"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 sm:mb-12 leading-relaxed max-w-2xl font-medium tracking-tight mx-auto sm:mx-0 transition-colors"
             >
               Modernizing the heartbeat of your business. FineLabs delivers
-              <span className="text-[#005dbd] font-bold"> high-performance SAP transformations</span>
+              <span className="text-[#005dbd] dark:text-blue-400 font-bold italic"> high-performance SAP transformations</span>
               that unify data, cloud, and line-of-business operations into a single, agile core.
             </motion.p>
 
@@ -152,30 +160,30 @@ export default function SAP() {
               initial={{ opacity: 0, y: 20 }}
               animate={isSynthesized ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 1.2 }}
-              className="flex flex-wrap items-center justify-center sm:justify-start gap-4"
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-6"
             >
-              <button className="px-10 py-5 bg-[#005dbd] text-white font-bold rounded-full hover:bg-blue-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-blue-200/50">
+              <button className="px-10 py-5 bg-[#005dbd] dark:bg-blue-500 text-white font-bold rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300">
                 Explore S/4HANA Path
               </button>
-              <button className="px-10 py-5 bg-white text-[#121926] font-bold rounded-full border border-gray-200 hover:border-blue-200 transition-all duration-300 shadow-sm">
+              <button className="px-10 py-5 bg-card text-foreground font-bold rounded-full border border-border hover:bg-muted transition-all duration-300 shadow-sm transition-colors">
                 Strategy & Advisory
               </button>
             </motion.div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-gray-200 z-10" />
+        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-border transition-colors z-10" />
       </section>
 
       {/* 2. CORE MODULES GRID */}
-      <section className="bg-white py-24 sm:py-32 relative border-t border-gray-50">
+      <section className="bg-background py-24 sm:py-32 relative border-t border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
 
           <div className="mb-20 text-center sm:text-left">
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#121926] mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground transition-colors mb-6 h-auto">
               Comprehensive SAP <br /> Service Landscape
             </h2>
-            <p className="text-gray-500 font-medium">End-to-end expertise across the SAP lifecycle.</p>
+            <p className="text-muted-foreground font-medium transition-colors">End-to-end expertise across the SAP lifecycle.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -192,14 +200,14 @@ export default function SAP() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-10 bg-gray-50/50 border border-gray-100 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:border-blue-100 transition-all duration-500 group"
+                className="p-10 bg-card/40 border border-border rounded-[2.5rem] hover:bg-card hover:shadow-2xl hover:border-blue-500/50 transition-all duration-500 group"
               >
-                <div className="w-16 h-16 bg-white border border-gray-100 rounded-2xl flex items-center justify-center text-[#005dbd] mb-8 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                <div className="w-16 h-16 bg-secondary border border-border rounded-2xl flex items-center justify-center text-[#005dbd] dark:text-blue-400 mb-8 group-hover:scale-110 transition-all duration-500 shadow-sm h-auto">
                   {module.icon}
                 </div>
-                <h3 className="text-xl font-bold text-[#121926] mb-4 group-hover:text-[#005dbd] transition-colors">{module.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-8">{module.desc}</p>
-                <div className="flex items-center gap-2 text-[#005dbd] font-bold text-sm tracking-tight pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4 group-hover:text-[#005dbd] dark:group-hover:text-blue-400 transition-colors h-auto">{module.title}</h3>
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-8 h-auto transition-colors">{module.desc}</p>
+                <div className="flex items-center gap-2 text-[#005dbd] dark:text-blue-400 font-bold text-xs uppercase tracking-widest pointer-events-none opacity-0 group-hover:opacity-100 transition-all">
                   Detailed Services <ArrowRight className="w-4 h-4" />
                 </div>
               </motion.div>
@@ -209,18 +217,18 @@ export default function SAP() {
       </section>
 
       {/* 3. MODERNIZATION PATH: ECC TO S/4HANA */}
-      <section className="bg-white py-24 sm:py-32 overflow-hidden border-t border-gray-50">
+      <section className="bg-background py-24 sm:py-32 overflow-hidden border-t border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
-            <div className="lg:w-1/2">
-              <h3 className="text-xs font-bold tracking-[0.5em] text-[#005dbd] mb-4 uppercase">The Modernization Path</h3>
-              <h2 className="text-4xl font-bold text-[#121926] mb-8">From Legacy ECC <br /> to Intelligent S/4HANA</h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+            <div className="lg:w-1/2 text-center sm:text-left">
+              <h3 className="text-xs font-bold tracking-[0.5em] text-[#005dbd] dark:text-blue-400 mb-4 uppercase transition-colors">The Modernization Path</h3>
+              <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-8 transition-colors h-auto">From Legacy ECC <br /> to Intelligent S/4HANA</h2>
+              <p className="text-muted-foreground text-sm sm:text-base md:text-lg mb-10 leading-relaxed transition-colors">
                 FineLabs simplifies the complexity of SAP modernization. Our proven framework ensures a risk-mitigated transition that unlocks the full potential of in-memory computing and real-time analytics.
               </p>
               <ul className="space-y-4">
                 {["Brownfield & Greenfield conversion expert", "Selective Data Transition", "Cloud Assessment & Clean Core Strategy"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-[#121926] font-bold">
+                  <li key={i} className="flex items-center justify-center sm:justify-start gap-4 text-foreground font-bold transition-colors">
                     <ShieldCheck className="w-5 h-5 text-green-500" />
                     {item}
                   </li>
@@ -228,25 +236,25 @@ export default function SAP() {
               </ul>
             </div>
             <div className="lg:w-1/2 relative">
-              <div className="bg-gray-100 rounded-[3rem] p-12 relative overflow-hidden">
+              <div className="bg-muted/50 rounded-[3.5rem] p-12 relative overflow-hidden transition-colors">
                 <div className="flex flex-col gap-6 relative z-10">
-                  <div className="p-6 bg-white rounded-2xl shadow-sm border border-gray-200">
-                    <div className="text-[10px] font-bold text-gray-400 mb-2 uppercase">Legacy Baseline</div>
-                    <div className="text-xl font-bold">SAP ECC / Business Suite</div>
+                  <div className="p-6 bg-card rounded-2xl shadow-sm border border-border transition-colors">
+                    <div className="text-[10px] font-bold text-muted-foreground/50 mb-2 uppercase transition-colors">Legacy Baseline</div>
+                    <div className="text-xl font-bold text-foreground transition-colors">SAP ECC / Business Suite</div>
                   </div>
                   <div className="flex justify-center">
-                    <ChevronRight className="w-8 h-8 text-blue-300 rotate-90" />
+                    <ChevronRight className="w-8 h-8 text-blue-500 rotate-90 opacity-50" />
                   </div>
-                  <div className="p-8 bg-[#005dbd] rounded-[2rem] shadow-2xl text-white transform hover:scale-105 transition-transform">
-                    <div className="text-[10px] font-bold text-blue-200 mb-2 uppercase">Cloud / On-Prem</div>
+                  <div className="p-8 bg-[#005dbd] dark:bg-blue-600 rounded-[2.5rem] shadow-2xl text-white transform hover:scale-105 transition-all duration-500">
+                    <div className="text-[10px] font-bold text-blue-200/50 mb-2 uppercase">Cloud / On-Prem</div>
                     <div className="text-2xl font-black">SAP S/4HANA</div>
                     <div className="mt-4 flex gap-2">
-                      <span className="px-2 py-1 bg-white/20 rounded text-[10px]">Real-time</span>
-                      <span className="px-2 py-1 bg-white/20 rounded text-[10px]">AI-Driven</span>
+                      <span className="px-2 py-1 bg-white/10 rounded text-[10px]">Real-time</span>
+                      <span className="px-2 py-1 bg-white/10 rounded text-[10px]">AI-Driven</span>
                     </div>
                   </div>
                 </div>
-                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-400/20 rounded-full -mr-32 -mt-32 blur-3xl" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full -mr-32 -mt-32 blur-3xl transition-colors" />
               </div>
             </div>
           </div>

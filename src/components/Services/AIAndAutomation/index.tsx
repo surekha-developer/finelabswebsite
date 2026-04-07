@@ -88,7 +88,7 @@ const DataReveal = ({ active }: { active: boolean }) => (
   <AnimatePresence>
     {!active && (
       <motion.div
-        className="absolute inset-0 z-50 bg-white flex flex-wrap items-center justify-center gap-1 overflow-hidden pointer-events-none"
+        className="absolute inset-0 z-50 bg-background flex flex-wrap items-center justify-center gap-1 overflow-hidden pointer-events-none"
         exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
         transition={{ duration: 1.2, ease: "easeInOut" }}
       >
@@ -102,7 +102,7 @@ const DataReveal = ({ active }: { active: boolean }) => (
               repeat: Infinity,
               delay: Math.random() * 2
             }}
-            className="text-[13px] font-mono text-indigo-700 font-bold"
+            className="text-[13px] font-mono text-indigo-600 dark:text-indigo-400 font-bold"
           >
             {Math.round(Math.random())}
           </motion.div>
@@ -122,15 +122,17 @@ export default function AIAndAutomation() {
   }, []);
 
   return (
-    <div className="w-full bg-white text-[#121926] overflow-hidden selection:bg-indigo-100">
+    <div className="w-full bg-background text-foreground overflow-hidden selection:bg-indigo-500/20 transition-colors duration-500">
 
       {/* 1. HERO SECTION: THE COGNITIVE REVEAL */}
       <section className="relative w-full px-6 pt-32 pb-16 sm:pt-40 sm:pb-32 min-h-[90vh] flex items-center overflow-hidden">
 
         {/* Soft Indigo Gradient Background */}
         <div
-          className="absolute inset-0 z-0 pointer-events-none"
-          style={{ background: "linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%)" }}
+          className="absolute inset-0 z-0 pointer-events-none opacity-50 dark:opacity-100 transition-opacity"
+          style={{ 
+            background: "radial-gradient(circle at 50% -20%, var(--indigo-500-10, rgba(99, 102, 241, 0.1)), var(--bg) 80%)"
+          }}
         />
 
         <NeuralPulse />
@@ -144,10 +146,10 @@ export default function AIAndAutomation() {
               initial={{ opacity: 0, x: -20 }}
               animate={isSynthesized ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-indigo-100 mb-8 shadow-sm"
+              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-card/60 backdrop-blur-md border border-border/50 mb-8 shadow-sm"
             >
-              <Sparkles className="w-4 h-4 text-indigo-600 animate-pulse" />
-              <span className="text-xs font-bold text-indigo-600 tracking-[0.2em] uppercase">
+              <Sparkles className="w-4 h-4 text-indigo-500 animate-pulse" />
+              <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 tracking-[0.2em] uppercase">
                 Unified Intelligence // v3.0
               </span>
             </motion.div>
@@ -157,10 +159,10 @@ export default function AIAndAutomation() {
               initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
               animate={isSynthesized ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
               transition={{ duration: 1.2, ease: [0.34, 1.56, 0.64, 1] }}
-              className="text-5xl sm:text-6xl md:text-[95px] font-extrabold tracking-tight mb-10 leading-[1.0] text-slate-900"
+              className="text-5xl sm:text-6xl md:text-[105px] font-extrabold tracking-tight mb-10 leading-[1.0] text-foreground transition-colors"
             >
               Cognitive{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500 drop-shadow-sm">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500 drop-shadow-sm">
                 Scale
               </span>
             </motion.h1>
@@ -170,10 +172,10 @@ export default function AIAndAutomation() {
               initial={{ opacity: 0, y: 20 }}
               animate={isSynthesized ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.6 }}
-              className="text-lg md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-2xl font-medium tracking-tight"
+              className="text-lg md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-2xl font-medium tracking-tight transition-colors"
             >
               We craft specialized AI solutions that translate deep contextual
-              knowledge into <span className="text-indigo-600 font-bold">measurable business impact</span>.
+              knowledge into <span className="text-indigo-500 font-bold italic tracking-wider">measurable business impact</span>.
               Engineering intelligence that learns, adapts, and delivers.
             </motion.p>
 
@@ -182,12 +184,12 @@ export default function AIAndAutomation() {
               initial={{ opacity: 0, y: 20 }}
               animate={isSynthesized ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.8 }}
-              className="flex flex-wrap items-center justify-center sm:justify-start gap-4"
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-6"
             >
-              <button className="px-10 py-5 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-indigo-200/50">
+              <button className="px-10 py-5 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300">
                 Explore Use Cases
               </button>
-              <button className="px-10 py-5 bg-white text-slate-900 font-bold rounded-full border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 shadow-sm">
+              <button className="px-10 py-5 bg-card text-foreground font-bold rounded-full border border-border hover:bg-muted transition-all duration-300 shadow-sm transition-colors">
                 Run Simulation
               </button>
             </motion.div>
@@ -200,14 +202,14 @@ export default function AIAndAutomation() {
           animate={isSynthesized ? { opacity: 0.4, scale: 1.2 } : {}}
           transition={{ duration: 3 }}
           className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none opacity-20"
-          style={{ background: 'radial-gradient(circle, #818cf8 0%, transparent 70%)', filter: 'blur(80px)' }}
+          style={{ background: 'radial-gradient(circle, var(--indigo-500) 0%, transparent 70%)', filter: 'blur(80px)' }}
         />
 
-        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-gray-100 z-10" />
+        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-border transition-colors z-10" />
       </section>
 
       {/* 2. COGNITIVE MODULES: CORE CAPABILITIES */}
-      <section className="bg-white py-24 sm:py-32 relative border-t border-gray-50">
+      <section className="bg-background py-24 sm:py-32 relative border-t border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
 
           <div className="mb-20 text-center sm:text-left">
@@ -215,11 +217,11 @@ export default function AIAndAutomation() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-xs font-bold tracking-[0.4em] text-indigo-600 mb-4 uppercase"
+              className="text-xs font-bold tracking-[0.4em] text-indigo-500 mb-4 uppercase"
             >
               — COGNITIVE_MODULES.v4
             </motion.p>
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground transition-colors mb-6">
               Thinking Systems for <br /> Future Enterprises
             </h2>
           </div>
@@ -237,29 +239,29 @@ export default function AIAndAutomation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group p-8 sm:p-12 bg-gray-50/50 border border-gray-100 rounded-3xl hover:bg-white hover:border-indigo-200 hover:shadow-2xl hover:shadow-indigo-500/5 transition-all duration-500"
+                className="group p-8 sm:p-12 bg-card/40 border border-border rounded-[2.5rem] hover:bg-card hover:border-indigo-500/50 hover:shadow-2xl hover:shadow-indigo-500/5 transition-all duration-500"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-10">
-                  <div className="w-16 h-16 bg-white border border-gray-100 rounded-2xl flex items-center justify-center text-indigo-600 group-hover:scale-110 group-hover:text-pink-500 transition-all duration-500">
+                  <div className="w-16 h-16 bg-background border border-border rounded-2xl flex items-center justify-center text-indigo-500 group-hover:scale-110 group-hover:text-indigo-400 transition-all duration-500">
                     {module.icon}
                   </div>
                   <div className="flex gap-2">
                     {module.details.map(d => (
-                      <span key={d} className="px-3 py-1 bg-white border border-gray-100 rounded-full text-[10px] font-bold text-gray-500 uppercase tracking-tighter">
+                      <span key={d} className="px-3 py-1 bg-secondary border border-border rounded-full text-[10px] font-bold text-muted-foreground uppercase tracking-tighter">
                         {d}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold mb-4 text-slate-900 group-hover:text-indigo-600 transition-colors">
+                <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground group-hover:text-indigo-500 transition-colors">
                   {module.title}
                 </h3>
-                <p className="text-gray-600 text-[17px] leading-relaxed mb-8 max-w-sm">
+                <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed mb-8 max-w-sm">
                   {module.desc}
                 </p>
 
-                <div className="flex items-center gap-2 text-xs font-bold text-indigo-600 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-2 text-xs font-bold text-indigo-500 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
                   <span>Explore Module Details</span>
                   <ArrowRight className="w-3 h-3" />
                 </div>
@@ -332,19 +334,19 @@ export default function AIAndAutomation() {
       </section>
 
       {/* 4. GEN-AI SPECIALIZATION: THE PROMPT ENGINE */}
-      <section className="bg-white py-24 sm:py-32">
+      <section className="bg-background py-24 sm:py-32 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
             <p className="text-xs font-bold tracking-[0.4em] text-pink-500 mb-4 uppercase">— GEN-AI_FRONTIER</p>
-            <h3 className="text-4xl font-bold text-slate-900 mb-8">Engineering with Generative AI & LLMs</h3>
-            <p className="text-gray-600 text-lg leading-relaxed mb-8">
+            <h3 className="text-4xl font-bold text-foreground mb-8 transition-colors">Engineering with Generative AI & LLMs</h3>
+            <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed mb-8 transition-colors">
               Mastering the complexity of Large Language Models to deliver
               grounded, context-aware Generative AI applications that bridge
               the gap between experimental and operational.
             </p>
             <div className="space-y-4">
               {["Secure RAG Architectures", "Prompt Engineering at Scale", "Custom Model Tuning"].map(f => (
-                <div key={f} className="flex items-center gap-3 text-slate-800 font-bold">
+                <div key={f} className="flex items-center gap-3 text-foreground font-bold transition-colors">
                   <Sparkles className="w-5 h-5 text-indigo-500" />
                   <span>{f}</span>
                 </div>
@@ -354,15 +356,15 @@ export default function AIAndAutomation() {
 
           {/* Visual Callout */}
           <div className="relative p-1 bg-gradient-to-tr from-indigo-500 via-pink-500 to-amber-500 rounded-[2.5rem]">
-            <div className="bg-white rounded-[2.25rem] p-12 relative overflow-hidden">
-              <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-50 rounded-full blur-3xl opacity-50" />
+            <div className="bg-card rounded-[2.25rem] p-12 relative overflow-hidden transition-colors">
+              <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl opacity-50" />
               <div className="relative z-10 font-mono text-sm space-y-6">
-                <div className="text-slate-400 font-bold">PROMPT_ENGINEERING_REVEAL</div>
-                <div className="p-6 bg-slate-50 border border-indigo-100 rounded-2xl text-indigo-600 italic">
+                <div className="text-muted-foreground font-bold">PROMPT_ENGINEERING_REVEAL</div>
+                <div className="p-6 bg-muted border border-border rounded-2xl text-indigo-500 italic">
                   &quot;Synthesize unified intelligence from cross-enterprise data silos...&quot;
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-secondary rounded-full overflow-hidden">
                     <motion.div
                       className="h-full bg-gradient-to-r from-indigo-500 to-pink-500"
                       initial={{ width: "0%" }}
@@ -370,7 +372,7 @@ export default function AIAndAutomation() {
                       transition={{ duration: 2, delay: 0.5 }}
                     />
                   </div>
-                  <span className="text-xs font-bold text-slate-400 whitespace-nowrap italic">AI_POSTURE_85%</span>
+                  <span className="text-xs font-bold text-muted-foreground whitespace-nowrap italic">AI_POSTURE_85%</span>
                 </div>
               </div>
             </div>

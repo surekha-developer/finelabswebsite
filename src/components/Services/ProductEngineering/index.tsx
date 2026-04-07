@@ -139,7 +139,7 @@ export default function ProductEngineering() {
   }, []);
 
   return (
-    <div className="w-full bg-[#f8fafc] text-[#121926] overflow-hidden selection:bg-blue-50">
+    <div className="w-full bg-background text-foreground overflow-hidden selection:bg-blue-500/20 transition-colors duration-500">
       
       {/* 1. HERO SECTION: BLUEPRINT OF INNOVATION */}
       <section className="relative w-full px-6 pt-24 pb-16 sm:pt-28 sm:pb-32 min-h-[92vh] flex items-center overflow-hidden">
@@ -165,7 +165,7 @@ export default function ProductEngineering() {
                   height: `${80 + i * 60}px`
                }}
              >
-                <svg viewBox="0 0 100 100" className="w-full h-full text-blue-600">
+                <svg viewBox="0 0 100 100" className="w-full h-full text-blue-600 dark:text-blue-500 transition-colors">
                    <path d="M 50 10 L 85 30 L 85 70 L 50 90 L 15 70 L 15 30 Z" fill="none" stroke="currentColor" strokeWidth="1.2" />
                    <path d="M 50 25 L 75 40 L 75 60 L 50 75 L 25 60 L 25 40 Z" fill="none" stroke="currentColor" strokeWidth="0.6" strokeDasharray="3 3" />
                    <circle cx="50" cy="50" r="5" fill="currentColor" opacity="0.4" />
@@ -177,7 +177,7 @@ export default function ProductEngineering() {
            {[...Array(4)].map((_, i) => (
               <motion.div 
                 key={`axis-${i}`} 
-                className="absolute border-l border-blue-200/50 h-32 w-px"
+                className="absolute border-l border-blue-200/50 dark:border-blue-500/20 h-32 w-px"
                 style={{ left: `${20 + i * 20}%`, top: `${10 + i * 15}%` }}
                 animate={{ height: [0, 128, 0], opacity: [0, 0.3, 0] }}
                 transition={{ duration: 10, repeat: Infinity, delay: i * 2.5 }}
@@ -195,10 +195,10 @@ export default function ProductEngineering() {
                initial={{ opacity: 0, x: -20 }}
                animate={isDrafted ? { opacity: 1, x: 0 } : {}}
                transition={{ duration: 0.8, delay: 0.4 }}
-               className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white border border-blue-100 mb-10 shadow-sm"
+               className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-card/60 backdrop-blur-md border border-border/50 mb-10 shadow-sm"
             >
-              <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
-              <span className="text-[10px] font-bold text-blue-600 tracking-[0.3em] uppercase">
+              <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse" />
+              <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400 tracking-[0.3em] uppercase">
                 Drafting Excellence // REF: ENG-2024
               </span>
             </motion.div>
@@ -208,14 +208,14 @@ export default function ProductEngineering() {
               initial={{ opacity: 0, y: 30, letterSpacing: "-0.05em" }}
               animate={isDrafted ? { opacity: 1, y: 0, letterSpacing: "-0.02em" } : {}}
               transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-              className="text-6xl sm:text-7xl md:text-[105px] font-extrabold tracking-tight mb-12 leading-[0.9] text-[#121926]"
+              className="text-6xl sm:text-7xl md:text-[105px] font-extrabold tracking-tight mb-12 leading-[0.9] text-foreground transition-colors"
             >
               Product{" "}
               <br />
-              <span className="text-blue-600 relative inline-block">
+              <span className="text-blue-600 dark:text-blue-500 relative inline-block transition-colors">
                 Engineering
                 <motion.div 
-                   className="absolute -bottom-2 left-0 h-1.5 bg-blue-100 -z-10" 
+                   className="absolute -bottom-2 left-0 h-1.5 bg-blue-100/50 dark:bg-blue-500/10 -z-10" 
                    initial={{ width: 0 }}
                    animate={isDrafted ? { width: "105%" } : {}}
                    transition={{ duration: 1, delay: 1 }}
@@ -230,10 +230,10 @@ export default function ProductEngineering() {
               initial={{ opacity: 0 }}
               animate={isDrafted ? { opacity: 1 } : {}}
               transition={{ duration: 1, delay: 1.5 }}
-              className="text-lg md:text-2xl text-gray-600 mb-14 leading-relaxed max-w-2xl font-medium tracking-tight"
+              className="text-lg md:text-2xl text-muted-foreground mb-14 leading-relaxed max-w-2xl font-medium tracking-tight h-auto transition-colors"
             >
               Engineering the blueprints of industrial impact. We partner across the 
-              entire software lifecycle — from <span className="text-blue-600 font-bold">ideation and architecture</span> 
+              entire software lifecycle — from <span className="text-blue-600 dark:text-blue-400 font-bold italic">ideation and architecture</span> 
               to mission-critical delivery at global scale.
             </motion.p>
 
@@ -242,23 +242,23 @@ export default function ProductEngineering() {
               initial={{ opacity: 0, y: 20 }}
               animate={isDrafted ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 1.2 }}
-              className="flex flex-wrap items-center justify-center sm:justify-start gap-4"
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-6"
             >
-              <button className="px-10 py-5 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-blue-200/50">
+              <button className="px-10 py-5 bg-blue-600 dark:bg-blue-500 text-white font-bold rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300">
                  Build Your Blueprint
               </button>
-              <button className="px-10 py-5 bg-white text-[#121926] font-bold rounded-full border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 shadow-sm">
+              <button className="px-10 py-5 bg-card text-foreground font-bold rounded-full border border-border hover:bg-muted transition-all duration-300 shadow-sm transition-colors">
                 View Lifecycle
               </button>
             </motion.div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-gray-200 z-10" />
+        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-border transition-colors z-10" />
       </section>
 
       {/* 2. ENGINEERING BLOCKS GRID */}
-      <section className="bg-white py-24 sm:py-32 relative border-t border-gray-50">
+      <section className="bg-background py-24 sm:py-32 relative border-t border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           
           <div className="mb-20 text-center sm:text-left">
@@ -266,11 +266,11 @@ export default function ProductEngineering() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-xs font-bold tracking-[0.4em] text-blue-600 mb-4 uppercase"
+              className="text-xs font-bold tracking-[0.4em] text-blue-600 dark:text-blue-400 mb-4 uppercase"
             >
               — ENGINEERING_CORE.v4
             </motion.p>
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#121926] mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground transition-colors mb-6 h-auto">
               Precision Engineering <br /> for Scale
             </h2>
           </div>
@@ -303,22 +303,22 @@ export default function ProductEngineering() {
                  initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
                  whileInView={{ opacity: 1, x: 0 }}
                  viewport={{ once: true }}
-                 className="p-10 bg-gray-50/50 border border-gray-100 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:border-blue-100 transition-all duration-500 group"
+                 className="p-10 bg-card/40 border border-border rounded-[2.5rem] hover:bg-card hover:shadow-2xl hover:border-blue-500/50 transition-all duration-500 group"
                >
                  <div className="flex items-center gap-6 mb-10">
-                    <div className="w-16 h-16 bg-white border border-gray-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                    <div className="w-16 h-16 bg-secondary border border-border rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-500 h-auto">
                        {block.icon}
                     </div>
                     <div>
-                       <h3 className="text-2xl font-bold text-[#121926]">{block.title}</h3>
-                       <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">Status: Operational</div>
+                       <h3 className="text-2xl sm:text-3xl font-bold text-foreground transition-colors h-auto">{block.title}</h3>
+                       <div className="text-[10px] font-bold text-muted-foreground/60 uppercase tracking-widest mt-1 transition-colors">Status: Operational</div>
                     </div>
                  </div>
                  <div className="space-y-4">
                     {block.items.map((item, i) => (
                       <div key={i} className="flex items-center gap-3">
                          <CheckCircle2 className="w-4 h-4 text-blue-500" />
-                         <span className="text-gray-600 text-sm font-medium tracking-tight">{item}</span>
+                         <span className="text-muted-foreground text-sm sm:text-base font-medium tracking-tight transition-colors">{item}</span>
                       </div>
                     ))}
                  </div>
@@ -329,16 +329,16 @@ export default function ProductEngineering() {
       </section>
 
       {/* 3. PRODUCT LIFECYCLE CYCLE */}
-      <section className="bg-white py-24 sm:py-32 overflow-hidden border-t border-gray-50">
+      <section className="bg-background py-24 sm:py-32 overflow-hidden border-t border-border transition-colors duration-500">
          <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-20">
-               <h3 className="text-xs font-bold tracking-[0.5em] text-blue-600 mb-4 uppercase">Lifecycle Continuum</h3>
-               <h2 className="text-4xl font-bold text-[#121926]">Connected Product Excellence</h2>
+               <h3 className="text-xs font-bold tracking-[0.5em] text-blue-600 dark:text-blue-400 mb-4 uppercase transition-colors">Lifecycle Continuum</h3>
+               <h2 className="text-4xl sm:text-5xl font-bold text-foreground transition-colors h-auto">Connected Product Excellence</h2>
             </div>
 
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12 relative">
                {/* Connecting Dotted Line (Desktop) */}
-               <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-px border-t border-dashed border-gray-200 z-0" />
+               <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-px border-t border-dashed border-border z-0 transition-colors" />
                
                {[
                  { stage: "Ideation", icon: <Layers className="w-8 h-8"/>, desc: "Strategy & Incubation" },
@@ -354,12 +354,12 @@ export default function ProductEngineering() {
                    transition={{ delay: i * 0.2 }}
                    className="relative flex flex-col items-center group z-10"
                  >
-                    <div className="w-24 h-24 bg-white border border-gray-100 rounded-full flex items-center justify-center text-blue-600 shadow-sm group-hover:shadow-2xl group-hover:border-blue-200 group-hover:-translate-y-2 transition-all duration-500 mb-6">
+                    <div className="w-24 h-24 bg-card border border-border rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-sm group-hover:shadow-2xl group-hover:border-blue-500/50 group-hover:-translate-y-2 transition-all duration-500 mb-6 h-auto transition-colors">
                        {step.icon}
                     </div>
                     <div className="text-center">
-                       <h4 className="text-xl font-bold text-[#121926] mb-2">{step.stage}</h4>
-                       <p className="text-gray-400 text-sm font-medium italic">{step.desc}</p>
+                       <h4 className="text-xl sm:text-2xl font-bold text-foreground transition-colors h-auto">{step.stage}</h4>
+                       <p className="text-muted-foreground text-sm font-medium italic transition-colors">{step.desc}</p>
                     </div>
                  </motion.div>
                ))}

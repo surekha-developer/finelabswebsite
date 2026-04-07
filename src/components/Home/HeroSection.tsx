@@ -47,14 +47,14 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="w-full bg-[#f8f9fa] min-h-[83vh] pt-10 pb-0 flex flex-col justify-between overflow-hidden relative">
+    <section className="w-full bg-background min-h-[83vh] pt-10 pb-0 flex flex-col justify-between overflow-hidden relative">
 
       {/* TOP: Enterprise Line & Animated Text */}
       <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 mt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4">
-        <p className="text-xs font-semibold tracking-[0.25em] text-blue-600 animate-in fade-in slide-in-from-top-4 duration-700">
+        <p className="text-xs font-semibold tracking-[0.25em] text-blue-600 animate-in fade-in slide-in-from-top-4 duration-700 dark:text-blue-400">
           ENTERPRISE-GRADE TRANSFORMATION
         </p>
-        <p className={`text-base sm:text-lg md:text-2xl font-bold text-slate-900 animate-in fade-in slide-in-from-top-4 duration-700 transition-opacity duration-500 ease-in-out ${fade ? "opacity-100" : "opacity-0"}`}>
+        <p className={`text-base sm:text-lg md:text-2xl font-bold text-foreground animate-in fade-in slide-in-from-top-4 duration-700 transition-opacity duration-500 ease-in-out ${fade ? "opacity-100" : "opacity-0"}`}>
           {phrases[phraseIndex]}
         </p>
       </div>
@@ -64,14 +64,14 @@ export default function HeroSection() {
 
         {/* DESKTOP INLINE LAYOUT (Matches reference image) */}
         <div className="hidden md:flex flex-row items-center justify-center w-full relative overflow-x-hidden">
-          <h1 className="text-6xl md:text-7xl lg:text-[100px] xl:text-[120px] font-bold tracking-tighter text-slate-900 leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
+          <h1 className="text-6xl md:text-7xl lg:text-[100px] xl:text-[120px] font-bold tracking-tighter text-foreground leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
             DIGITAL
           </h1>
 
           {/* Expanding Animated Centered Pill Container */}
           <div className="relative flex items-center justify-center">
             <div
-              className={`transition-[width,margin,opacity] duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden relative shadow-2xl shadow-indigo-500/10 bg-white ring-1 ring-black/5 flex-shrink-0 h-[100px] lg:h-[140px] xl:h-[180px] rounded-[9999px] ${isExpanded ? "w-[30vw] max-w-[600px] mx-6 lg:mx-8 opacity-100" : "w-0 mx-0 opacity-0"
+              className={`transition-[width,margin,opacity] duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden relative shadow-2xl shadow-blue-500/10 bg-card ring-1 ring-border flex-shrink-0 h-[100px] lg:h-[140px] xl:h-[180px] rounded-[9999px] ${isExpanded ? "w-[30vw] max-w-[600px] mx-6 lg:mx-8 opacity-100" : "w-0 mx-0 opacity-0"
                 }`}
             >
               {/* First Image */}
@@ -92,23 +92,23 @@ export default function HeroSection() {
                 className={`object-cover transition-opacity duration-1000 ease-in-out ${currentImageIndex === 1 ? "opacity-100" : "opacity-0"
                   }`}
               />
-              <div className="absolute inset-0 rounded-[9999px] ring-1 ring-inset ring-black/10 z-10 pointer-events-none" />
+              <div className="absolute inset-0 rounded-[9999px] ring-1 ring-inset ring-foreground/10 z-10 pointer-events-none" />
             </div>
           </div>
 
-          <h1 className="text-6xl md:text-7xl lg:text-[100px] xl:text-[120px] font-bold tracking-tighter text-slate-900 leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
+          <h1 className="text-6xl md:text-7xl lg:text-[100px] xl:text-[120px] font-bold tracking-tighter text-foreground leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
             FUTURES
           </h1>
         </div>
 
         {/* MOBILE STACKED LAYOUT */}
         <div className="flex md:hidden flex-col items-center justify-center w-full">
-          <h1 className="text-[13vw] font-bold tracking-tighter text-slate-900 leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
+          <h1 className="text-[13vw] font-bold tracking-tighter text-foreground leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
             DIGITAL
           </h1>
 
           <div
-            className={`transition-[height,margin,opacity] duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] w-[85vw] rounded-[9999px] overflow-hidden relative shadow-2xl shadow-indigo-500/10 bg-white ring-1 ring-black/5 flex-shrink-0 ${isExpanded ? "h-[120px] my-6 opacity-100" : "h-0 my-0 opacity-0"
+            className={`transition-[height,margin,opacity] duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] w-[85vw] rounded-[9999px] overflow-hidden relative shadow-2xl shadow-blue-500/10 bg-card ring-1 ring-border flex-shrink-0 ${isExpanded ? "h-[120px] my-6 opacity-100" : "h-0 my-0 opacity-0"
               }`}
           >
             <Image
@@ -127,16 +127,16 @@ export default function HeroSection() {
               className={`object-cover transition-opacity duration-1000 ease-in-out ${currentImageIndex === 1 ? "opacity-100" : "opacity-0"
                 }`}
             />
-            <div className="absolute inset-0 rounded-[9999px] ring-1 ring-inset ring-black/10 z-10 pointer-events-none" />
+            <div className="absolute inset-0 rounded-[9999px] ring-1 ring-inset ring-foreground/10 z-10 pointer-events-none" />
           </div>
 
-          <h1 className="text-[13vw] font-bold tracking-tighter text-slate-900 leading-none animate-in fade-in slide-in-from-top-6 duration-1000 fill-mode-both">
+          <h1 className="text-[13vw] font-bold tracking-tighter text-foreground leading-none animate-in fade-in slide-in-from-top-6 duration-1000 fill-mode-both">
             FUTURES
           </h1>
         </div>
 
-        <h2 className="text-4xl md:text-5xl lg:text-[60px] font-bold tracking-tight text-slate-900 mt-8 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-300 fill-mode-both">
-          built with <span className="text-blue-600">precision.</span>
+        <h2 className="text-4xl md:text-5xl lg:text-[60px] font-bold tracking-tight text-foreground mt-8 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-300 fill-mode-both text-center">
+          built with <span className="text-blue-600 dark:text-blue-400">precision.</span>
         </h2>
       </div>
 
@@ -146,20 +146,20 @@ export default function HeroSection() {
 
           {/* Bottom Left Text */}
           <div className="w-full md:w-[35%] text-center md:text-left">
-            <p className="text-gray-500 text-sm sm:text-[15px] leading-relaxed max-w-[280px] mx-auto md:mx-0 animate-in fade-in slide-in-from-left-6 duration-700 delay-500 fill-mode-both">
+            <p className="text-muted-foreground text-sm sm:text-[15px] leading-relaxed max-w-[280px] mx-auto md:mx-0 animate-in fade-in slide-in-from-left-6 duration-700 delay-500 fill-mode-both">
               Purpose-built for enterprise digital transformation. Where AI advantage meets lab-grade agility.
             </p>
           </div>
 
           {/* Middle Line */}
-          <div className="hidden md:block flex-1 mx-8 border-t border-gray-300 opacity-60 animate-in fade-in duration-1000 delay-700 fill-mode-both" />
+          <div className="hidden md:block flex-1 mx-8 border-t border-border opacity-60 animate-in fade-in duration-1000 delay-700 fill-mode-both" />
 
           {/* Bottom Right Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 md:w-auto animate-in fade-in slide-in-from-right-6 duration-700 delay-700 fill-mode-both">
-            <Button className="rounded-full px-6 sm:px-8 py-5 sm:py-6 bg-slate-900 hover:bg-slate-800 text-white text-sm shadow-xl shadow-slate-900/20">
+            <Button className="rounded-full px-6 sm:px-8 py-5 sm:py-6 bg-primary text-primary-foreground hover:bg-primary/90 text-sm shadow-xl shadow-primary/20">
               Explore Services →
             </Button>
-            <Button variant="outline" className="rounded-full px-6 sm:px-8 py-5 sm:py-6 text-sm border-gray-300 hover:bg-gray-50 text-gray-900">
+            <Button variant="outline" className="rounded-full px-6 sm:px-8 py-5 sm:py-6 text-sm border-border hover:bg-muted text-foreground">
               Our Story
             </Button>
           </div>

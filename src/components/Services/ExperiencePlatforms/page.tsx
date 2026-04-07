@@ -116,15 +116,17 @@ export default function ExperiencePlatforms() {
   }, []);
 
   return (
-    <div className="w-full bg-white text-[#121926] overflow-hidden selection:bg-blue-50">
+    <div className="w-full bg-background text-foreground overflow-hidden selection:bg-blue-500/20 transition-colors duration-500">
 
       {/* 1. HERO SECTION: INTERFACE SYNTHESIS */}
       <section className="relative w-full px-6 pt-32 pb-16 sm:pt-40 sm:pb-24 min-h-[90vh] flex items-center overflow-hidden">
 
         {/* Foundation Gradient */}
         <div
-          className="absolute inset-0 z-0 pointer-events-none"
-          style={{ background: "linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)" }}
+          className="absolute inset-0 z-0 pointer-events-none opacity-50 dark:opacity-100 transition-opacity"
+          style={{ 
+            background: "radial-gradient(circle at 50% -20%, var(--blue-500-10, rgba(37, 99, 235, 0.1)), var(--bg) 80%)"
+          }}
         />
 
         <ConnectionMesh />
@@ -138,10 +140,10 @@ export default function ExperiencePlatforms() {
               initial={{ opacity: 0, y: 10 }}
               animate={isSynthesized ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-blue-100 mb-8 shadow-sm"
+              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-card/60 backdrop-blur-md border border-border/50 mb-8 shadow-sm"
             >
-              <Repeat className="w-4 h-4 text-blue-600 animate-spin-slow" />
-              <span className="text-xs font-bold text-blue-600 tracking-[0.2em] uppercase">
+              <Repeat className="w-4 h-4 text-blue-600 dark:text-blue-400 animate-spin-slow" />
+              <span className="text-xs font-bold text-blue-600 dark:text-blue-400 tracking-[0.2em] uppercase">
                 Seamless Connectivity // v1.0
               </span>
             </motion.div>
@@ -151,10 +153,10 @@ export default function ExperiencePlatforms() {
               initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
               animate={isSynthesized ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
               transition={{ duration: 1.2, ease: [0.34, 1.56, 0.64, 1] }}
-              className="text-5xl sm:text-6xl md:text-[90px] font-extrabold tracking-tight mb-10 leading-[1.0] text-[#121926]"
+              className="text-5xl sm:text-6xl md:text-[100px] font-extrabold tracking-tight mb-10 leading-[1.0] text-foreground transition-colors"
             >
               Tailored{" "}
-              <span className="text-[#2b6eff] underline decoration-blue-100 underline-offset-8">
+              <span className="text-blue-600 dark:text-blue-500 underline decoration-blue-500/20 underline-offset-8">
                 Platform
               </span>
               <br />Efficiency
@@ -165,11 +167,11 @@ export default function ExperiencePlatforms() {
               initial={{ opacity: 0, y: 20 }}
               animate={isSynthesized ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.6 }}
-              className="text-lg md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-2xl font-medium tracking-tight"
+              className="text-lg md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-2xl font-medium tracking-tight transition-colors"
             >
               FineLabs redefines business intelligence through tailored,
               platform-led solutions that drive growth, operational
-              excellence, and <span className="text-[#2b6eff] font-bold">lasting advantage</span>.
+              excellence, and <span className="text-blue-600 dark:text-blue-400 font-bold italic">lasting advantage</span>.
             </motion.p>
 
             {/* CTA */}
@@ -177,12 +179,12 @@ export default function ExperiencePlatforms() {
               initial={{ opacity: 0, y: 20 }}
               animate={isSynthesized ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.8 }}
-              className="flex flex-wrap items-center justify-center sm:justify-start gap-4"
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-6"
             >
-              <button className="px-10 py-5 bg-[#2b6eff] text-white font-bold rounded-full hover:bg-blue-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-blue-200/50">
+              <button className="px-10 py-5 bg-blue-600 dark:bg-blue-500 text-white font-bold rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300 shadow-lg">
                 Explore Platforms
               </button>
-              <button className="px-10 py-5 bg-white text-[#121926] font-bold rounded-full border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 shadow-sm">
+              <button className="px-10 py-5 bg-card text-foreground font-bold rounded-full border border-border hover:bg-muted transition-all duration-300 shadow-sm transition-colors">
                 View Domains
               </button>
             </motion.div>
@@ -195,14 +197,14 @@ export default function ExperiencePlatforms() {
           animate={isSynthesized ? { opacity: 0.3, scale: 1.2 } : {}}
           transition={{ duration: 3 }}
           className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none opacity-20"
-          style={{ background: 'radial-gradient(circle, #2b6eff 0%, transparent 70%)', filter: 'blur(80px)' }}
+          style={{ background: 'radial-gradient(circle, var(--blue-500) 0%, transparent 70%)', filter: 'blur(80px)' }}
         />
 
-        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-gray-100 z-10" />
+        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-border transition-colors z-10" />
       </section>
 
       {/* 2. THREE PILLARS: COGNITIVE SUPPORT */}
-      <section className="bg-white py-24 sm:py-32 relative border-t border-gray-50">
+      <section className="bg-background py-24 sm:py-32 relative border-t border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
 
           <div className="mb-20 text-center sm:text-left">
@@ -210,11 +212,11 @@ export default function ExperiencePlatforms() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-xs font-bold tracking-[0.4em] text-[#2b6eff] mb-4 uppercase"
+              className="text-xs font-bold tracking-[0.4em] text-blue-600 dark:text-blue-400 mb-4 uppercase"
             >
               — PLATFORM_PILLARS.v1
             </motion.p>
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#121926] mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground transition-colors mb-6 h-auto">
               Strategic Capability <br /> Architecture
             </h2>
           </div>
@@ -231,18 +233,18 @@ export default function ExperiencePlatforms() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group p-10 bg-gray-50/50 border border-gray-100 rounded-3xl hover:bg-white hover:shadow-2xl hover:border-blue-200 transition-all duration-500"
+                className="group p-10 bg-card/40 border border-border rounded-[2.5rem] hover:bg-card hover:shadow-2xl hover:border-blue-500/50 transition-all duration-500"
               >
-                <div className="w-20 h-20 bg-white border border-gray-100 rounded-2xl flex items-center justify-center text-[#2b6eff] mb-8 group-hover:-translate-y-2 transition-transform duration-500">
+                <div className="w-20 h-20 bg-secondary border border-border rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-8 group-hover:-translate-y-2 transition-all duration-500">
                   {pillar.icon}
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-[#121926] group-hover:text-[#2b6eff] transition-colors">
+                <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors h-auto">
                   {pillar.title}
                 </h3>
-                <p className="text-gray-600 text-[15px] leading-relaxed mb-8">
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-8 h-auto transition-colors">
                   {pillar.desc}
                 </p>
-                <div className="flex items-center gap-2 text-xs font-bold text-[#2b6eff] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all">
                   <span>Explore Pillar</span>
                   <ArrowRight className="w-3 h-3" />
                 </div>
@@ -253,12 +255,12 @@ export default function ExperiencePlatforms() {
       </section>
 
       {/* 3. PLATFORM DOMAINS: THE ECOSYSTEM WHEEL */}
-      <section className="bg-[#f8fafc] py-24 sm:py-32 relative overflow-hidden border-y border-gray-100">
+      <section className="bg-muted/30 py-24 sm:py-32 relative overflow-hidden border-y border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-          <div className="max-w-2xl mb-20">
-            <h3 className="text-3xl sm:text-4xl font-bold text-[#121926] mb-6">Six Platform Domains</h3>
-            <p className="text-gray-600 text-lg leading-relaxed">
+          <div className="max-w-2xl mb-20 text-center sm:text-left">
+            <h3 className="text-3xl sm:text-4xl font-bold text-foreground transition-colors mb-6 h-auto">Six Platform Domains</h3>
+            <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed transition-colors">
               Seamless implementation and advisory expertise across the world&apos;s leading
               enterprise platforms, ensure outcomes align with strategy from day one.
             </p>
@@ -279,17 +281,17 @@ export default function ExperiencePlatforms() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 bg-white border border-gray-100 rounded-3xl hover:border-blue-100 hover:shadow-xl hover:shadow-blue-500/5 transition-all group"
+                className="p-8 bg-card border border-border rounded-[2rem] hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/5 transition-all group"
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-blue-50 text-[#2b6eff] rounded-xl group-hover:bg-[#2b6eff] group-hover:text-white transition-colors">
+                  <div className="p-3 bg-secondary text-blue-600 dark:text-blue-400 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     {item.icon}
                   </div>
-                  <span className="font-bold text-[#121926]">{item.domain}</span>
+                  <span className="font-bold text-foreground transition-colors">{item.domain}</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {item.brands.map(b => (
-                    <span key={b} className="px-3 py-1 bg-gray-50 border border-gray-100 rounded-full text-[10px] font-bold text-gray-500 tracking-tight">
+                    <span key={b} className="px-3 py-1 bg-secondary border border-border rounded-full text-[10px] font-bold text-muted-foreground tracking-tight transition-colors">
                       {b}
                     </span>
                   ))}
@@ -301,17 +303,17 @@ export default function ExperiencePlatforms() {
       </section>
 
       {/* 4. MOBILE PERSPECTIVE CALLOUT */}
-      <section className="bg-white py-24 sm:py-32">
+      <section className="bg-background py-24 sm:py-32 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
           {/* Mockup Visual */}
           <div className="relative p-1 bg-gradient-to-tr from-blue-500 to-indigo-500 rounded-[3rem]">
-            <div className="bg-[#121926] rounded-[2.8rem] p-12 aspect-[4/3] flex items-center justify-center relative overflow-hidden group">
+            <div className="bg-card rounded-[2.8rem] p-12 aspect-[4/3] flex items-center justify-center relative overflow-hidden group transition-colors">
               <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10 text-center">
-                <Smartphone className="w-24 h-24 text-[#2b6eff] mx-auto mb-6 animate-pulse" />
-                <h4 className="text-white font-bold text-2xl mb-2 italic uppercase">Enterprise Mobile</h4>
-                <p className="text-blue-300 text-sm font-mono tracking-tighter">Extend. Optimize. Deliver.</p>
+                <Smartphone className="w-24 h-24 text-blue-600 dark:text-blue-400 mx-auto mb-6 animate-pulse" />
+                <h4 className="text-foreground font-bold text-2xl mb-2 italic uppercase transition-colors">Enterprise Mobile</h4>
+                <p className="text-blue-500/80 text-sm font-mono tracking-tighter">Extend. Optimize. Deliver.</p>
               </div>
               {/* Floating Action Bars */}
               {[...Array(3)].map((_, i) => (
@@ -319,29 +321,29 @@ export default function ExperiencePlatforms() {
                   key={i}
                   animate={{ x: [0, 10, 0] }}
                   transition={{ duration: 3, delay: i * 0.5, repeat: Infinity }}
-                  className="absolute w-32 h-2 bg-white/5 rounded-full"
+                  className="absolute w-32 h-2 bg-foreground/5 rounded-full"
                   style={{ bottom: 40 + i * 16, right: 40 }}
                 />
               ))}
             </div>
           </div>
 
-          <div>
-            <p className="text-xs font-bold tracking-[0.4em] text-[#2b6eff] mb-4 uppercase">— MOBILE_SYNTHESIS</p>
-            <h3 className="text-4xl font-bold text-[#121926] mb-8">Empowered Experiences Anywhere</h3>
-            <p className="text-gray-600 text-lg leading-relaxed mb-8">
+          <div className="text-center sm:text-left">
+            <p className="text-xs font-bold tracking-[0.4em] text-blue-600 dark:text-blue-400 mb-4 uppercase transition-colors">— MOBILE_SYNTHESIS</p>
+            <h3 className="text-4xl font-bold text-foreground mb-8 transition-colors h-auto">Empowered Experiences Anywhere</h3>
+            <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed mb-10 transition-colors">
               Bridging the gap between enterprise complexity and user simplicity.
               We extend platform capabilities through intuitive, high-performance
               mobile interfaces that keep teams productive on any device.
             </p>
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <div className="text-2xl font-bold text-[#121926] mb-1">0ms</div>
-                <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Interface Latency</div>
+                <div className="text-2xl sm:text-3xl font-bold text-foreground mb-1 transition-colors">0ms</div>
+                <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest transition-colors">Interface Latency</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-[#121926] mb-1">100%</div>
-                <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Cloud Sync</div>
+                <div className="text-2xl sm:text-3xl font-bold text-foreground mb-1 transition-colors">100%</div>
+                <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest transition-colors">Cloud Sync</div>
               </div>
             </div>
           </div>
