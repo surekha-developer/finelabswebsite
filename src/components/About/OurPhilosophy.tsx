@@ -12,8 +12,8 @@ export default function OurPhilosophy() {
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-24 relative">
 
-        {/* BACKGROUND HEXAGON NETWORK (for the left side) */}
-        <div className="absolute top-0 -left-64 lg:-left-32 w-[600px] h-[600px] opacity-5 pointer-events-none">
+        {/* BACKGROUND HEXAGON NETWORK — clipped so it doesn't overflow on mobile */}
+        <div className="absolute top-0 left-0 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] opacity-5 pointer-events-none overflow-hidden">
           <div className="relative w-full h-full">
              <Hexagon className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full stroke-black" strokeWidth={0.5} />
              <Hexagon className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 stroke-black rotate-12" strokeWidth={0.5} />

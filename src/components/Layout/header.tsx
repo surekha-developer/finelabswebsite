@@ -122,7 +122,7 @@ export default function Header() {
 </Link> */}
 
 {/* LOGO + TEXT */}
-<Link href="/" className="flex items-center gap-1 group">
+<Link href="/" className="flex items-center gap-1 group" onClick={() => setMobileOpen(false)}>
   <Image
     src="/images/finelabslogolight-removebg.png"
     alt="Finelabs"
@@ -264,7 +264,7 @@ export default function Header() {
 
           {/* RIGHT BUTTON DESKTOP */}
           <div className="hidden lg:block">
-            <Link href="/contact">
+            <Link href="/careers#contact-form">
               <button className="bg-black text-white px-6 py-2 rounded-full">
                 Get In Touch
               </button>
@@ -284,11 +284,11 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {mobileOpen && (
-        <div className="lg:hidden bg-white border-t">
+        <div className="lg:hidden bg-white border-t absolute top-20 left-0 right-0 shadow-lg pb-4">
           <div className="px-6 py-6 flex flex-col gap-4">
 
-            <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
+            <Link href="/" onClick={() => setMobileOpen(false)}>Home</Link>
+            <Link href="/about" onClick={() => setMobileOpen(false)}>About</Link>
 
             {/* MOBILE SERVICES */}
             <div>
@@ -303,9 +303,14 @@ export default function Header() {
               </button>
 
               {mobileServices && (
-                <div className="mt-3 flex flex-col gap-2 pl-4">
+                <div className="mt-3 flex flex-col gap-4 pl-4 border-l border-gray-100 py-2">
                   {servicesData.map((item, i) => (
-                    <Link key={i} href={`/services/${item.slug}`}>
+                    <Link 
+                      key={i} 
+                      href={`/services/${item.slug}`}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-gray-600 hover:text-black"
+                    >
                       {item.name}
                     </Link>
                   ))}
@@ -313,10 +318,10 @@ export default function Header() {
               )}
             </div>
 
-            <Link href="/careers">Careers</Link>
+            <Link href="/careers" onClick={() => setMobileOpen(false)}>Careers</Link>
 
-            <Link href="/contact">
-              <button className="bg-black text-white px-6 py-3 rounded-full mt-4">
+            <Link href="/careers#contact-form" onClick={() => setMobileOpen(false)}>
+              <button className="bg-black text-white px-6 py-3 rounded-full mt-4 w-full sm:w-auto">
                 Get In Touch
               </button>
             </Link>

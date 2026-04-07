@@ -50,11 +50,11 @@ export default function HeroSection() {
     <section className="w-full bg-[#f8f9fa] min-h-[83vh] pt-10 pb-0 flex flex-col justify-between overflow-hidden relative">
 
       {/* TOP: Enterprise Line & Animated Text */}
-      <div className="w-full max-w-[1600px] mx-auto px-6 mt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 mt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4">
         <p className="text-xs font-semibold tracking-[0.25em] text-blue-600 animate-in fade-in slide-in-from-top-4 duration-700">
           ENTERPRISE-GRADE TRANSFORMATION
         </p>
-        <p className={`text-lg md:text-2xl font-bold pr-40 text-slate-900 animate-in fade-in slide-in-from-top-4 duration-700 transition-opacity duration-500 ease-in-out ${fade ? "opacity-100" : "opacity-0"}`}>
+        <p className={`text-base sm:text-lg md:text-2xl font-bold text-slate-900 animate-in fade-in slide-in-from-top-4 duration-700 transition-opacity duration-500 ease-in-out ${fade ? "opacity-100" : "opacity-0"}`}>
           {phrases[phraseIndex]}
         </p>
       </div>
@@ -63,7 +63,7 @@ export default function HeroSection() {
       <div className="w-full max-w-[1600px] mx-auto px-6 flex flex-col items-center justify-center flex-1 my-8 z-10">
 
         {/* DESKTOP INLINE LAYOUT (Matches reference image) */}
-        <div className="hidden md:flex flex-row items-center justify-center w-full relative">
+        <div className="hidden md:flex flex-row items-center justify-center w-full relative overflow-x-hidden">
           <h1 className="text-6xl md:text-7xl lg:text-[100px] xl:text-[120px] font-bold tracking-tighter text-slate-900 leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
             DIGITAL
           </h1>
@@ -141,12 +141,12 @@ export default function HeroSection() {
       </div>
 
       {/* BOTTOM ACTION BAR: Text Left, Line Middle, Buttons Right */}
-      <div className="w-full max-w-[1600px] mx-auto px-6 mb-8 z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between w-full h-full">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 mb-6 sm:mb-8 z-10">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full gap-6 md:gap-0">
 
-          {/* Bottom Left Text (Strictly 3 lines via width constraint) */}
-          <div className="md:w-[35%] text-left">
-            <p className="text-gray-500 text-[15px] leading-relaxed w-[280px] max-w-full animate-in fade-in slide-in-from-left-6 duration-700 delay-500 fill-mode-both">
+          {/* Bottom Left Text */}
+          <div className="w-full md:w-[35%] text-center md:text-left">
+            <p className="text-gray-500 text-sm sm:text-[15px] leading-relaxed max-w-[280px] mx-auto md:mx-0 animate-in fade-in slide-in-from-left-6 duration-700 delay-500 fill-mode-both">
               Purpose-built for enterprise digital transformation. Where AI advantage meets lab-grade agility.
             </p>
           </div>
@@ -155,11 +155,11 @@ export default function HeroSection() {
           <div className="hidden md:block flex-1 mx-8 border-t border-gray-300 opacity-60 animate-in fade-in duration-1000 delay-700 fill-mode-both" />
 
           {/* Bottom Right Buttons */}
-          <div className="flex items-center gap-4 mt-8 md:mt-0 md:w-auto animate-in fade-in slide-in-from-right-6 duration-700 delay-700 fill-mode-both">
-            <Button className="rounded-full px-8 py-6 bg-slate-900 hover:bg-slate-800 text-white text-sm shadow-xl shadow-slate-900/20">
+          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 md:w-auto animate-in fade-in slide-in-from-right-6 duration-700 delay-700 fill-mode-both">
+            <Button className="rounded-full px-6 sm:px-8 py-5 sm:py-6 bg-slate-900 hover:bg-slate-800 text-white text-sm shadow-xl shadow-slate-900/20">
               Explore Services →
             </Button>
-            <Button variant="outline" className="rounded-full px-8 py-6 text-sm border-gray-300 hover:bg-gray-50 text-gray-900">
+            <Button variant="outline" className="rounded-full px-6 sm:px-8 py-5 sm:py-6 text-sm border-gray-300 hover:bg-gray-50 text-gray-900">
               Our Story
             </Button>
           </div>

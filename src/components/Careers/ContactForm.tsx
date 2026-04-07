@@ -4,7 +4,7 @@ import React from "react";
 
 export default function OpenOpportunities() {
   return (
-    <section className="w-full relative pt-24 pb-32 bg-white overflow-hidden">
+    <section id="contact-form" className="w-full relative pt-24 pb-32 bg-white overflow-hidden">
       {/* GRADIENT BACKGROUND */}
       <div 
         className="absolute top-0 left-0 w-full h-[800px] z-0 pointer-events-none"
@@ -15,7 +15,7 @@ export default function OpenOpportunities() {
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <h2 className="text-4xl font-bold text-center text-black mb-12 drop-shadow-lg">
-          Careers
+          Contact Us
         </h2>
 
         <form className="space-y-6 bg-white/95 backdrop-blur-xl p-8 sm:p-12 rounded-[2rem] shadow-2xl ring-1 ring-gray-200/50">

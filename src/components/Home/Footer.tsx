@@ -44,10 +44,18 @@ export default function Footer() {
             </h4>
 
             <ul className="space-y-4 text-sm text-gray-600">
-              <li className="hover:text-black cursor-pointer">Home</li>
-              <li className="hover:text-black cursor-pointer">About</li>
-              <li className="hover:text-black cursor-pointer">Careers</li>
-              <li className="hover:text-black cursor-pointer">Contact</li>
+              <li>
+                <Link href="/" className="hover:text-black transition-colors block">Home</Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-black transition-colors block">About</Link>
+              </li>
+              <li>
+                <Link href="/careers" className="hover:text-black transition-colors block">Careers</Link>
+              </li>
+              <li>
+                <Link href="/careers#contact-form" className="hover:text-black transition-colors block">Contact</Link>
+              </li>
             </ul>
           </div>
 
@@ -58,15 +66,21 @@ export default function Footer() {
             </h4>
 
             <ul className="space-y-4 text-sm text-gray-600">
-              <li className="hover:text-black cursor-pointer">Cloud</li>
-              <li className="hover:text-black cursor-pointer">Cyber Security</li>
-              <li className="hover:text-black cursor-pointer">
-                Experience Platforms
+              <li>
+                <Link href="/services/cloud" className="hover:text-black transition-colors block">Cloud</Link>
               </li>
-              <li className="hover:text-black cursor-pointer">
-                Product Engineering
+              <li>
+                <Link href="/services/cyber-security" className="hover:text-black transition-colors block">Cyber Security</Link>
               </li>
-              <li className="hover:text-black cursor-pointer">Data & AI</li>
+              <li>
+                <Link href="/services/experience-platforms" className="hover:text-black transition-colors block">Experience Platforms</Link>
+              </li>
+              <li>
+                <Link href="/services/product-engineering" className="hover:text-black transition-colors block">Product Engineering</Link>
+              </li>
+              <li>
+                <Link href="/services/data-and-analytics" className="hover:text-black transition-colors block">Data & AI</Link>
+              </li>
             </ul>
           </div>
 
@@ -77,8 +91,12 @@ export default function Footer() {
             </h4>
 
             <ul className="space-y-4 text-sm text-gray-600">
-              <li>info@finelabsai.com</li>
-              <li>finelabsai.com</li>
+              <li>
+                <a href="mailto:info@finelabsai.com" className="hover:text-black transition-colors block">info@finelabsai.com</a>
+              </li>
+              <li>
+                <a href="https://finelabsai.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors block">finelabsai.com</a>
+              </li>
             </ul>
           </div>
         </div>

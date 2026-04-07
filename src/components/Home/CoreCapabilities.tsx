@@ -37,7 +37,7 @@ const services = [
 
 export default function CoreCapabilities() {
   return (
-    <section className="w-full relative py-20 px-4 sm:px-6 pt-32 pb-24 overflow-hidden bg-white">
+    <section className="w-full relative py-12 sm:py-16 px-4 sm:px-6 pt-16 sm:pt-24 lg:pt-32 pb-16 sm:pb-24 overflow-hidden bg-white">
 
       {/* GRADIENT BACKGROUND */}
       <div
@@ -50,7 +50,7 @@ export default function CoreCapabilities() {
       <div className="max-w-7xl mx-auto relative z-10">
 
         {/* TITLE */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-24 lg:mb-32">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-14 sm:mb-20 lg:mb-32 gap-6 lg:gap-0">
           <div>
             <p className="text-xs font-semibold tracking-[0.25em] text-blue-600 mb-4 uppercase drop-shadow-lg">
               CORE CAPABILITIES

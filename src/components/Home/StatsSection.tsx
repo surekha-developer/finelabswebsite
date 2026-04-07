@@ -83,7 +83,7 @@ export default function StatsSection() {
         {stats.map((item, index) => (
           <Card
             key={index}
-            className="group relative overflow-hidden border-0 rounded-none shadow-none bg-transparent border-r border-[#e9e9e9] last:border-r-0"
+            className="group relative overflow-hidden border-0 rounded-none shadow-none bg-transparent border-b sm:border-b-0 sm:border-r border-[#e9e9e9] last:border-b-0 last:border-r-0"
           >
             {/* Background Image Container */}
             <div className="absolute inset-0 z-0 pointer-events-none">
@@ -98,12 +98,12 @@ export default function StatsSection() {
             </div>
 
             {/* Content Layer */}
-            <CardContent className="relative z-10 py-12 px-8 h-full flex flex-col justify-center">
-              <h3 className="text-4xl sm:text-5xl font-bold text-blue-600 leading-tight">
+            <CardContent className="relative z-10 py-8 sm:py-12 px-6 sm:px-8 h-full flex flex-col justify-center">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-600 leading-tight">
                 {item.title}
               </h3>
 
-              <p className="mt-4 text-gray-800 font-medium text-sm">{item.subtitle}</p>
+              <p className="mt-3 sm:mt-4 text-gray-800 font-medium text-sm">{item.subtitle}</p>
             </CardContent>
           </Card>
         ))}

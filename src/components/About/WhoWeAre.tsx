@@ -52,28 +52,28 @@ export default function WhoWeAre() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative w-full h-[400px] sm:h-[500px] bg-blue-50/30 rounded-3xl border border-blue-100/50 flex flex-col items-center justify-center p-8 overflow-hidden group"
+          className="relative w-full h-[280px] sm:h-[380px] md:h-[460px] bg-blue-50/30 rounded-3xl border border-blue-100/50 flex flex-col items-center justify-center p-6 sm:p-8 overflow-hidden group"
         >
-          {/* Decorative Vector Elements Simulating the Image 2 Layout */}
+          {/* Decorative Vector Elements */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-100/40 via-transparent to-transparent opacity-80" />
           
           <div className="relative z-10 w-full h-full flex flex-col justify-end">
-            <div className="absolute right-10 top-10 flex gap-4 opacity-70">
-              <div className="p-4 bg-white shadow-xl rounded-full border border-blue-100"><GitMerge className="w-8 h-8 text-blue-500" strokeWidth={1.5} /></div>
-              <div className="p-4 bg-white shadow-xl rounded-full border border-blue-100"><FileBarChart2 className="w-8 h-8 text-blue-400" strokeWidth={1.5} /></div>
+            <div className="absolute right-6 sm:right-10 top-6 sm:top-10 flex gap-3 sm:gap-4 opacity-70">
+              <div className="p-3 sm:p-4 bg-white shadow-xl rounded-full border border-blue-100"><GitMerge className="w-5 h-5 sm:w-8 sm:h-8 text-blue-500" strokeWidth={1.5} /></div>
+              <div className="p-3 sm:p-4 bg-white shadow-xl rounded-full border border-blue-100"><FileBarChart2 className="w-5 h-5 sm:w-8 sm:h-8 text-blue-400" strokeWidth={1.5} /></div>
             </div>
             
-            {/* The giant trending up arrow */}
+            {/* The giant trending up arrow — scaled down on mobile */}
             <div className="relative w-full flex justify-end">
-              <TrendingUp className="w-64 h-64 text-blue-500 drop-shadow-2xl translate-x-4 translate-y-4 group-hover:-translate-y-2 transition-transform duration-700" strokeWidth={0.5} />
+              <TrendingUp className="w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 text-blue-500 drop-shadow-2xl translate-x-4 translate-y-4 group-hover:-translate-y-2 transition-transform duration-700" strokeWidth={0.5} />
             </div>
             
             {/* Vertical Bar chart pillars */}
-            <div className="absolute bottom-0 left-10 flex items-end gap-6 w-full opacity-30">
-              <div className="w-16 bg-blue-200 h-24 rounded-t-sm" />
-              <div className="w-16 bg-blue-300 h-40 rounded-t-sm" />
-              <div className="w-16 bg-blue-400 h-64 rounded-t-sm" />
-              <div className="w-16 bg-blue-500 h-48 rounded-t-sm" />
+            <div className="absolute bottom-0 left-6 sm:left-10 flex items-end gap-3 sm:gap-6 w-full opacity-30">
+              <div className="w-10 sm:w-16 bg-blue-200 h-16 sm:h-24 rounded-t-sm" />
+              <div className="w-10 sm:w-16 bg-blue-300 h-28 sm:h-40 rounded-t-sm" />
+              <div className="w-10 sm:w-16 bg-blue-400 h-44 sm:h-64 rounded-t-sm" />
+              <div className="w-10 sm:w-16 bg-blue-500 h-32 sm:h-48 rounded-t-sm" />
             </div>
           </div>
         </motion.div>

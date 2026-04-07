@@ -113,7 +113,7 @@ export default function CloudService() {
       <CloudFilter />
       
       {/* 1. HERO SECTION: CINEMATIC CLOUD BREAKTHROUGH */}
-      <section className="relative w-full px-6 pt-32 pb-16 sm:pt-40 sm:pb-24 overflow-hidden min-h-[85vh] flex items-center">
+      <section className="relative w-full px-4 sm:px-6 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:pt-40 lg:pb-24 overflow-hidden min-h-[70vh] sm:min-h-[85vh] flex items-center">
 
         {/* Deep sky-blue background with a slight dark storm-to-clear gradient */}
         <div
@@ -156,7 +156,7 @@ export default function CloudService() {
               initial={{ opacity: 0, scale: 0.5, filter: "blur(20px)", letterSpacing: "-0.05em" }}
               animate={revealed ? { opacity: 1, scale: 1, filter: "blur(0px)", letterSpacing: "normal" } : {}}
               transition={{ duration: 2.2, delay: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
-              className="text-5xl sm:text-6xl md:text-[95px] font-extrabold tracking-tight mb-10 leading-[1.0] text-slate-900 drop-shadow-sm"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[95px] font-extrabold tracking-tight mb-8 sm:mb-10 leading-[1.0] text-slate-900 drop-shadow-sm"
             >
               Cloud{" "}
               <span className="text-blue-500">
@@ -169,7 +169,7 @@ export default function CloudService() {
               initial={{ opacity: 0, y: 20 }}
               animate={revealed ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
-              className="text-lg md:text-2xl text-gray-700 mb-12 leading-relaxed max-w-2xl font-medium tracking-tight"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-10 sm:mb-12 leading-relaxed max-w-2xl font-medium tracking-tight"
             >
               FineLabs&apos; Cloud practice supports organizations at every stage of
               their cloud journey — from strategy and migration through to

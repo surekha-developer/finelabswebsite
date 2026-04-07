@@ -239,13 +239,26 @@ export default function SupplyChain() {
                  initial={{ opacity: 0, y: 20 }}
                  whileInView={{ opacity: 1, y: 0 }}
                  viewport={{ once: true }}
-                 className="p-10 bg-gray-50/50 border border-gray-100 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:border-emerald-100 transition-all duration-500 group flex gap-8"
+                 className="p-8 sm:p-10 bg-gray-50/50 border border-gray-100 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:border-emerald-100 transition-all duration-500 group flex flex-col sm:flex-row sm:gap-8"
                >
-                 <div className="w-16 h-16 bg-white border border-gray-100 rounded-2xl flex items-center justify-center text-emerald-600 shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                 {/* Mobile Icon + Title Row */}
+                 <div className="flex items-center sm:hidden gap-5 mb-5">
+                   <div className="w-16 h-16 bg-white border border-gray-100 rounded-2xl flex items-center justify-center text-emerald-600 shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                      {cap.icon}
+                   </div>
+                   <h3 className="text-xl font-bold text-[#121926] group-hover:text-emerald-600 transition-colors uppercase tracking-tight">{cap.title}</h3>
+                 </div>
+
+                 {/* Desktop Icon */}
+                 <div className="hidden sm:flex w-16 h-16 bg-white border border-gray-100 rounded-2xl items-center justify-center text-emerald-600 shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-sm">
                     {cap.icon}
                  </div>
+
+                 {/* Content Div */}
                  <div>
-                    <h3 className="text-xl font-bold text-[#121926] mb-4 group-hover:text-emerald-600 transition-colors uppercase tracking-tight">{cap.title}</h3>
+                    {/* Desktop Title */}
+                    <h3 className="hidden sm:block text-xl font-bold text-[#121926] mb-4 group-hover:text-emerald-600 transition-colors uppercase tracking-tight">{cap.title}</h3>
+                    
                     <p className="text-gray-500 text-sm leading-relaxed mb-6">{cap.desc}</p>
                     <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm tracking-tight pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
                         Configure Module <ArrowRight className="w-4 h-4" />
