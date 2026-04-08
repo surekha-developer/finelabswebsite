@@ -91,8 +91,7 @@ export default function StatsSection() {
                 src={item.image}
                 alt={item.title}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-130"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-60 dark:opacity-40"
               />
               {/* Theme-aware Overlay for text readability */}
               <div className="absolute inset-0 bg-background/60 transition-colors duration-500 group-hover:bg-background/80" />

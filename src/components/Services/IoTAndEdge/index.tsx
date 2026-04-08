@@ -24,12 +24,12 @@ import {
  * Interconnected pulsing nodes representing edge device connectivity.
  */
 const EdgeMesh = () => {
-  const nodes = [...Array(12)].map((_, i) => ({
+  const nodes = React.useMemo(() => [...Array(12)].map(() => ({
     x: Math.random() * 100,
     y: Math.random() * 100,
     size: Math.random() * 4 + 2,
     delay: Math.random() * 5
-  }));
+  })), []);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">

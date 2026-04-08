@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { 
   Cloud, 
   ArrowRight, 
-  Hexagon, 
   Activity, 
   Network, 
   Laptop, 
@@ -57,7 +56,6 @@ const RealisticCloud = ({
   rotate = 0, 
   delay = 0, 
   duration = 18, 
-  opacity = 1, 
   animateOpacity = null 
 }: { 
   className?: string, 
@@ -65,8 +63,7 @@ const RealisticCloud = ({
   rotate?: number, 
   delay?: number, 
   duration?: number, 
-  opacity?: number,
-  animateOpacity?: any
+  animateOpacity?: number | null
 }) => (
   <motion.div
     className={`absolute pointer-events-none ${className}`}

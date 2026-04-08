@@ -28,7 +28,7 @@ export default function AboutCTASection() {
 
         {/* DESCRIPTION */}
         <p className="mt-8 text-muted-foreground text-sm sm:text-base md:text-lg max-w-lg mx-auto leading-relaxed transition-colors">
-          We'd love to understand your challenges and explore how we can help you
+          We&apos;d love to understand your challenges and explore how we can help you
           transform your enterprise.
         </p>
 

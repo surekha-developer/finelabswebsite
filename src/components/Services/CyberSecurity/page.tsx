@@ -12,9 +12,7 @@ import {
   Terminal,
   ArrowRight,
   ShieldAlert,
-  Cpu,
-  Fingerprint,
-  Zap
+  Fingerprint
 } from "lucide-react";
 
 // ----------------------------------------------------------------------------
@@ -131,39 +129,48 @@ const ThreatLog = () => {
 // PRIMARY COMPONENT
 // ----------------------------------------------------------------------------
 
-const NetworkPulse = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="light-grid" width="60" height="60" patternUnits="userSpaceOnUse">
-          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.1" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#light-grid)" />
+const NetworkPulse = () => {
+  const nodes = React.useMemo(() => [...Array(12)].map((_, i) => ({
+    cx: `${Math.random() * 100}%`,
+    cy: `${Math.random() * 100}%`,
+    duration: 4 + Math.random() * 6,
+    delay: Math.random() * 5
+  })), []);
 
-      {/* Pulsing Nodes - Light Blue */}
-      {[...Array(12)].map((_, i) => (
-        <motion.circle
-          key={i}
-          cx={`${Math.random() * 100}%`}
-          cy={`${Math.random() * 100}%`}
-          r="1.5"
-          fill="#3b82f6"
-          initial={{ opacity: 0.1, scale: 0.8 }}
-          animate={{
-            opacity: [0.1, 0.4, 0.1],
-            scale: [0.8, 1.2, 0.8]
-          }}
-          transition={{
-            duration: 4 + Math.random() * 6,
-            repeat: Infinity,
-            delay: Math.random() * 5
-          }}
-        />
-      ))}
-    </svg>
-  </div>
-);
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+      <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="light-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.1" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#light-grid)" />
+
+        {/* Pulsing Nodes - Light Blue */}
+        {nodes.map((node, i) => (
+          <motion.circle
+            key={i}
+            cx={node.cx}
+            cy={node.cy}
+            r="1.5"
+            fill="#3b82f6"
+            initial={{ opacity: 0.1, scale: 0.8 }}
+            animate={{
+              opacity: [0.1, 0.4, 0.1],
+              scale: [0.8, 1.2, 0.8]
+            }}
+            transition={{
+              duration: node.duration,
+              repeat: Infinity,
+              delay: node.delay
+            }}
+          />
+        ))}
+      </svg>
+    </div>
+  );
+};
 
 const ScanningBeam = ({ active }: { active: boolean }) => (
   <AnimatePresence>

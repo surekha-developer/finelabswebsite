@@ -3,18 +3,15 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  BarChart2,
   Brain,
   RefreshCcw,
   ShieldCheck,
   Sparkles,
   Library,
-  RadioTower,
   TrendingUp,
   Activity,
   ArrowRight,
-  Globe,
-  PieChart
+  Globe
 } from "lucide-react";
 
 // ----------------------------------------------------------------------------
@@ -98,6 +95,13 @@ const PrismaticReveal = ({ active }: { active: boolean }) => (
  * Simulated Global Analytics Dashboard
  */
 const ControlTowerVisual = () => {
+  const markers = React.useMemo(() => [...Array(5)].map((_, i) => ({
+    duration: 3 + i,
+    delay: i * 0.8,
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`
+  })), []);
+
   return (
     <div className="relative bg-[#0f172a] rounded-[2.5rem] p-10 sm:p-16 border border-slate-800 shadow-2xl overflow-hidden">
       {/* Background Noise/Grid */}
@@ -155,7 +159,7 @@ const ControlTowerVisual = () => {
           </div>
 
           {/* Floating Markers */}
-          {[...Array(5)].map((_, i) => (
+          {markers.map((marker, i) => (
             <motion.div
               key={i}
               className="absolute w-2 h-2 bg-teal-400 rounded-full"
@@ -164,13 +168,13 @@ const ControlTowerVisual = () => {
                 scale: [0.5, 1.5, 0.5]
               }}
               transition={{
-                duration: 3 + i,
+                duration: marker.duration,
                 repeat: Infinity,
-                delay: i * 0.8
+                delay: marker.delay
               }}
               style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`
+                top: marker.top,
+                left: marker.left
               }}
             />
           ))}

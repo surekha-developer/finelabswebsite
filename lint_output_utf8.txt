@@ -1,0 +1,456 @@
+﻿
+> finelabsworking@0.1.0 lint
+> eslint
+
+
+D:\finelabs\finelabswebsite\src\app\page.tsx
+  3:8  warning  'Footer' is defined but never used  @typescript-eslint/no-unused-vars
+  7:8  warning  'Header' is defined but never used  @typescript-eslint/no-unused-vars
+  8:8  warning  'Image' is defined but never used   @typescript-eslint/no-unused-vars
+
+D:\finelabs\finelabswebsite\src\components\About\AboutCTASection.tsx
+  31:13  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\finelabs\finelabswebsite\src\components\Careers\JoinTheTeam.tsx
+  57:17  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\finelabs\finelabswebsite\src\components\Home\CTASection.tsx
+  16:14  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\finelabs\finelabswebsite\src\components\Home\HeroSection.tsx
+  47:6  warning  React Hook useEffect has a missing dependency: 'phrases.length'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\finelabs\finelabswebsite\src\components\Services\AIAndAutomation\index.tsx
+    6:3   warning  'Bot' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+    7:3   warning  'Cpu' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+   12:3   warning  'FileText' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+   16:3   warning  'Settings' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+   47:57  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\AIAndAutomation\index.tsx:47:57
+  45 |           <motion.path
+  46 |             key={`path-${i}`}
+> 47 |             d={`M ${20 + i * 10} 0 Q ${50 + i * 5} 50 ${Math.random() * 100} 100`}
+     |                                                         ^^^^^^^^^^^^^ Cannot call impure function
+  48 |             fill="none"
+  49 |             stroke="#6366f1"
+  50 |             strokeWidth="0.5"  react-hooks/purity
+   54:42  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\AIAndAutomation\index.tsx:54:42
+  52 |             initial={{ pathLength: 0, opacity: 0 }}
+  53 |             animate={{ pathLength: 1, opacity: 0.3 }}
+> 54 |             transition={{ duration: 10 + Math.random() * 5, repeat: Infinity, ease: "linear" }}
+     |                                          ^^^^^^^^^^^^^ Cannot call impure function
+  55 |           />
+  56 |         ))}
+  57 |         react-hooks/purity
+   62:20  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\AIAndAutomation\index.tsx:62:20
+  60 |           <motion.circle
+  61 |             key={`node-${i}`}
+> 62 |             cx={`${Math.random() * 100}%`}
+     |                    ^^^^^^^^^^^^^ Cannot call impure function
+  63 |             cy={`${Math.random() * 100}%`}
+  64 |             r={1.5 + Math.random() * 2}
+  65 |             fill="#4f46e5"                                                  react-hooks/purity
+   63:20  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\AIAndAutomation\index.tsx:63:20
+  61 |             key={`node-${i}`}
+  62 |             cx={`${Math.random() * 100}%`}
+> 63 |             cy={`${Math.random() * 100}%`}
+     |                    ^^^^^^^^^^^^^ Cannot call impure function
+  64 |             r={1.5 + Math.random() * 2}
+  65 |             fill="#4f46e5"
+  66 |             initial={{ opacity: 0.1, scale: 0.8 }}                        react-hooks/purity
+   64:22  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\AIAndAutomation\index.tsx:64:22
+  62 |             cx={`${Math.random() * 100}%`}
+  63 |             cy={`${Math.random() * 100}%`}
+> 64 |             r={1.5 + Math.random() * 2}
+     |                      ^^^^^^^^^^^^^ Cannot call impure function
+  65 |             fill="#4f46e5"
+  66 |             initial={{ opacity: 0.1, scale: 0.8 }}
+  67 |             animate={{                             react-hooks/purity
+   73:29  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\AIAndAutomation\index.tsx:73:29
+  71 |             }}
+  72 |             transition={{
+> 73 |               duration: 4 + Math.random() * 6,
+     |                             ^^^^^^^^^^^^^ Cannot call impure function
+  74 |               repeat: Infinity,
+  75 |               delay: Math.random() * 5
+  76 |             }}                                                                           react-hooks/purity
+   75:22  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\AIAndAutomation\index.tsx:75:22
+  73 |               duration: 4 + Math.random() * 6,
+  74 |               repeat: Infinity,
+> 75 |               delay: Math.random() * 5
+     |                      ^^^^^^^^^^^^^ Cannot call impure function
+  76 |             }}
+  77 |           />
+  78 |         ))}                                                                                                  react-hooks/purity
+  101:31  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\AIAndAutomation\index.tsx:101:31
+   99 |             animate={{ opacity: [0, 0.7, 0], y: [0, 150, 0] }}
+  100 |             transition={{
+> 101 |               duration: 2.5 + Math.random() * 2,
+      |                               ^^^^^^^^^^^^^ Cannot call impure function
+  102 |               repeat: Infinity,
+  103 |               delay: Math.random() * 2
+  104 |             }}               react-hooks/purity
+  103:22  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\AIAndAutomation\index.tsx:103:22
+  101 |               duration: 2.5 + Math.random() * 2,
+  102 |               repeat: Infinity,
+> 103 |               delay: Math.random() * 2
+      |                      ^^^^^^^^^^^^^ Cannot call impure function
+  104 |             }}
+  105 |             className="text-[13px] font-mono text-indigo-600 dark:text-indigo-400 font-bold"
+  106 |           >        react-hooks/purity
+  107:25  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\AIAndAutomation\index.tsx:107:25
+  105 |             className="text-[13px] font-mono text-indigo-600 dark:text-indigo-400 font-bold"
+  106 |           >
+> 107 |             {Math.round(Math.random())}
+      |                         ^^^^^^^^^^^^^ Cannot call impure function
+  108 |           </motion.div>
+  109 |         ))}
+  110 |       </motion.div>                                            react-hooks/purity
+
+D:\finelabs\finelabswebsite\src\components\Services\Cloud\page.tsx
+   8:3   warning  'Hexagon' is defined but never used           @typescript-eslint/no-unused-vars
+  60:3   warning  'opacity' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  69:20  error    Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+
+D:\finelabs\finelabswebsite\src\components\Services\CyberSecurity\page.tsx
+   15:3   warning  'Cpu' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+   17:3   warning  'Zap' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+  148:18  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\CyberSecurity\page.tsx:148:18
+  146 |         <motion.circle
+  147 |           key={i}
+> 148 |           cx={`${Math.random() * 100}%`}
+      |                  ^^^^^^^^^^^^^ Cannot call impure function
+  149 |           cy={`${Math.random() * 100}%`}
+  150 |           r="1.5"
+  151 |           fill="#3b82f6"                            react-hooks/purity
+  149:18  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\CyberSecurity\page.tsx:149:18
+  147 |           key={i}
+  148 |           cx={`${Math.random() * 100}%`}
+> 149 |           cy={`${Math.random() * 100}%`}
+      |                  ^^^^^^^^^^^^^ Cannot call impure function
+  150 |           r="1.5"
+  151 |           fill="#3b82f6"
+  152 |           initial={{ opacity: 0.1, scale: 0.8 }}  react-hooks/purity
+  158:27  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\CyberSecurity\page.tsx:158:27
+  156 |           }}
+  157 |           transition={{
+> 158 |             duration: 4 + Math.random() * 6,
+      |                           ^^^^^^^^^^^^^ Cannot call impure function
+  159 |             repeat: Infinity,
+  160 |             delay: Math.random() * 5
+  161 |           }}                       react-hooks/purity
+  160:20  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\CyberSecurity\page.tsx:160:20
+  158 |             duration: 4 + Math.random() * 6,
+  159 |             repeat: Infinity,
+> 160 |             delay: Math.random() * 5
+      |                    ^^^^^^^^^^^^^ Cannot call impure function
+  161 |           }}
+  162 |         />
+  163 |       ))}                                              react-hooks/purity
+
+D:\finelabs\finelabswebsite\src\components\Services\DataAndAnalytics\index.tsx
+    6:3   warning  'BarChart2' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+   12:3   warning  'RadioTower' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+   17:3   warning  'PieChart' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  172:25  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\DataAndAnalytics\index.tsx:172:25
+  170 |               }}
+  171 |               style={{
+> 172 |                 top: `${Math.random() * 100}%`,
+      |                         ^^^^^^^^^^^^^ Cannot call impure function
+  173 |                 left: `${Math.random() * 100}%`
+  174 |               }}
+  175 |             />  react-hooks/purity
+  173:26  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\DataAndAnalytics\index.tsx:173:26
+  171 |               style={{
+  172 |                 top: `${Math.random() * 100}%`,
+> 173 |                 left: `${Math.random() * 100}%`
+      |                          ^^^^^^^^^^^^^ Cannot call impure function
+  174 |               }}
+  175 |             />
+  176 |           ))}    react-hooks/purity
+
+D:\finelabs\finelabswebsite\src\components\Services\ExperiencePlatforms\page.tsx
+   8:3   warning  'Wrench' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  11:3   warning  'Cpu' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  42:18  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\ExperiencePlatforms\page.tsx:42:18
+  40 |         <motion.line
+  41 |           key={`line-${i}`}
+> 42 |           x1={`${Math.random() * 100}%`}
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  43 |           y1={`${Math.random() * 100}%`}
+  44 |           x2={`${Math.random() * 100}%`}
+  45 |           y2={`${Math.random() * 100}%`}        react-hooks/purity
+  43:18  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\ExperiencePlatforms\page.tsx:43:18
+  41 |           key={`line-${i}`}
+  42 |           x1={`${Math.random() * 100}%`}
+> 43 |           y1={`${Math.random() * 100}%`}
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  44 |           x2={`${Math.random() * 100}%`}
+  45 |           y2={`${Math.random() * 100}%`}
+  46 |           stroke="#2563eb"  react-hooks/purity
+  44:18  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\ExperiencePlatforms\page.tsx:44:18
+  42 |           x1={`${Math.random() * 100}%`}
+  43 |           y1={`${Math.random() * 100}%`}
+> 44 |           x2={`${Math.random() * 100}%`}
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  45 |           y2={`${Math.random() * 100}%`}
+  46 |           stroke="#2563eb"
+  47 |           strokeWidth="0.5"  react-hooks/purity
+  45:18  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\ExperiencePlatforms\page.tsx:45:18
+  43 |           y1={`${Math.random() * 100}%`}
+  44 |           x2={`${Math.random() * 100}%`}
+> 45 |           y2={`${Math.random() * 100}%`}
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  46 |           stroke="#2563eb"
+  47 |           strokeWidth="0.5"
+  48 |           initial={{ opacity: 0 }}        react-hooks/purity
+  50:40  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\ExperiencePlatforms\page.tsx:50:40
+  48 |           initial={{ opacity: 0 }}
+  49 |           animate={{ opacity: [0, 0.2, 0] }}
+> 50 |           transition={{ duration: 10 + Math.random() * 10, repeat: Infinity, delay: i * 2 }}
+     |                                        ^^^^^^^^^^^^^ Cannot call impure function
+  51 |         />
+  52 |       ))}
+  53 |     react-hooks/purity
+  58:18  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\ExperiencePlatforms\page.tsx:58:18
+  56 |         <motion.circle
+  57 |           key={`node-${i}`}
+> 58 |           cx={`${Math.random() * 100}%`}
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  59 |           cy={`${Math.random() * 100}%`}
+  60 |           r="1.5"
+  61 |           fill="#2563eb"                                             react-hooks/purity
+  59:18  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\ExperiencePlatforms\page.tsx:59:18
+  57 |           key={`node-${i}`}
+  58 |           cx={`${Math.random() * 100}%`}
+> 59 |           cy={`${Math.random() * 100}%`}
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  60 |           r="1.5"
+  61 |           fill="#2563eb"
+  62 |           initial={{ opacity: 0.1 }}                               react-hooks/purity
+  68:27  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\ExperiencePlatforms\page.tsx:68:27
+  66 |           }}
+  67 |           transition={{
+> 68 |             duration: 5 + Math.random() * 5,
+     |                           ^^^^^^^^^^^^^ Cannot call impure function
+  69 |             repeat: Infinity,
+  70 |             delay: Math.random() * 5
+  71 |           }}                                                  react-hooks/purity
+  70:20  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\ExperiencePlatforms\page.tsx:70:20
+  68 |             duration: 5 + Math.random() * 5,
+  69 |             repeat: Infinity,
+> 70 |             delay: Math.random() * 5
+     |                    ^^^^^^^^^^^^^ Cannot call impure function
+  71 |           }}
+  72 |         />
+  73 |       ))}                                                                         react-hooks/purity
+
+D:\finelabs\finelabswebsite\src\components\Services\IoTAndEdge\index.tsx
+  27:37  warning  '_' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+  27:40  warning  'i' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+  28:8   error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\IoTAndEdge\index.tsx:28:8
+  26 | const EdgeMesh = () => {
+  27 |   const nodes = [...Array(12)].map((_, i) => ({
+> 28 |     x: Math.random() * 100,
+     |        ^^^^^^^^^^^^^ Cannot call impure function
+  29 |     y: Math.random() * 100,
+  30 |     size: Math.random() * 4 + 2,
+  31 |     delay: Math.random() * 5  react-hooks/purity
+  29:8   error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\IoTAndEdge\index.tsx:29:8
+  27 |   const nodes = [...Array(12)].map((_, i) => ({
+  28 |     x: Math.random() * 100,
+> 29 |     y: Math.random() * 100,
+     |        ^^^^^^^^^^^^^ Cannot call impure function
+  30 |     size: Math.random() * 4 + 2,
+  31 |     delay: Math.random() * 5
+  32 |   }));                    react-hooks/purity
+  30:11  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\IoTAndEdge\index.tsx:30:11
+  28 |     x: Math.random() * 100,
+  29 |     y: Math.random() * 100,
+> 30 |     size: Math.random() * 4 + 2,
+     |           ^^^^^^^^^^^^^ Cannot call impure function
+  31 |     delay: Math.random() * 5
+  32 |   }));
+  33 |                                                                react-hooks/purity
+  31:12  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\IoTAndEdge\index.tsx:31:12
+  29 |     y: Math.random() * 100,
+  30 |     size: Math.random() * 4 + 2,
+> 31 |     delay: Math.random() * 5
+     |            ^^^^^^^^^^^^^ Cannot call impure function
+  32 |   }));
+  33 |
+  34 |   return (                                                                                react-hooks/purity
+
+D:\finelabs\finelabswebsite\src\components\Services\ProductEngineering\index.tsx
+   6:3  warning  'Settings' is defined but never used    @typescript-eslint/no-unused-vars
+  11:3  warning  'ArrowRight' is defined but never used  @typescript-eslint/no-unused-vars
+  12:3  warning  'Minimize2' is defined but never used   @typescript-eslint/no-unused-vars
+  13:3  warning  'Maximize2' is defined but never used   @typescript-eslint/no-unused-vars
+
+D:\finelabs\finelabswebsite\src\components\Services\Salesforce\index.tsx
+  36:18  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\Salesforce\index.tsx:36:18
+  34 |         <motion.circle
+  35 |           key={i}
+> 36 |           cx={`${Math.random() * 100}%`}
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  37 |           cy={`${Math.random() * 100}%`}
+  38 |           r={Math.random() * 1 + 0.5}
+  39 |           fill="#00a1e0"                                                                                                   react-hooks/purity
+  37:18  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\Salesforce\index.tsx:37:18
+  35 |           key={i}
+  36 |           cx={`${Math.random() * 100}%`}
+> 37 |           cy={`${Math.random() * 100}%`}
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  38 |           r={Math.random() * 1 + 0.5}
+  39 |           fill="#00a1e0"
+  40 |           animate={{ opacity: [0.1, 0.5, 0.1] }}                                                                         react-hooks/purity
+  38:14  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\Salesforce\index.tsx:38:14
+  36 |           cx={`${Math.random() * 100}%`}
+  37 |           cy={`${Math.random() * 100}%`}
+> 38 |           r={Math.random() * 1 + 0.5}
+     |              ^^^^^^^^^^^^^ Cannot call impure function
+  39 |           fill="#00a1e0"
+  40 |           animate={{ opacity: [0.1, 0.5, 0.1] }}
+  41 |           transition={{ duration: 3 + Math.random() * 4, repeat: Infinity, delay: i * 0.2 }}  react-hooks/purity
+  41:39  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\finelabs\finelabswebsite\src\components\Services\Salesforce\index.tsx:41:39
+  39 |           fill="#00a1e0"
+  40 |           animate={{ opacity: [0.1, 0.5, 0.1] }}
+> 41 |           transition={{ duration: 3 + Math.random() * 4, repeat: Infinity, delay: i * 0.2 }}
+     |                                       ^^^^^^^^^^^^^ Cannot call impure function
+  42 |         />
+  43 |       ))}
+  44 |     </svg>                                                                 react-hooks/purity
+
+Γ£û 60 problems (37 errors, 23 warnings)
+

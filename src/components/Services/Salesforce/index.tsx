@@ -24,26 +24,35 @@ import {
  * "Cloud Nebula" Background
  * Soft drifting data points and pulsing gradients.
  */
-const CloudNebula = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-    <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-[#00a1e0] opacity-10 blur-[100px] animate-pulse" />
-    <div className="absolute bottom-[20%] left-[10%] w-[300px] h-[300px] bg-blue-300 opacity-5 blur-[80px]" />
+const CloudNebula = () => {
+  const points = React.useMemo(() => [...Array(20)].map((_, i) => ({
+    cx: `${Math.random() * 100}%`,
+    cy: `${Math.random() * 100}%`,
+    r: Math.random() * 1 + 0.5,
+    duration: 3 + Math.random() * 4
+  })), []);
 
-    <svg className="w-full h-full">
-      {[...Array(20)].map((_, i) => (
-        <motion.circle
-          key={i}
-          cx={`${Math.random() * 100}%`}
-          cy={`${Math.random() * 100}%`}
-          r={Math.random() * 1 + 0.5}
-          fill="#00a1e0"
-          animate={{ opacity: [0.1, 0.5, 0.1] }}
-          transition={{ duration: 3 + Math.random() * 4, repeat: Infinity, delay: i * 0.2 }}
-        />
-      ))}
-    </svg>
-  </div>
-);
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+      <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-[#00a1e0] opacity-10 blur-[100px] animate-pulse" />
+      <div className="absolute bottom-[20%] left-[10%] w-[300px] h-[300px] bg-blue-300 opacity-5 blur-[80px]" />
+
+      <svg className="w-full h-full">
+        {points.map((point, i) => (
+          <motion.circle
+            key={i}
+            cx={point.cx}
+            cy={point.cy}
+            r={point.r}
+            fill="#00a1e0"
+            animate={{ opacity: [0.1, 0.5, 0.1] }}
+            transition={{ duration: point.duration, repeat: Infinity, delay: i * 0.2 }}
+          />
+        ))}
+      </svg>
+    </div>
+  );
+};
 
 /**
  * Connect Reveal Hero

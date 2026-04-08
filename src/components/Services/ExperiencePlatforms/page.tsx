@@ -25,55 +25,72 @@ import {
  * "Connection Mesh" Background
  * Interconnected drifting nodes representing platform connectivity.
  */
-const ConnectionMesh = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#2563eb" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#2563eb" stopOpacity="0" />
-        </radialGradient>
-      </defs>
+const ConnectionMesh = () => {
+  const lines = React.useMemo(() => [...Array(12)].map((_, i) => ({
+    x1: `${Math.random() * 100}%`,
+    y1: `${Math.random() * 100}%`,
+    x2: `${Math.random() * 100}%`,
+    y2: `${Math.random() * 100}%`,
+    duration: 10 + Math.random() * 10
+  })), []);
 
-      {/* Drifting Connection Lines */}
-      {[...Array(12)].map((_, i) => (
-        <motion.line
-          key={`line-${i}`}
-          x1={`${Math.random() * 100}%`}
-          y1={`${Math.random() * 100}%`}
-          x2={`${Math.random() * 100}%`}
-          y2={`${Math.random() * 100}%`}
-          stroke="#2563eb"
-          strokeWidth="0.5"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 0.2, 0] }}
-          transition={{ duration: 10 + Math.random() * 10, repeat: Infinity, delay: i * 2 }}
-        />
-      ))}
+  const nodes = React.useMemo(() => [...Array(20)].map((_, i) => ({
+    cx: `${Math.random() * 100}%`,
+    cy: `${Math.random() * 100}%`,
+    duration: 5 + Math.random() * 5,
+    delay: Math.random() * 5
+  })), []);
 
-      {/* Floating Nodes */}
-      {[...Array(20)].map((_, i) => (
-        <motion.circle
-          key={`node-${i}`}
-          cx={`${Math.random() * 100}%`}
-          cy={`${Math.random() * 100}%`}
-          r="1.5"
-          fill="#2563eb"
-          initial={{ opacity: 0.1 }}
-          animate={{
-            opacity: [0.1, 0.4, 0.1],
-            y: [0, -20, 0]
-          }}
-          transition={{
-            duration: 5 + Math.random() * 5,
-            repeat: Infinity,
-            delay: Math.random() * 5
-          }}
-        />
-      ))}
-    </svg>
-  </div>
-);
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+      <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#2563eb" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#2563eb" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        {/* Drifting Connection Lines */}
+        {lines.map((line, i) => (
+          <motion.line
+            key={`line-${i}`}
+            x1={line.x1}
+            y1={line.y1}
+            x2={line.x2}
+            y2={line.y2}
+            stroke="#2563eb"
+            strokeWidth="0.5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.2, 0] }}
+            transition={{ duration: line.duration, repeat: Infinity, delay: i * 2 }}
+          />
+        ))}
+
+        {/* Floating Nodes */}
+        {nodes.map((node, i) => (
+          <motion.circle
+            key={`node-${i}`}
+            cx={node.cx}
+            cy={node.cy}
+            r="1.5"
+            fill="#2563eb"
+            initial={{ opacity: 0.1 }}
+            animate={{
+              opacity: [0.1, 0.4, 0.1],
+              y: [0, -20, 0]
+            }}
+            transition={{
+              duration: node.duration,
+              repeat: Infinity,
+              delay: node.delay
+            }}
+          />
+        ))}
+      </svg>
+    </div>
+  );
+};
 
 /**
  * Glassy Interface Synthesis Reveal for Hero

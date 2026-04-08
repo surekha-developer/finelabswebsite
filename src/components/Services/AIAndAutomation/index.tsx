@@ -3,17 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Bot,
-  Cpu,
   Brain,
   Zap,
   MessageSquare,
   Search,
-  FileText,
   Workflow,
   ArrowRight,
   TrendingUp,
-  Settings,
   Sparkles,
   Database
 } from "lucide-react";
@@ -27,6 +23,19 @@ import {
  * Organic nodes that grow and connect in the background.
  */
 const NeuralPulse = () => {
+  const paths = React.useMemo(() => [...Array(8)].map((_, i) => ({
+    d: `M ${20 + i * 10} 0 Q ${50 + i * 5} 50 ${Math.random() * 100} 100`,
+    duration: 10 + Math.random() * 5
+  })), []);
+
+  const nodes = React.useMemo(() => [...Array(15)].map((_, i) => ({
+    cx: `${Math.random() * 100}%`,
+    cy: `${Math.random() * 100}%`,
+    r: 1.5 + Math.random() * 2,
+    duration: 4 + Math.random() * 6,
+    delay: Math.random() * 5
+  })), []);
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
       <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -41,27 +50,27 @@ const NeuralPulse = () => {
         </defs>
 
         {/* Connection paths */}
-        {[...Array(8)].map((_, i) => (
+        {paths.map((path, i) => (
           <motion.path
             key={`path-${i}`}
-            d={`M ${20 + i * 10} 0 Q ${50 + i * 5} 50 ${Math.random() * 100} 100`}
+            d={path.d}
             fill="none"
             stroke="#6366f1"
             strokeWidth="0.5"
             strokeOpacity="0.3"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 0.3 }}
-            transition={{ duration: 10 + Math.random() * 5, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: path.duration, repeat: Infinity, ease: "linear" }}
           />
         ))}
 
         {/* Pulsing Neural Nodes */}
-        {[...Array(15)].map((_, i) => (
+        {nodes.map((node, i) => (
           <motion.circle
             key={`node-${i}`}
-            cx={`${Math.random() * 100}%`}
-            cy={`${Math.random() * 100}%`}
-            r={1.5 + Math.random() * 2}
+            cx={node.cx}
+            cy={node.cy}
+            r={node.r}
             fill="#4f46e5"
             initial={{ opacity: 0.1, scale: 0.8 }}
             animate={{
@@ -70,9 +79,9 @@ const NeuralPulse = () => {
               filter: ["none", "url(#glow)", "none"]
             }}
             transition={{
-              duration: 4 + Math.random() * 6,
+              duration: node.duration,
               repeat: Infinity,
-              delay: Math.random() * 5
+              delay: node.delay
             }}
           />
         ))}
@@ -84,33 +93,41 @@ const NeuralPulse = () => {
 /**
  * Simulated Data Stream / Binary Reveal for Hero
  */
-const DataReveal = ({ active }: { active: boolean }) => (
-  <AnimatePresence>
-    {!active && (
-      <motion.div
-        className="absolute inset-0 z-50 bg-background flex flex-wrap items-center justify-center gap-1 overflow-hidden pointer-events-none"
-        exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}
-      >
-        {[...Array(200)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: [0, 0.7, 0], y: [0, 150, 0] }}
-            transition={{
-              duration: 2.5 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2
-            }}
-            className="text-[13px] font-mono text-indigo-600 dark:text-indigo-400 font-bold"
-          >
-            {Math.round(Math.random())}
-          </motion.div>
-        ))}
-      </motion.div>
-    )}
-  </AnimatePresence>
-);
+const DataReveal = ({ active }: { active: boolean }) => {
+  const particles = React.useMemo(() => [...Array(200)].map((_, i) => ({
+    duration: 2.5 + Math.random() * 2,
+    delay: Math.random() * 2,
+    value: Math.round(Math.random())
+  })), []);
+
+  return (
+    <AnimatePresence>
+      {!active && (
+        <motion.div
+          className="absolute inset-0 z-50 bg-background flex flex-wrap items-center justify-center gap-1 overflow-hidden pointer-events-none"
+          exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+        >
+          {particles.map((particle, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: [0, 0.7, 0], y: [0, 150, 0] }}
+              transition={{
+                duration: particle.duration,
+                repeat: Infinity,
+                delay: particle.delay
+              }}
+              className="text-[13px] font-mono text-indigo-600 dark:text-indigo-400 font-bold"
+            >
+              {particle.value}
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
 
 export default function AIAndAutomation() {
   const [isSynthesized, setIsSynthesized] = useState(false);

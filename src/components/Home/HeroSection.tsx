@@ -50,31 +50,28 @@ export default function HeroSection() {
     <section className="w-full bg-background min-h-[83vh] pt-10 pb-0 flex flex-col justify-between overflow-hidden relative">
 
       {/* TOP: Enterprise Line & Animated Text */}
-      <div className="w-full max-w-[1600px] mx-auto px-6 mt-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 md:gap-4">
-        <p className="text-[10px] md:text-xs font-semibold tracking-[0.25em] text-blue-600 animate-in fade-in slide-in-from-top-4 duration-700 whitespace-nowrap">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 mt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4">
+        <p className="text-xs font-semibold tracking-[0.25em] text-blue-600 animate-in fade-in slide-in-from-top-4 duration-700 dark:text-blue-400">
           ENTERPRISE-GRADE TRANSFORMATION
         </p>
-        <div className="flex items-center gap-3 pl-4 md:pl-0 animate-in fade-in slide-in-from-top-4 duration-700">
-          <div className="w-5 h-[1.5px] bg-blue-300" /> {/* Small divider visible on all screens */}
-          <p className={`text-sm md:text-sm lg:text-lg font-bold text-blue-600 transition-opacity duration-500 ease-in-out ${fade ? "opacity-100" : "opacity-0"} text-left md:text-right`}>
-            {phrases[phraseIndex]}
-          </p>
-        </div>
+        <p className={`text-base sm:text-lg md:text-2xl font-bold text-foreground animate-in fade-in slide-in-from-top-4 duration-700 transition-opacity duration-500 ease-in-out ${fade ? "opacity-100" : "opacity-0"}`}>
+          {phrases[phraseIndex]}
+        </p>
       </div>
 
       {/* CENTER: The Animated Expanding "WILD" Layout */}
       <div className="w-full max-w-[1600px] mx-auto px-6 flex flex-col items-center justify-center flex-1 my-8 z-10">
 
-        {/* DESKTOP INLINE LAYOUT (Switches at XL) */}
-        <div className="hidden xl:flex flex-row items-center justify-center w-full relative">
-          <h1 className="text-7xl lg:text-[100px] xl:text-[120px] font-bold tracking-tighter text-slate-900 leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
+        {/* DESKTOP INLINE LAYOUT (Matches reference image) */}
+        <div className="hidden md:flex flex-row items-center justify-center w-full relative overflow-x-hidden">
+          <h1 className="text-6xl md:text-[clamp(3.5rem,7vw,120px)] font-bold tracking-tighter text-foreground leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
             DIGITAL
           </h1>
 
           {/* Expanding Animated Centered Pill Container */}
           <div className="relative flex items-center justify-center">
             <div
-              className={`transition-[width,margin,opacity] duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden relative shadow-2xl shadow-blue-500/10 bg-card ring-1 ring-border flex-shrink-0 h-[100px] lg:h-[140px] xl:h-[180px] rounded-[9999px] ${isExpanded ? "w-[30vw] max-w-[600px] mx-6 lg:mx-8 opacity-100" : "w-0 mx-0 opacity-0"
+              className={`transition-[width,margin,opacity] duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden relative shadow-2xl shadow-blue-500/10 bg-card ring-1 ring-border flex-shrink-0 h-[100px] lg:h-[140px] xl:h-[180px] rounded-[9999px] ${isExpanded ? "w-[25vw] max-w-[600px] mx-6 lg:mx-8 opacity-100" : "w-0 mx-0 opacity-0"
                 }`}
             >
               {/* First Image */}
@@ -101,19 +98,19 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <h1 className="text-6xl md:text-7xl lg:text-[100px] xl:text-[120px] font-bold tracking-tighter text-foreground leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
+          <h1 className="text-6xl md:text-[clamp(3.5rem,7vw,120px)] font-bold tracking-tighter text-foreground leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
             FUTURES
           </h1>
         </div>
 
-        {/* MOBILE & TABLET STACKED LAYOUT (Stacked below XL) */}
-        <div className="flex xl:hidden flex-col items-center justify-center w-full">
-          <h1 className="text-[14vw] md:text-[12vw] xl:text-[10vw] font-bold tracking-tighter text-slate-900 leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
+        {/* MOBILE STACKED LAYOUT */}
+        <div className="flex md:hidden flex-col items-center justify-center w-full">
+          <h1 className="text-[13vw] font-bold tracking-tighter text-foreground leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
             DIGITAL
           </h1>
 
           <div
-            className={`transition-[height,margin,opacity] duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] w-[85vw] max-w-[800px] rounded-[9999px] overflow-hidden relative shadow-2xl shadow-indigo-500/10 bg-white ring-1 ring-black/5 flex-shrink-0 ${isExpanded ? "h-[160px] sm:h-[220px] md:h-[280px] my-6 opacity-100" : "h-0 my-0 opacity-0"
+            className={`transition-[height,margin,opacity] duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] w-[90vw] rounded-[9999px] overflow-hidden relative shadow-2xl shadow-blue-500/10 bg-card ring-1 ring-border flex-shrink-0 ${isExpanded ? "h-[180px] my-10 opacity-100" : "h-0 my-0 opacity-0"
               }`}
           >
             <Image
@@ -137,23 +134,23 @@ export default function HeroSection() {
             <div className="absolute inset-0 rounded-[9999px] ring-1 ring-inset ring-foreground/10 z-10 pointer-events-none" />
           </div>
 
-          <h1 className="text-[14vw] md:text-[12vw] xl:text-[10vw] font-bold tracking-tighter text-slate-900 leading-none animate-in fade-in slide-in-from-top-6 duration-1000 fill-mode-both">
+          <h1 className="text-[13vw] font-bold tracking-tighter text-foreground leading-none animate-in fade-in slide-in-from-top-6 duration-1000 fill-mode-both">
             FUTURES
           </h1>
         </div>
 
-        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[60px] font-bold tracking-tight text-slate-900 mt-8 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-300 fill-mode-both">
-          built with <span className="text-blue-600">precision.</span>
+        <h2 className="text-4xl md:text-5xl lg:text-[60px] font-bold tracking-tight text-foreground mt-8 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-300 fill-mode-both text-center">
+          built with <span className="text-blue-600 dark:text-blue-400">precision.</span>
         </h2>
       </div>
 
       {/* BOTTOM ACTION BAR: Text Left, Line Middle, Buttons Right */}
-      <div className="w-full max-w-[1600px] mx-auto px-6 mb-8 z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between w-full h-full gap-8 md:gap-0">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 mb-6 sm:mb-8 z-10">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full gap-6 md:gap-0">
 
           {/* Bottom Left Text */}
-          <div className="w-full md:w-[35%] text-center md:text-left flex flex-col items-center md:items-start">
-            <p className="text-gray-500 text-[15px] md:text-base leading-relaxed md:w-[280px] max-w-2xl animate-in fade-in slide-in-from-left-6 duration-700 delay-500 fill-mode-both">
+          <div className="w-full md:w-[35%] text-center md:text-left">
+            <p className="text-muted-foreground text-sm sm:text-[15px] leading-relaxed max-w-[280px] mx-auto md:mx-0 animate-in fade-in slide-in-from-left-6 duration-700 delay-500 fill-mode-both">
               Purpose-built for enterprise digital transformation. Where AI advantage meets lab-grade agility.
             </p>
           </div>
@@ -162,11 +159,11 @@ export default function HeroSection() {
           <div className="hidden md:block flex-1 mx-8 border-t border-border opacity-60 animate-in fade-in duration-1000 delay-700 fill-mode-both" />
 
           {/* Bottom Right Buttons */}
-          <div className="flex flex-row items-center justify-center gap-4 md:w-auto animate-in fade-in slide-in-from-right-6 duration-700 delay-700 fill-mode-both">
-            <Button className="rounded-full px-5 sm:px-8 py-6 bg-slate-900 hover:bg-slate-800 text-white text-[13px] sm:text-sm shadow-xl shadow-slate-900/20 whitespace-nowrap">
+          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 md:w-auto animate-in fade-in slide-in-from-right-6 duration-700 delay-700 fill-mode-both">
+            <Button className="rounded-full px-6 sm:px-8 py-5 sm:py-6 bg-primary text-primary-foreground hover:bg-primary/90 text-sm shadow-xl shadow-primary/20">
               Explore Services →
             </Button>
-            <Button variant="outline" className="rounded-full px-5 sm:px-8 py-6 text-[13px] sm:text-sm border-gray-300 hover:bg-gray-50 text-gray-900 whitespace-nowrap">
+            <Button variant="outline" className="rounded-full px-6 sm:px-8 py-5 sm:py-6 text-sm border-border hover:bg-muted text-foreground">
               Our Story
             </Button>
           </div>

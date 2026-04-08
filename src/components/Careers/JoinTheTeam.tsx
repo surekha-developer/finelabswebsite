@@ -54,7 +54,7 @@ export default function JoinTheTeam() {
             </h1>
 
             <p className="mt-6 lg:mt-8 text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed transition-colors">
-              We're looking for curious, driven people who want to solve complex problems at enterprise scale.
+              We&apos;re looking for curious, driven people who want to solve complex problems at enterprise scale.
             </p>
           </motion.div>
 

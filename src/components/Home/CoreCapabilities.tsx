@@ -37,26 +37,26 @@ const services = [
 
 export default function CoreCapabilities() {
   return (
-    <section className="w-full relative py-20 px-4 sm:px-0 pt-0 pb-0 overflow-hidden bg-white">
+    <section className="w-full relative py-12 sm:py-16 px-4 sm:px-6 pt-16 sm:pt-24 lg:pt-32 pb-16 sm:pb-24 overflow-hidden bg-background px-4 sm:px-6">
 
       {/* GRADIENT BACKGROUND */}
       <div
         className="absolute top-0 left-0 w-full h-[800px] z-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 160% 120% at 50% -10%, #ffffffff 39%, #8c35ff 58%, #2b6eff 65%, #ffffff 80%)'
+          background: 'var(--section-gradient)'
         }}
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
 
         {/* TITLE */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-4 lg:mb-4 gap-0 md:gap-2 pt-10">
-          <div className="flex flex-col items-start">
-            <p className="text-[10px] md:text-xs font-semibold tracking-[0.25em] text-blue-600 mb-2 mt-10 md:mb-4 uppercase">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-14 sm:mb-20 lg:mb-32 gap-6 lg:gap-0">
+          <div>
+            <p className="text-xs font-semibold tracking-[0.25em] text-blue-600 dark:text-blue-400 mb-4 uppercase drop-shadow-lg">
               CORE CAPABILITIES
             </p>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-black leading-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground drop-shadow-lg">
               What we{" "}
               <span className="bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
                 deliver.
@@ -64,38 +64,38 @@ export default function CoreCapabilities() {
             </h2>
           </div>
 
-          <button className="w-fit flex-shrink-0 border border-black/50 bg-black/5 backdrop-blur-sm text-black rounded-full px-6 md:px-8 py-3 md:py-4 text-xs md:text-sm font-medium hover:bg-black/10 hover:border-black transition whitespace-nowrap mb-1">
+          <button className="mt-8 lg:mt-0 border border-border bg-secondary/50 backdrop-blur-sm text-foreground rounded-full px-8 py-4 text-sm font-medium hover:bg-secondary transition shadow-lg">
             All services →
           </button>
         </div>
 
         {/* GRID */}
-        <div className="grid my-10 md:grid-cols-2 lg:grid-cols-3 bg-white/40 backdrop-blur-xl border-none rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-gray-200/50">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 bg-card/40 backdrop-blur-xl border border-border shadow-2xl overflow-hidden rounded-[2rem]">
           {services.map((item, index) => (
             <Card
               key={index}
-              className="group border-r border-b border-gray-100/30 bg-white/90 rounded-none shadow-none relative transition-all duration-500 hover:bg-white"
+              className="group border-r border-b border-border/50 bg-card/80 dark:bg-card/30 rounded-none shadow-none relative transition-all duration-300 hover:bg-card/100 dark:hover:bg-card/50 hover:shadow-xl hover:-translate-y-1"
             >
               {/* BLUE LOADER LINE */}
-              <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-500 ease-out group-hover:w-full" />
+              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-500 group-hover:w-full" />
 
-              <CardContent className="p-6">
+              <CardContent className="p-8">
                 {/* ICON */}
-                <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-xl mb-6">
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-xl mb-6">
                   {item.icon}
                 </div>
 
                 {/* TITLE */}
-                <h3 className="text-lg font-semibold mb-3">{item.title}</h3>
+                <h3 className="text-xl font-bold mb-3 text-foreground">{item.title}</h3>
 
                 {/* DESCRIPTION */}
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-8">
                   {item.desc}
                 </p>
 
                 {/* LINK */}
-                <span className="text-sm text-gray-400 group-hover:text-blue-500 transition">
-                  Explore ↗
+                <span className="text-sm font-medium text-muted-foreground group-hover:text-blue-500 dark:group-hover:text-blue-400 transition flex items-center gap-1">
+                  Explore <span className="translate-y-px">↗</span>
                 </span>
               </CardContent>
             </Card>
