@@ -6,10 +6,10 @@ export default function Footer() {
     <footer className="w-full bg-secondary/30 border-t border-border px-4 sm:px-6 py-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* TOP GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
 
           {/* LEFT TEXT */}
-          <div>
+          <div className="md:col-span-1 lg:col-span-4">
             <Link href="/" className="flex items-center gap-1 group">
               {/* Logo for Light Mode */}
               <Image
@@ -48,8 +48,8 @@ export default function Footer() {
           </div>
 
           {/* COMPANY */}
-          <div>
-            <h4 className="text-xs font-semibold tracking-widest text-muted-foreground mb-6 uppercase">
+          <div className="md:col-span-1 lg:col-span-2">
+            <h4 className="text-xs font-bold tracking-widest text-foreground mb-6 uppercase">
               COMPANY
             </h4>
 
@@ -70,33 +70,53 @@ export default function Footer() {
           </div>
 
           {/* SERVICES */}
-          <div>
-            <h4 className="text-xs font-semibold tracking-widest text-muted-foreground mb-6 uppercase">
+          <div className="md:col-span-1 lg:col-span-4">
+            <h4 className="text-xs font-bold tracking-widest text-foreground mb-6 uppercase">
               SERVICES
             </h4>
 
-            <ul className="space-y-4 text-sm text-muted-foreground">
-              <li>
-                <Link href="/services/cloud" className="hover:text-foreground transition-colors block">Cloud</Link>
-              </li>
-              <li>
-                <Link href="/services/cyber-security" className="hover:text-foreground transition-colors block">Cyber Security</Link>
-              </li>
-              <li>
-                <Link href="/services/experience-platforms" className="hover:text-foreground transition-colors block">Experience Platforms</Link>
-              </li>
-              <li>
-                <Link href="/services/product-engineering" className="hover:text-foreground transition-colors block">Product Engineering</Link>
-              </li>
-              <li>
-                <Link href="/services/data-and-analytics" className="hover:text-foreground transition-colors block">Data & AI</Link>
-              </li>
-            </ul>
+            <div className="grid grid-cols-2 gap-x-4">
+              <ul className="space-y-4 text-sm text-muted-foreground">
+                <li>
+                  <Link href="/services/cloud" className="hover:text-foreground transition-colors block">Cloud</Link>
+                </li>
+                <li>
+                  <Link href="/services/cyber-security" className="hover:text-foreground transition-colors block leading-tight">Cyber Security</Link>
+                </li>
+                <li>
+                  <Link href="/services/experience-platforms" className="hover:text-foreground transition-colors block leading-tight">Experience Platforms</Link>
+                </li>
+                <li>
+                  <Link href="/services/supply-chain" className="hover:text-foreground transition-colors block leading-tight">Supply Chain</Link>
+                </li>
+                <li>
+                  <Link href="/services/sap" className="hover:text-foreground transition-colors block">SAP</Link>
+                </li>
+              </ul>
+              
+              <ul className="space-y-4 text-sm text-muted-foreground">
+                <li>
+                  <Link href="/services/salesforce" className="hover:text-foreground transition-colors block">Salesforce</Link>
+                </li>
+                <li>
+                  <Link href="/services/product-engineering" className="hover:text-foreground transition-colors block leading-tight">Product Engineering</Link>
+                </li>
+                <li>
+                  <Link href="/services/iot-and-edge" className="hover:text-foreground transition-colors block leading-tight">IoT & Edge</Link>
+                </li>
+                <li>
+                  <Link href="/services/ai-and-automation" className="hover:text-foreground transition-colors block leading-tight">AI & Automation</Link>
+                </li>
+                <li>
+                  <Link href="/services/data-and-analytics" className="hover:text-foreground transition-colors block leading-tight">Data & Analytics</Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* CONTACT */}
-          <div>
-            <h4 className="text-xs font-semibold tracking-widest text-muted-foreground mb-6 uppercase">
+          <div className="md:col-span-1 lg:col-span-2">
+            <h4 className="text-xs font-bold tracking-widest text-foreground mb-6 uppercase">
               CONTACT
             </h4>
 

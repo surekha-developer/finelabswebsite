@@ -245,9 +245,9 @@ export default function AIAndAutomation() {
                   <div className="w-16 h-16 bg-background border border-border rounded-2xl flex items-center justify-center text-indigo-500 group-hover:scale-110 group-hover:text-indigo-400 transition-all duration-500">
                     {module.icon}
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {module.details.map(d => (
-                      <span key={d} className="px-3 py-1 bg-secondary border border-border rounded-full text-[10px] font-bold text-muted-foreground uppercase tracking-tighter">
+                      <span key={d} className="px-3 py-1 bg-secondary border border-border rounded-full text-[10px] font-bold text-muted-foreground uppercase tracking-tighter whitespace-nowrap">
                         {d}
                       </span>
                     ))}
