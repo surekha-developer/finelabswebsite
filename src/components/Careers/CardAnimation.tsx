@@ -64,7 +64,7 @@ export default function CardAnimation() {
   ];
 
   return (
-    <section className="relative w-full bg-white pt-16 pb-10 md:pt-1 border-none border-gray-100 overflow-hidden">
+    <section className="relative w-full bg-background pt-16 pb-10 md:pt-1 border-none border-border overflow-hidden transition-colors duration-300">
 
       <div className="max-w-7xl mx-auto w-full px-6 lg:px-8 relative z-10">
         <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden">
@@ -72,39 +72,45 @@ export default function CardAnimation() {
             <Card
               key={idx}
               className={cn(
-                "group border-none rounded-none shadow-none relative transition-all duration-300 hover:bg-gray-50 overflow-hidden",
+                "group border-0 border-r border-b border-border/50 rounded-none shadow-none relative transition-all duration-500 hover:bg-muted/50 overflow-hidden bg-card/50 dark:bg-card/20",
+                // Remove right border for the last column on different breakpoints
+                "lg:[&:nth-child(3n)]:border-r-0 md:[&:nth-child(2n)]:border-r-0 max-md:border-r-0",
+                // Remove bottom border for the last row on different breakpoints
+                "lg:[&:nth-last-child(-n+3)]:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 max-md:last:border-b-0",
                 isVisible
                   ? "animate-in fade-in slide-in-from-left-20 slide-in-from-bottom-20 duration-1000 fill-mode-both"
                   : "opacity-0"
               )}
               style={{
-                animationDelay: isVisible ? `${idx * 100}ms` : '0ms'
+                animationDelay: isVisible ? `${idx * 150}ms` : '0ms'
               }}
             >
-              <CardContent className="p-10 relative z-30 transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-xl mb-6">
+              <CardContent className="p-10 sm:p-14 relative z-30 transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center text-2xl mb-8 shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-semibold mb-3 text-slate-900 group-hover:text-black">
+                <h3 className="text-xl sm:text-2xl font-bold mb-4 text-foreground group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-900">
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed group-hover:text-foreground transition-colors duration-300">
                   {feature.desc}
                 </p>
               </CardContent>
 
               {/* Hover Image Overlay */}
               <div
-                className="absolute inset-0 z-20 opacity-0 scale-0 -rotate-45 origin-bottom-left transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0 flex items-center justify-center p-6 pointer-events-none"
+                className="absolute inset-0 z-20 opacity-0 scale-0 -rotate-45 origin-bottom-left transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0 flex items-center justify-center p-6 pointer-events-none"
               >
-                {/* Soft overlay to ensure text remains highly readable */}
-                <div className="absolute inset-0 bg-white/60 z-10" />
-                <Image
-                  src={feature.image}
-                  alt={feature.title}
-                  fill
-                  className="object-contain p-4 z-0"
-                />
+                {/* Theme-aware overlay to ensure text remains highly readable */}
+                <div className="absolute inset-0 bg-background/90 dark:bg-black/95 z-10" />
+                <div className="relative w-full h-full z-20 opacity-40 dark:opacity-20 flex items-center justify-center">
+                  <Image
+                    src={feature.image}
+                    alt={feature.title}
+                    fill
+                    className="object-contain p-8 z-0 grayscale"
+                  />
+                </div>
               </div>
             </Card>
           ))}

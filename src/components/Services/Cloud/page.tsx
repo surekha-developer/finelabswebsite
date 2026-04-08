@@ -40,11 +40,11 @@ const CloudFilter = () => (
         </feComponentTransfer>
       </filter>
       
-      {/* Internal volume gradient for 3D feel */}
+      {/* Internal volume gradient for 3D feel - Now Theme Aware */}
       <radialGradient id="cloudGradient" cx="50%" cy="40%" r="50%">
-        <stop offset="0%" stopColor="#ffffff" />
-        <stop offset="60%" stopColor="#f8faff" />
-        <stop offset="100%" stopColor="#e2ebf4" />
+        <stop offset="0%" style={{ stopColor: 'var(--cloud-start)' }} />
+        <stop offset="60%" style={{ stopColor: 'var(--cloud-mid)' }} />
+        <stop offset="100%" style={{ stopColor: 'var(--cloud-end)' }} />
       </radialGradient>
     </defs>
   </svg>
@@ -57,7 +57,7 @@ const RealisticCloud = ({
   rotate = 0, 
   delay = 0, 
   duration = 18, 
-  opacity = 1, // Let the filter handle opacity
+  opacity = 1, 
   animateOpacity = null 
 }: { 
   className?: string, 
@@ -109,17 +109,17 @@ export default function CloudService() {
   }, []);
 
   return (
-    <div className="w-full bg-white text-[#121926] overflow-hidden">
+    <div className="w-full bg-background text-foreground overflow-hidden transition-colors duration-500">
       <CloudFilter />
       
       {/* 1. HERO SECTION: CINEMATIC CLOUD BREAKTHROUGH */}
-      <section className="relative w-full px-6 pt-32 pb-16 sm:pt-40 sm:pb-24 overflow-hidden min-h-[85vh] flex items-center">
+      <section className="relative w-full px-4 sm:px-6 pt-24 pb-12 sm:pt-32 sm:pb-16 lg:pt-40 lg:pb-24 overflow-hidden min-h-[70vh] sm:min-h-[85vh] flex items-center">
 
-        {/* Deep sky-blue background with a slight dark storm-to-clear gradient */}
+        {/* Dynamic Sky Background */}
         <div
-          className="absolute inset-0 z-0 pointer-events-none"
+          className="absolute inset-0 z-0 pointer-events-none transition-colors duration-700"
           style={{
-            background: "linear-gradient(180deg, #93c5fd 0%, #bfdbfe 30%, #f0f8ff 70%, #ffffff 100%)",
+            background: "var(--sky-gradient)",
           }}
         />
 
@@ -130,7 +130,7 @@ export default function CloudService() {
            animate={revealed ? { opacity: 0.8, scale: 1.2 } : {}}
            transition={{ duration: 3 }}
            style={{
-             background: 'radial-gradient(circle at center, #ffffff 0%, #ffffff 20%, transparent 60%)',
+             background: 'radial-gradient(circle at center, var(--cloud-start) 0%, var(--cloud-mid) 20%, transparent 60%)',
              filter: 'blur(50px)'
            }}
         />
@@ -143,10 +143,10 @@ export default function CloudService() {
                initial={{ opacity: 0, scale: 0.8, y: 10 }}
                animate={revealed ? { opacity: 1, scale: 1, y: 0 } : {}}
                transition={{ duration: 1.2, delay: 0.6, ease: "easeOut" }}
-               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 backdrop-blur-md border border-white/60 mb-8 shadow-sm"
+               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/40 backdrop-blur-md border border-border/50 mb-8 shadow-sm"
             >
-              <Cloud className="w-4 h-4 text-blue-600" />
-              <span className="text-xs font-semibold text-blue-600 tracking-[0.2em] uppercase">
+              <Cloud className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span className="text-xs font-semibold text-blue-700 dark:text-blue-300 tracking-[0.2em] uppercase">
                 Cloud Practice
               </span>
             </motion.div>
@@ -156,10 +156,10 @@ export default function CloudService() {
               initial={{ opacity: 0, scale: 0.5, filter: "blur(20px)", letterSpacing: "-0.05em" }}
               animate={revealed ? { opacity: 1, scale: 1, filter: "blur(0px)", letterSpacing: "normal" } : {}}
               transition={{ duration: 2.2, delay: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
-              className="text-5xl sm:text-6xl md:text-[95px] font-extrabold tracking-tight mb-10 leading-[1.0] text-slate-900 drop-shadow-sm"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[95px] font-extrabold tracking-tight mb-8 sm:mb-10 leading-[1.0] text-foreground drop-shadow-sm"
             >
               Cloud{" "}
-              <span className="text-blue-500">
+              <span className="text-blue-600 dark:text-blue-400">
                 Strategy &amp;<br /> Transformation
               </span>
             </motion.h1>
@@ -169,7 +169,7 @@ export default function CloudService() {
               initial={{ opacity: 0, y: 20 }}
               animate={revealed ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
-              className="text-lg md:text-2xl text-gray-700 mb-12 leading-relaxed max-w-2xl font-medium tracking-tight"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 sm:mb-12 leading-relaxed max-w-2xl font-medium tracking-tight"
             >
               FineLabs&apos; Cloud practice supports organizations at every stage of
               their cloud journey — from strategy and migration through to
@@ -183,97 +183,37 @@ export default function CloudService() {
               transition={{ duration: 1, delay: 2 }}
               className="flex flex-wrap items-center justify-center sm:justify-start gap-4"
             >
-              <button className="px-10 py-5 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              <button className="px-10 py-5 bg-blue-600 dark:bg-blue-500 text-white font-bold rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                 Work with us
               </button>
-              <button className="px-10 py-5 bg-white text-slate-900 font-bold rounded-full border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 shadow-sm">
+              <button className="px-10 py-5 bg-card text-foreground font-bold rounded-full border border-border hover:border-blue-500/50 hover:bg-muted transition-all duration-300 shadow-sm">
                 Learn more
               </button>
             </motion.div>
           </div>
         </div>
 
-        {/* ============================================================
-            DENSE CINEMATIC CLOUD LAYERS (Fractal Texture)
-        ============================================================ */}
+        {/* DENSE CINEMATIC CLOUD LAYERS */}
         <div className="absolute inset-0 z-20 pointer-events-none">
-          
-          {/* 1. THE STORM (Dense foreground clusters with internal depth) */}
           <div className="absolute inset-0">
-             {/* Large left-top mass */}
              <div className="absolute top-[5%] left-[-15%] w-[70%] h-[80%] opacity-95">
                 <RealisticCloud scale={1.8} animateOpacity={revealed ? 0 : 1} duration={8} />
              </div>
-             
-             {/* Center-right mass that the text "splits" */}
              <div className="absolute top-[20%] right-[-10%] w-[65%] h-[70%] opacity-90">
                 <RealisticCloud scale={1.6} animateOpacity={revealed ? 0 : 0.95} delay={0.4} duration={10} />
              </div>
-
-             {/* Bottom filler clouds */}
              <div className="absolute bottom-[-10%] left-[10%] w-[80%] h-[40%] opacity-80">
                 <RealisticCloud scale={1.4} animateOpacity={revealed ? 0 : 0.9} delay={0.6} duration={12} />
              </div>
           </div>
-
-          {/* 2. PERSISTENT BACKGROUND ATMOSPHERE (Right-side focus) */}
-          <div className="absolute inset-x-0 inset-y-0 z-10 pointer-events-none">
-             {/* Drifting clouds on the right to fill the empty space */}
-             <RealisticCloud 
-                className="top-[15%] right-[-5%] w-[45%]" 
-                scale={1} 
-                opacity={0.35} 
-                duration={25} 
-                delay={2}
-             />
-             <RealisticCloud 
-                className="bottom-[20%] right-[10%] w-[35%]" 
-                scale={0.9} 
-                opacity={0.25} 
-                duration={30} 
-                delay={4}
-             />
-             <RealisticCloud 
-                className="top-[45%] right-[25%] w-[25%]" 
-                scale={0.7} 
-                opacity={0.15} 
-                duration={35} 
-                delay={6}
-             />
-          </div>
-
-          {/* 3. LIGHT BURST (Appears behind text as clouds clear) */}
-          <motion.div 
-            className="absolute inset-0 z-30 overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={revealed ? { opacity: [0, 0.6, 0] } : {}}
-            transition={{ duration: 3.5, delay: 0.6 }}
-          >
-             {/* God Rays / Light burst from center */}
-             <div 
-               className="w-full h-full"
-               style={{
-                 background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, transparent 60%), conic-gradient(from 180deg at 50% 50%, transparent 0deg, rgba(255,255,255,0.15) 15deg, transparent 30deg, transparent 330deg, rgba(255,255,255,0.15) 345deg, transparent 360deg)',
-                 filter: 'blur(20px)',
-                 transform: 'scale(2)'
-               }}
-             />
-          </motion.div>
-
-          {/* 4. ATMOSPHERIC HAZE */}
-          <motion.div 
-            className="absolute inset-0 bg-[#f0f8ff]/30 backdrop-blur-[12px]"
-            animate={revealed ? { opacity: 0, backdropFilter: "blur(0px)" } : { opacity: 1, backdropFilter: "blur(12px)" }}
-            transition={{ duration: 3, delay: 0.3 }}
-          />
         </div>
 
         {/* Soft bottom transition line */}
-        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-gray-200/50 z-10" />
+        <div className="max-w-7xl mx-auto absolute bottom-0 left-6 right-6 border-t border-border/50 z-10" />
       </section>
 
       {/* 2. PORTFOLIO SECTION: Capability Areas */}
-      <section className="bg-white py-20 sm:py-28">
+      <section className="bg-background py-20 sm:py-32 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6">
           
           {/* Section Header */}
@@ -284,10 +224,10 @@ export default function CloudService() {
             transition={{ duration: 0.7 }}
             className="mb-20"
           >
-            <p className="text-xs font-semibold tracking-[0.3em] text-blue-600 mb-4">
+            <p className="text-xs font-semibold tracking-[0.3em] text-blue-600 dark:text-blue-400 mb-4 uppercase">
               — PORTFOLIO
             </p>
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
               Six Interconnected <br /> Capability Areas
             </h2>
           </motion.div>
@@ -301,12 +241,8 @@ export default function CloudService() {
               hidden: {},
               visible: { transition: { staggerChildren: 0.1 } }
             }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative border-t border-gray-100"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative border-t border-border"
           >
-            <div className="hidden lg:block absolute top-0 bottom-0 left-1/3 w-px bg-gray-100 z-0" />
-            <div className="hidden lg:block absolute top-0 bottom-0 left-2/3 w-px bg-gray-100 z-0" />
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gray-100 z-0" />
-            
             {[
               { id: "01", title: "Consulting, Advisory & Strategy", desc: "Cloud First Business Strategy, Maturity Assessments, end-to-end Transformation initiatives, and governance frameworks.", icon: <Activity className="w-12 h-12 stroke-[1px]" /> },
               { id: "02", title: "Infrastructure Modernization", desc: "Cloud Foundation design, IaC, enterprise-wide Automation, Platform Migrations, and Site Reliability Engineering.", icon: <Network className="w-12 h-12 stroke-[1px]" /> },
@@ -321,18 +257,19 @@ export default function CloudService() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
                 }}
-                className={`group relative p-10 sm:p-14 hover:bg-gray-50/50 transition-colors z-10 border-b border-gray-100 lg:border-none`}
+                className={`group relative p-10 sm:p-14 hover:bg-muted/50 transition-all z-10 border-b border-r border-border/50`}
               >
                 <div className="flex justify-between items-start mb-8">
-                  <div className="text-4xl font-bold text-blue-400 group-hover:text-blue-500 transition-colors">{item.id}</div>
-                  <div className="text-blue-500 opacity-60 group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
+                  <div className="text-5xl font-black text-blue-600/10 dark:text-blue-400/10 group-hover:text-blue-500/20 transition-colors">{item.id}</div>
+                  <div className="text-blue-500 dark:text-blue-400 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">{item.icon}</div>
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-900 group-hover:text-blue-600 transition-colors h-auto lg:h-[60px]">
+                <h3 className="text-xl sm:text-2xl font-bold mb-5 text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 text-[15px] leading-relaxed">
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed group-hover:text-foreground transition-colors">
                   {item.desc}
                 </p>
+                <div className="absolute bottom-0 left-0 h-1 w-0 bg-blue-500 transition-all duration-500 group-hover:w-full" />
               </motion.div>
             ))}
           </motion.div>
@@ -340,15 +277,7 @@ export default function CloudService() {
       </section>
 
       {/* 3. PARTNERSHIPS SECTION: Modern Cloud Cards */}
-      <section className="bg-white py-20 sm:py-32 relative overflow-hidden border-t border-gray-100">
-        {/* Hexagon Background Graphics */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] opacity-5 pointer-events-none translate-x-1/2 -translate-y-1/2">
-          <Hexagon className="w-full h-full stroke-blue-900" strokeWidth={0.5} />
-        </div>
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] opacity-5 pointer-events-none -translate-x-1/2 translate-y-1/2 rotate-45">
-          <Hexagon className="w-full h-full stroke-indigo-900" strokeWidth={0.5} />
-        </div>
-
+      <section className="bg-background py-20 sm:py-32 relative overflow-hidden border-t border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div 
              initial={{ opacity: 0, y: 20 }}
@@ -357,10 +286,10 @@ export default function CloudService() {
              transition={{ duration: 0.7 }}
              className="mb-20"
           >
-            <p className="text-xs font-semibold tracking-[0.3em] text-blue-600 mb-4 uppercase">
+            <p className="text-xs font-semibold tracking-[0.3em] text-blue-600 dark:text-blue-400 mb-4 uppercase">
               — PARTNERSHIPS
             </p>
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
               Credentialed Delivery <br /> for Modern Enterprises
             </h2>
           </motion.div>
@@ -372,31 +301,31 @@ export default function CloudService() {
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true, margin: "-100px" }}
                transition={{ duration: 0.8 }}
-               className="p-8 sm:p-12 bg-white border border-gray-100 rounded-[2rem] shadow-xl shadow-gray-100/50 hover:shadow-2xl hover:shadow-blue-100/50 transition-all duration-500"
+               className="p-8 sm:p-12 bg-card border border-border rounded-[2.5rem] shadow-2xl hover:shadow-blue-500/10 transition-all duration-500"
             >
-              <div className="flex items-center gap-4 mb-10">
-                <div className="p-3 bg-orange-50 rounded-2xl">
+              <div className="flex items-center gap-6 mb-12">
+                <div className="p-4 bg-orange-500/10 rounded-2xl">
                    <Activity className="w-8 h-8 text-orange-500" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">AWS Partner</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-foreground transition-colors">AWS Partner</h3>
               </div>
 
-              <div className="space-y-8">
+              <div className="space-y-10">
                 <div>
-                  <h4 className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">AWS Programs</h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[15px] text-gray-600">
+                  <h4 className="text-xs font-bold text-orange-500 uppercase tracking-widest mb-6">AWS Programs</h4>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm sm:text-base text-muted-foreground transition-colors">
                     {["Immersion Day", "Well-Architected", "Public Sector", "Advanced Tier", "MSP Provider"].map(p => (
-                      <li key={p} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-blue-500" /> {p}
+                      <li key={p} className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-orange-500/60" /> {p}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">AWS Competencies</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {["DevOps", "Microsoft Workloads", "Digital Workplace", "Migration", "Gen AI"].map(c => (
-                      <span key={c} className="px-3 py-1 bg-gray-50 border border-gray-100 rounded-full text-xs font-semibold text-gray-700">{c}</span>
+                  <h4 className="text-xs font-bold text-orange-500 uppercase tracking-widest mb-6">AWS Competencies</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {["DevOps", "Microsoft Workload", "Digital Workplace", "Migration", "Gen AI"].map(c => (
+                      <span key={c} className="px-4 py-2 bg-secondary border border-border rounded-full text-xs font-bold text-foreground hover:bg-orange-500 hover:text-white transition-all cursor-default">{c}</span>
                     ))}
                   </div>
                 </div>
@@ -409,24 +338,24 @@ export default function CloudService() {
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true, margin: "-100px" }}
                transition={{ duration: 0.8 }}
-               className="p-8 sm:p-12 bg-white border border-gray-100 rounded-[2rem] shadow-xl shadow-gray-100/50 hover:shadow-2xl hover:shadow-indigo-100/50 transition-all duration-500"
+               className="p-8 sm:p-12 bg-card border border-border rounded-[2.5rem] shadow-2xl hover:shadow-blue-500/10 transition-all duration-500"
             >
-              <div className="flex items-center gap-4 mb-10">
-                <div className="p-3 bg-blue-50 rounded-2xl">
-                   <Cloud className="w-8 h-8 text-blue-600" />
+              <div className="flex items-center gap-6 mb-12">
+                <div className="p-4 bg-blue-500/10 rounded-2xl">
+                   <Cloud className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">Microsoft Azure</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-foreground transition-colors">Microsoft Azure</h3>
               </div>
 
-              <div className="space-y-8 h-full flex flex-col">
+              <div className="space-y-10 h-full flex flex-col">
                 <div>
-                  <h4 className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">Solutions Specializations</h4>
-                  <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100/50 text-[15px] text-gray-700 leading-relaxed">
+                  <h4 className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-6">Solutions Specializations</h4>
+                  <div className="bg-blue-500/5 dark:bg-blue-400/5 p-8 rounded-3xl border border-blue-500/10 dark:border-blue-400/10 text-sm sm:text-base text-muted-foreground leading-relaxed transition-colors italic">
                     Infrastructure Migration (Linux, Windows, SQL); Kubernetes on Azure; Data &amp; AI with Microsoft Fabric and ML.
                   </div>
                 </div>
                 
-                <div className="mt-auto pt-6 italic text-sm text-gray-500 border-t border-gray-100">
+                <div className="mt-auto pt-8 italic text-sm text-muted-foreground border-t border-border transition-colors">
                   &quot;Together, these partnerships position FineLabs as a trusted delivery partner for global enterprises.&quot;
                 </div>
               </div>
@@ -435,5 +364,6 @@ export default function CloudService() {
         </div>
       </section>
     </div>
+
   );
 }

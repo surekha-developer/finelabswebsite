@@ -144,11 +144,19 @@ export default function SupplyChain() {
   }, []);
 
   return (
-    <div className="w-full bg-[#f8fafc] text-[#121926] overflow-hidden selection:bg-emerald-50">
+    <div className="w-full bg-background text-foreground overflow-hidden selection:bg-emerald-500/20 transition-colors duration-500">
       
       {/* 1. HERO SECTION: THE RESILIENT FLOW */}
       <section className="relative w-full px-6 pt-32 pb-20 sm:pt-40 sm:pb-32 min-h-[90vh] flex items-center overflow-hidden">
         
+        {/* Foundation Gradient */}
+        <div
+          className="absolute inset-0 z-0 pointer-events-none opacity-50 dark:opacity-100 transition-opacity"
+          style={{ 
+            background: "radial-gradient(circle at 50% -20%, var(--emerald-500-10, rgba(16, 185, 129, 0.1)), var(--bg) 80%)"
+          }}
+        />
+
         <RouteMesh />
         <FlowReveal active={isRevealed} />
 
@@ -161,10 +169,10 @@ export default function SupplyChain() {
                  initial={{ opacity: 0, x: -20 }}
                  animate={isRevealed ? { opacity: 1, x: 0 } : {}}
                  transition={{ duration: 0.8, delay: 0.4 }}
-                 className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-emerald-100 mb-8 shadow-sm"
+                 className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-card/60 backdrop-blur-md border border-border/50 mb-8 shadow-sm"
               >
-                 <Zap className="w-3.5 h-3.5 text-emerald-600 fill-emerald-50" />
-                 <span className="text-[10px] font-bold text-gray-500 tracking-[0.3em] uppercase">
+                 <Zap className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 fill-emerald-100/50" />
+                 <span className="text-[10px] font-bold text-muted-foreground tracking-[0.3em] uppercase transition-colors">
                   Global Supply Chain // Status: Optimized
                 </span>
               </motion.div>
@@ -174,9 +182,9 @@ export default function SupplyChain() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={isRevealed ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                className="text-5xl sm:text-7xl md:text-[95px] font-extrabold tracking-tight mb-10 leading-[0.95] text-[#121926]"
+                className="text-5xl sm:text-7xl md:text-[105px] font-extrabold tracking-tight mb-10 leading-[0.95] text-foreground transition-colors"
               >
-                The <span className="text-emerald-600">Resilient</span>
+                The <span className="text-emerald-600 dark:text-emerald-500 transition-colors">Resilient</span>
                 <br /> 
                 Autonomous Flow
               </motion.h1>
@@ -186,10 +194,10 @@ export default function SupplyChain() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isRevealed ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 1, delay: 1 }}
-                className="text-lg md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-2xl font-medium tracking-tight mx-auto sm:mx-0"
+                className="text-lg md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-2xl font-medium tracking-tight mx-auto sm:mx-0 transition-colors"
               >
                 Orchestrating complexity into competitive advantage. FineLabs delivers 
-                <span className="text-emerald-600 font-bold underline decoration-emerald-200 underline-offset-4 decoration-4"> end-to-end operational intelligence</span> 
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold underline decoration-emerald-500/20 underline-offset-4 decoration-4"> end-to-end operational intelligence</span> 
                 spanning networks, planning, and execution.
               </motion.p>
 
@@ -198,12 +206,12 @@ export default function SupplyChain() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isRevealed ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 1, delay: 1.2 }}
-                className="flex flex-wrap items-center justify-center sm:justify-start gap-4"
+                className="flex flex-wrap items-center justify-center sm:justify-start gap-6"
               >
-                <button className="px-10 py-5 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-emerald-200/50">
+                <button className="px-10 py-5 bg-emerald-600 dark:bg-emerald-500 text-white font-bold rounded-full hover:bg-emerald-700 dark:hover:bg-emerald-600 hover:shadow-2xl hover:shadow-emerald-500/20 hover:-translate-y-1 transition-all duration-300">
                    Analyze Your Network
                 </button>
-                <button className="px-10 py-5 bg-white text-[#121926] font-bold rounded-full border border-gray-200 hover:border-emerald-200 transition-all duration-300 shadow-sm">
+                <button className="px-10 py-5 bg-card text-foreground font-bold rounded-full border border-border hover:bg-muted transition-all duration-300 shadow-sm transition-colors">
                   Strategy Guide
                 </button>
               </motion.div>
@@ -217,14 +225,14 @@ export default function SupplyChain() {
       </section>
 
       {/* 2. CORE CAPABILITIES: OPTIMIZATION MODULES */}
-      <section className="bg-white py-24 sm:py-32 relative border-t border-gray-50">
+      <section className="bg-background py-24 sm:py-32 relative border-t border-border transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           
           <div className="mb-20 text-center sm:text-left">
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#121926] mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground transition-colors mb-6 h-auto">
               Core Consulting & <br /> Optimization Modules
             </h2>
-            <p className="text-gray-500 font-medium">Data-driven frameworks to design the next-generation supply network.</p>
+            <p className="text-muted-foreground font-medium transition-colors">Data-driven frameworks to design the next-generation supply network.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -239,15 +247,28 @@ export default function SupplyChain() {
                  initial={{ opacity: 0, y: 20 }}
                  whileInView={{ opacity: 1, y: 0 }}
                  viewport={{ once: true }}
-                 className="p-10 bg-gray-50/50 border border-gray-100 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:border-emerald-100 transition-all duration-500 group flex gap-8"
+                 className="p-8 sm:p-10 bg-card/40 border border-border rounded-[2.5rem] hover:bg-card hover:shadow-2xl hover:border-emerald-500/50 transition-all duration-500 group flex flex-col sm:flex-row sm:gap-8"
                >
-                 <div className="w-16 h-16 bg-white border border-gray-100 rounded-2xl flex items-center justify-center text-emerald-600 shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                 {/* Mobile Icon + Title Row */}
+                 <div className="flex items-center sm:hidden gap-5 mb-5">
+                   <div className="w-16 h-16 bg-secondary border border-border rounded-2xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 group-hover:scale-110 transition-all duration-500 shadow-sm h-auto">
+                      {cap.icon}
+                   </div>
+                   <h3 className="text-xl font-bold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors uppercase tracking-tight h-auto">{cap.title}</h3>
+                 </div>
+
+                 {/* Desktop Icon */}
+                 <div className="hidden sm:flex w-16 h-16 bg-secondary border border-border rounded-2xl items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 group-hover:scale-110 transition-all duration-500 shadow-sm h-auto">
                     {cap.icon}
                  </div>
+
+                 {/* Content Div */}
                  <div>
-                    <h3 className="text-xl font-bold text-[#121926] mb-4 group-hover:text-emerald-600 transition-colors uppercase tracking-tight">{cap.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-6">{cap.desc}</p>
-                    <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm tracking-tight pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                    {/* Desktop Title */}
+                    <h3 className="hidden sm:block text-xl sm:text-2xl font-bold text-foreground mb-4 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors uppercase tracking-tight h-auto">{cap.title}</h3>
+                    
+                    <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-6 h-auto transition-colors">{cap.desc}</p>
+                    <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-xs uppercase tracking-widest pointer-events-none opacity-0 group-hover:opacity-100 transition-all">
                         Configure Module <ArrowRight className="w-4 h-4" />
                     </div>
                  </div>
@@ -258,16 +279,16 @@ export default function SupplyChain() {
       </section>
 
       {/* 3. TECHNOLOGY ECOSYSTEM: PARTNER PILLARS */}
-      <section className="bg-emerald-900 py-24 sm:py-32 relative overflow-hidden">
-         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+      <section className="bg-emerald-950 dark:bg-emerald-950/40 py-24 sm:py-32 relative overflow-hidden transition-colors duration-500">
+         <div className="absolute top-0 left-0 w-full h-full opacity-5 dark:opacity-10 pointer-events-none">
             <div className="absolute top-[10%] right-[20%] w-[500px] h-[500px] bg-emerald-400 rounded-full blur-[120px]" />
          </div>
 
          <div className="max-w-7xl mx-auto px-6 relative z-10 text-white">
             <div className="text-center mb-20 max-w-2xl mx-auto">
-               <h3 className="text-sm font-bold tracking-[0.4em] text-emerald-400 mb-6 uppercase">Unified Ecosystem</h3>
-               <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">Strategic Technology <br /> Partnerships</h2>
-               <p className="text-emerald-100/70">Seamlessly integrating the world&apos;s leading SCM planning and execution platforms.</p>
+               <h3 className="text-sm font-bold tracking-[0.4em] text-emerald-400 mb-6 uppercase transition-colors">Unified Ecosystem</h3>
+               <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 h-auto">Strategic Technology <br /> Partnerships</h2>
+               <p className="text-emerald-100/70 transition-colors">Seamlessly integrating the world&apos;s leading SCM planning and execution platforms.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -279,20 +300,20 @@ export default function SupplyChain() {
                  <motion.div 
                    key={i}
                    whileHover={{ y: -10 }}
-                   className="p-10 rounded-[3rem] bg-white/5 backdrop-blur-xl border border-white/10 group cursor-default"
+                   className="p-10 rounded-[3.5rem] bg-white/5 backdrop-blur-xl border border-white/10 group cursor-default transition-all duration-500 shadow-2xl"
                  >
-                    <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-8 text-emerald-400">
+                    <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-8 text-emerald-400 h-auto">
                        {partner.icon}
                     </div>
-                    <h4 className="text-2xl font-black mb-4 tracking-tight uppercase italic">{partner.name}</h4>
+                    <h4 className="text-2xl font-black mb-4 tracking-tight uppercase italic h-auto transition-colors">{partner.name}</h4>
                     <div className="flex flex-wrap gap-2 mb-8">
                        {partner.tags.map((tag, j) => (
-                         <span key={j} className="px-3 py-1 bg-white/10 border border-white/10 rounded-full text-[9px] font-bold tracking-widest text-emerald-300 uppercase">
+                         <span key={j} className="px-3 py-1 bg-white/10 border border-white/10 rounded-full text-[9px] font-bold tracking-widest text-emerald-300 uppercase transition-colors">
                             {tag}
                          </span>
                        ))}
                     </div>
-                    <div className="flex items-center gap-2 text-white/40 font-bold text-xs tracking-widest group-hover:text-emerald-400 transition-colors">
+                    <div className="flex items-center gap-2 text-white/40 font-bold text-xs tracking-widest group-hover:text-emerald-400 transition-colors uppercase">
                        PARTNER STATUS: INTEGRATED <ShieldCheck className="w-4 h-4" />
                     </div>
                  </motion.div>

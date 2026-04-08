@@ -47,7 +47,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="w-full bg-[#f8f9fa] min-h-[83vh] pt-10 pb-0 flex flex-col justify-between overflow-hidden relative">
+    <section className="w-full bg-background min-h-[83vh] pt-10 pb-0 flex flex-col justify-between overflow-hidden relative">
 
       {/* TOP: Enterprise Line & Animated Text */}
       <div className="w-full max-w-[1600px] mx-auto px-6 mt-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 md:gap-4">
@@ -74,7 +74,7 @@ export default function HeroSection() {
           {/* Expanding Animated Centered Pill Container */}
           <div className="relative flex items-center justify-center">
             <div
-              className={`transition-[width,margin,opacity] duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden relative shadow-2xl shadow-indigo-500/10 bg-white ring-1 ring-black/5 flex-shrink-0 h-[100px] lg:h-[140px] xl:h-[180px] rounded-[9999px] ${isExpanded ? "w-[30vw] max-w-[600px] mx-6 lg:mx-8 opacity-100" : "w-0 mx-0 opacity-0"
+              className={`transition-[width,margin,opacity] duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden relative shadow-2xl shadow-blue-500/10 bg-card ring-1 ring-border flex-shrink-0 h-[100px] lg:h-[140px] xl:h-[180px] rounded-[9999px] ${isExpanded ? "w-[30vw] max-w-[600px] mx-6 lg:mx-8 opacity-100" : "w-0 mx-0 opacity-0"
                 }`}
             >
               {/* First Image */}
@@ -97,11 +97,11 @@ export default function HeroSection() {
                 className={`object-cover transition-opacity duration-1000 ease-in-out ${currentImageIndex === 1 ? "opacity-100" : "opacity-0"
                   }`}
               />
-              <div className="absolute inset-0 rounded-[9999px] ring-1 ring-inset ring-black/10 z-10 pointer-events-none" />
+              <div className="absolute inset-0 rounded-[9999px] ring-1 ring-inset ring-foreground/10 z-10 pointer-events-none" />
             </div>
           </div>
 
-          <h1 className="text-6xl md:text-7xl lg:text-[100px] xl:text-[120px] font-bold tracking-tighter text-slate-900 leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
+          <h1 className="text-6xl md:text-7xl lg:text-[100px] xl:text-[120px] font-bold tracking-tighter text-foreground leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
             FUTURES
           </h1>
         </div>
@@ -134,7 +134,7 @@ export default function HeroSection() {
               className={`object-cover transition-opacity duration-1000 ease-in-out ${currentImageIndex === 1 ? "opacity-100" : "opacity-0"
                 }`}
             />
-            <div className="absolute inset-0 rounded-[9999px] ring-1 ring-inset ring-black/10 z-10 pointer-events-none" />
+            <div className="absolute inset-0 rounded-[9999px] ring-1 ring-inset ring-foreground/10 z-10 pointer-events-none" />
           </div>
 
           <h1 className="text-[14vw] md:text-[12vw] xl:text-[10vw] font-bold tracking-tighter text-slate-900 leading-none animate-in fade-in slide-in-from-top-6 duration-1000 fill-mode-both">
@@ -159,7 +159,7 @@ export default function HeroSection() {
           </div>
 
           {/* Middle Line */}
-          <div className="hidden md:block flex-1 mx-8 border-t border-gray-300 opacity-60 animate-in fade-in duration-1000 delay-700 fill-mode-both" />
+          <div className="hidden md:block flex-1 mx-8 border-t border-border opacity-60 animate-in fade-in duration-1000 delay-700 fill-mode-both" />
 
           {/* Bottom Right Buttons */}
           <div className="flex flex-row items-center justify-center gap-4 md:w-auto animate-in fade-in slide-in-from-right-6 duration-700 delay-700 fill-mode-both">
